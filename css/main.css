@@ -1201,7 +1201,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #33c23b;
+  background: #121b3e;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2700,7 +2700,7 @@ mjx-container + br {
   }
 }
 body {
-  background: url("/images/kon.jpg");
+  background: url("https://cs-picture.oss-cn-qingdao.aliyuncs.com/kon%20%282%29.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
