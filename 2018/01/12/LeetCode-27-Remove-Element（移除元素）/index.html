@@ -20,15 +20,20 @@
     var CONFIG = {"hostname":"www.shuocloud.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Roki">
-<meta property="og:url" content="https://www.shuocloud.top/tags/LeetCode/index.html">
+  <meta name="description" content="移除元素给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode-27. Remove Element（移除元素）">
+<meta property="og:url" content="https://www.shuocloud.top/2018/01/12/LeetCode-27-Remove-Element%EF%BC%88%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0%EF%BC%89/index.html">
 <meta property="og:site_name" content="Roki">
+<meta property="og:description" content="移除元素给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-01-12T10:29:42.000Z">
+<meta property="article:modified_time" content="2021-01-15T03:52:17.387Z">
 <meta property="article:author" content="ChenShuo">
+<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://www.shuocloud.top/tags/LeetCode/">
+<link rel="canonical" href="https://www.shuocloud.top/2018/01/12/LeetCode-27-Remove-Element%EF%BC%88%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -36,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: LeetCode | Roki</title>
+  <title>LeetCode-27. Remove Element（移除元素） | Roki</title>
   
 
 
@@ -189,151 +194,167 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">LeetCode
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.shuocloud.top/2018/01/12/LeetCode-27-Remove-Element%EF%BC%88%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/futaba.png">
+      <meta itemprop="name" content="ChenShuo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Roki">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode-27. Remove Element（移除元素）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-01-12 18:29:42" itemprop="dateCreated datePublished" datetime="2018-01-12T18:29:42+08:00">2018-01-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-15 11:52:17" itemprop="dateModified" datetime="2021-01-15T11:52:17+08:00">2021-01-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/%E7%AE%80%E5%8D%95/" itemprop="url" rel="index"><span itemprop="name">简单</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2018</span>
+        <h2 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h2><p>给定一个数组 <code>nums</code> 和一个值 <code>val</code>，你需要原地移除所有数值等于 <code>val</code> 的元素，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+<a id="more"></a>
+
+<p>示例 1:</p>
+<blockquote>
+<p>给定 nums = [3,2,2,3], val = 3,<br>函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。<br>你不需要考虑数组中超出新长度后面的元素。</p>
+</blockquote>
+<p>示例 2:</p>
+<blockquote>
+<p>给定 nums = [0,1,2,2,3,0,4,2], val = 2,<br>函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。<br>注意这五个元素可为任意顺序。<br>你不需要考虑数组中超出新长度后面的元素。</p>
+</blockquote>
+<p><strong>说明:</strong></p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<p>你可以想象内部操作如下:</p>
+<blockquote>
+<p>// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>int len = removeElement(nums, val);<br>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>for (int i = 0; i &lt; len; i++) {<br>print(nums[i]);<br>}</p>
+</blockquote>
+<h2 id="Remove-Element"><a href="#Remove-Element" class="headerlink" title="Remove Element"></a>Remove Element</h2><p>Given an array nums and a value val, remove all instances of that value in-place and return the new length.</p>
+<p>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
+<p>The order of elements can be changed. It doesn’t matter what you leave beyond the new length.</p>
+<p>Example 1:</p>
+<blockquote>
+<p>Given nums = [3,2,2,3], val = 3,<br>Your function should return length = 2, with the first two elements of nums being 2.<br>It doesn’t matter what you leave beyond the returned length.</p>
+</blockquote>
+<p>Example 2:</p>
+<blockquote>
+<p>Given nums = [0,1,2,2,3,0,4,2], val = 2,<br>Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4.<br>Note that the order of those five elements can be arbitrary.<br>It doesn’t matter what values are set beyond the returned length.</p>
+</blockquote>
+<p><strong>Clarification:</strong></p>
+<p>Confused why the returned value is an integer but your answer is an array?</p>
+<p>Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.</p>
+<p>Internally you can think of this:</p>
+<blockquote>
+<p>// nums is passed in by reference. (i.e., without making a copy)<br>int len = removeElement(nums, val);<br>// any modification to nums in your function would be known by the caller.<br>// using the length returned by your function, it prints the first len elements.<br>for (int i = 0; i &lt; len; i++) {<br>print(nums[i]);<br>}</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>这道题其实和<a href="https://ichen2000.com/2018/01/12/LeetCode-26-Remove-Duplicates-from-Sorted-Array%EF%BC%88%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%89/" target="_blank">LeetCode26题删除重复元素</a>相同的道理。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; numsSize; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i] != val)&#123;</span><br><span class="line">            nums[count++] = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-12T18:31:42+08:00"
-              content="2018-01-12">
-          01-12
-        </time>
-      </div>
+	<div>
+		
+			<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+        
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/12/LeetCode-53-Maximum-Subarray%EF%BC%88%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-53. Maximum Subarray（最大子序和）</span>
-          </a>
-      </div>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ChenShuo
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://www.shuocloud.top/2018/01/12/LeetCode-27-Remove-Element%EF%BC%88%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0%EF%BC%89/" title="LeetCode-27. Remove Element（移除元素）">https://www.shuocloud.top/2018/01/12/LeetCode-27-Remove-Element（移除元素）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-    </header>
-  </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
+          </div>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-12T18:30:42+08:00"
-              content="2018-01-12">
-          01-12
-        </time>
-      </div>
+        
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/12/LeetCode-35-Search-Insert-Position%EF%BC%88%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-35. Search Insert Position（搜索插入位置）</span>
-          </a>
-      </div>
 
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-12T18:29:42+08:00"
-              content="2018-01-12">
-          01-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/12/LeetCode-27-Remove-Element%EF%BC%88%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-27. Remove Element（移除元素）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-12T17:29:42+08:00"
-              content="2018-01-12">
-          01-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/12/LeetCode-26-Remove-Duplicates-from-Sorted-Array%EF%BC%88%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-26. Remove Duplicates from Sorted Array（删除排序数组中的重复项）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-12T17:14:59+08:00"
-              content="2018-01-12">
-          01-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/12/LeetCode-21-Merge-Two-Sorted-Lists%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-21. Merge Two Sorted Lists（合并两个有序链表）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-12T11:37:21+08:00"
-              content="2018-01-12">
-          01-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/12/LeetCode-1-Two-Sum%EF%BC%88%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-1. Two Sum（两数之和）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/01/12/LeetCode-26-Remove-Duplicates-from-Sorted-Array%EF%BC%88%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%89/" rel="prev" title="LeetCode-26. Remove Duplicates from Sorted Array（删除排序数组中的重复项）">
+      <i class="fa fa-chevron-left"></i> LeetCode-26. Remove Duplicates from Sorted Array（删除排序数组中的重复项）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/01/12/LeetCode-35-Search-Insert-Position%EF%BC%88%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE%EF%BC%89/" rel="next" title="LeetCode-35. Search Insert Position（搜索插入位置）">
+      LeetCode-35. Search Insert Position（搜索插入位置） <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-  </div>
+      </footer>
+    
+  </article>
   
   
-  
-
   
 
 
@@ -386,6 +407,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-number">1.</span> <span class="nav-text">移除元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Remove-Element"><span class="nav-number">2.</span> <span class="nav-text">Remove Element</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">解</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
