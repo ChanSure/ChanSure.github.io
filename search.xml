@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>LeetCode-1. Two Sum（两数之和）</title>
+    <url>/2018/01/12/LeetCode-1-Two-Sum%EF%BC%88%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
+<a id="more"></a>
+
+<p> 示例:</p>
+<blockquote>
+<p>给定 nums = [2, 7, 11, 15], target = 9<br>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
+</blockquote>
+<h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h2><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>Example:</p>
+<blockquote>
+<p>Given nums = [2, 7, 11, 15], target = 9,<br>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>梦开始的地方（</p>
+<p>使用哈希表对于每一个<code>x</code>，我们首先查询哈希表中是否存在<code>target - x</code>，然后将<code>x</code>插入到哈希表中，即可保证不会让<code>x</code>和自己匹配。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; hashtable;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = hashtable.find(target - nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (it != hashtable.end()) &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;it-&gt;second, i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashtable[nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>下面这个是初学时用的暴力搜索</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">twoSum</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j,flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> a[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; numsSize; i++ )&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; numsSize; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] + nums[j] == target)&#123;</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">break</span>;           </span><br><span class="line">    &#125;</span><br><span class="line">    a[<span class="number">0</span>] = i;</span><br><span class="line">    a[<span class="number">1</span>] = j;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-21. Merge Two Sorted Lists（合并两个有序链表）</title>
+    <url>/2018/01/12/LeetCode-21-Merge-Two-Sorted-Lists%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="合并两个有序链表"><a href="#合并两个有序链表" class="headerlink" title="合并两个有序链表"></a>合并两个有序链表</h2><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
+<p>示例：</p>
+<blockquote>
+<p>输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="Merge-Two-Sorted-Lists"><a href="#Merge-Two-Sorted-Lists" class="headerlink" title="Merge Two Sorted Lists"></a>Merge Two Sorted Lists</h2><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+<p>Example:</p>
+<blockquote>
+<p>Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：递归</strong></p>
+<p>递归结束条件为：任意一个链表为空。</p>
+<p>每次返回两个链表中较小的一个。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l1 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二：迭代</strong></p>
+<p>在两个链表中分别设置一个结点<code>prev</code>，然后比较这两个结点，将较小的那个插入新链表中，并将该结点后移，如此下去，直到某一个链表为空。由上述的步骤可知，剩下的链表的所有元素一定比新链表中的大，因此直接插入到新链表尾部即可。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>注：题解为官方题解。链接：<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/">https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/</a></p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode-26. Remove Duplicates from Sorted Array（删除排序数组中的重复项）</title>
     <url>/2018/01/12/LeetCode-26-Remove-Duplicates-from-Sorted-Array%EF%BC%88%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%89/</url>
     <content><![CDATA[<h2 id="删除排序数组中的重复项"><a href="#删除排序数组中的重复项" class="headerlink" title="删除排序数组中的重复项"></a>删除排序数组中的重复项</h2><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
@@ -46,120 +109,6 @@
 
 
 ]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-21. Merge Two Sorted Lists（合并两个有序链表）</title>
-    <url>/2018/01/12/LeetCode-21-Merge-Two-Sorted-Lists%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="合并两个有序链表"><a href="#合并两个有序链表" class="headerlink" title="合并两个有序链表"></a>合并两个有序链表</h2><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
-<p>示例：</p>
-<blockquote>
-<p>输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="Merge-Two-Sorted-Lists"><a href="#Merge-Two-Sorted-Lists" class="headerlink" title="Merge Two Sorted Lists"></a>Merge Two Sorted Lists</h2><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
-<p>Example:</p>
-<blockquote>
-<p>Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：递归</strong></p>
-<p>递归结束条件为：任意一个链表为空。</p>
-<p>每次返回两个链表中较小的一个。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l1 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>方法二：迭代</strong></p>
-<p>在两个链表中分别设置一个结点<code>prev</code>，然后比较这两个结点，将较小的那个插入新链表中，并将该结点后移，如此下去，直到某一个链表为空。由上述的步骤可知，剩下的链表的所有元素一定比新链表中的大，因此直接插入到新链表尾部即可。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>注：题解为官方题解。链接：<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/">https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/</a></p>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-1. Two Sum（两数之和）</title>
-    <url>/2018/01/12/LeetCode-1-Two-Sum%EF%BC%88%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
-<p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
-<a id="more"></a>
-
-<p> 示例:</p>
-<blockquote>
-<p>给定 nums = [2, 7, 11, 15], target = 9<br>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
-</blockquote>
-<h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h2><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
-<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
-<p>Example:</p>
-<blockquote>
-<p>Given nums = [2, 7, 11, 15], target = 9,<br>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>梦开始的地方（</p>
-<p>使用哈希表对于每一个<code>x</code>，我们首先查询哈希表中是否存在<code>target - x</code>，然后将<code>x</code>插入到哈希表中，即可保证不会让<code>x</code>和自己匹配。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; hashtable;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = hashtable.find(target - nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (it != hashtable.end()) &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;it-&gt;second, i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashtable[nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>下面这个是初学时用的暴力搜索</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">twoSum</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j,flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> a[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; numsSize; i++ )&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; numsSize; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] + nums[j] == target)&#123;</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">break</span>;           </span><br><span class="line">    &#125;</span><br><span class="line">    a[<span class="number">0</span>] = i;</span><br><span class="line">    a[<span class="number">1</span>] = j;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-27. Remove Element（移除元素）</title>
-    <url>/2018/01/12/LeetCode-27-Remove-Element%EF%BC%88%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h2><p>给定一个数组 <code>nums</code> 和一个值 <code>val</code>，你需要原地移除所有数值等于 <code>val</code> 的元素，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
-<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
-<a id="more"></a>
-
-<p>示例 1:</p>
-<blockquote>
-<p>给定 nums = [3,2,2,3], val = 3,<br>函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。<br>你不需要考虑数组中超出新长度后面的元素。</p>
-</blockquote>
-<p>示例 2:</p>
-<blockquote>
-<p>给定 nums = [0,1,2,2,3,0,4,2], val = 2,<br>函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。<br>注意这五个元素可为任意顺序。<br>你不需要考虑数组中超出新长度后面的元素。</p>
-</blockquote>
-<p><strong>说明:</strong></p>
-<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
-<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
-<p>你可以想象内部操作如下:</p>
-<blockquote>
-<p>// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>int len = removeElement(nums, val);<br>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>for (int i = 0; i &lt; len; i++) {<br>print(nums[i]);<br>}</p>
-</blockquote>
-<h2 id="Remove-Element"><a href="#Remove-Element" class="headerlink" title="Remove Element"></a>Remove Element</h2><p>Given an array nums and a value val, remove all instances of that value in-place and return the new length.</p>
-<p>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
-<p>The order of elements can be changed. It doesn’t matter what you leave beyond the new length.</p>
-<p>Example 1:</p>
-<blockquote>
-<p>Given nums = [3,2,2,3], val = 3,<br>Your function should return length = 2, with the first two elements of nums being 2.<br>It doesn’t matter what you leave beyond the returned length.</p>
-</blockquote>
-<p>Example 2:</p>
-<blockquote>
-<p>Given nums = [0,1,2,2,3,0,4,2], val = 2,<br>Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4.<br>Note that the order of those five elements can be arbitrary.<br>It doesn’t matter what values are set beyond the returned length.</p>
-</blockquote>
-<p><strong>Clarification:</strong></p>
-<p>Confused why the returned value is an integer but your answer is an array?</p>
-<p>Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.</p>
-<p>Internally you can think of this:</p>
-<blockquote>
-<p>// nums is passed in by reference. (i.e., without making a copy)<br>int len = removeElement(nums, val);<br>// any modification to nums in your function would be known by the caller.<br>// using the length returned by your function, it prints the first len elements.<br>for (int i = 0; i &lt; len; i++) {<br>print(nums[i]);<br>}</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>这道题其实和<a href="https://ichen2000.com/2018/01/12/LeetCode-26-Remove-Duplicates-from-Sorted-Array%EF%BC%88%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%89/" target="_blank">LeetCode26题删除重复元素</a>相同的道理。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; numsSize; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i] != val)&#123;</span><br><span class="line">            nums[count++] = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>LeetCode</category>
         <category>简单</category>
@@ -215,6 +164,57 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lower_bound(nums.begin(),nums.end(),target) - nums.begin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><code>lower_bound()</code>也是用二分法实现的。</p>
 ]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-27. Remove Element（移除元素）</title>
+    <url>/2018/01/12/LeetCode-27-Remove-Element%EF%BC%88%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h2><p>给定一个数组 <code>nums</code> 和一个值 <code>val</code>，你需要原地移除所有数值等于 <code>val</code> 的元素，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+<a id="more"></a>
+
+<p>示例 1:</p>
+<blockquote>
+<p>给定 nums = [3,2,2,3], val = 3,<br>函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。<br>你不需要考虑数组中超出新长度后面的元素。</p>
+</blockquote>
+<p>示例 2:</p>
+<blockquote>
+<p>给定 nums = [0,1,2,2,3,0,4,2], val = 2,<br>函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。<br>注意这五个元素可为任意顺序。<br>你不需要考虑数组中超出新长度后面的元素。</p>
+</blockquote>
+<p><strong>说明:</strong></p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<p>你可以想象内部操作如下:</p>
+<blockquote>
+<p>// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>int len = removeElement(nums, val);<br>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>for (int i = 0; i &lt; len; i++) {<br>print(nums[i]);<br>}</p>
+</blockquote>
+<h2 id="Remove-Element"><a href="#Remove-Element" class="headerlink" title="Remove Element"></a>Remove Element</h2><p>Given an array nums and a value val, remove all instances of that value in-place and return the new length.</p>
+<p>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
+<p>The order of elements can be changed. It doesn’t matter what you leave beyond the new length.</p>
+<p>Example 1:</p>
+<blockquote>
+<p>Given nums = [3,2,2,3], val = 3,<br>Your function should return length = 2, with the first two elements of nums being 2.<br>It doesn’t matter what you leave beyond the returned length.</p>
+</blockquote>
+<p>Example 2:</p>
+<blockquote>
+<p>Given nums = [0,1,2,2,3,0,4,2], val = 2,<br>Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4.<br>Note that the order of those five elements can be arbitrary.<br>It doesn’t matter what values are set beyond the returned length.</p>
+</blockquote>
+<p><strong>Clarification:</strong></p>
+<p>Confused why the returned value is an integer but your answer is an array?</p>
+<p>Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.</p>
+<p>Internally you can think of this:</p>
+<blockquote>
+<p>// nums is passed in by reference. (i.e., without making a copy)<br>int len = removeElement(nums, val);<br>// any modification to nums in your function would be known by the caller.<br>// using the length returned by your function, it prints the first len elements.<br>for (int i = 0; i &lt; len; i++) {<br>print(nums[i]);<br>}</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>这道题其实和<a href="https://ichen2000.com/2018/01/12/LeetCode-26-Remove-Duplicates-from-Sorted-Array%EF%BC%88%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%89/" target="_blank">LeetCode26题删除重复元素</a>相同的道理。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; numsSize; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i] != val)&#123;</span><br><span class="line">            nums[count++] = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>LeetCode</category>
         <category>简单</category>
