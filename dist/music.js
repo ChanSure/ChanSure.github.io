@@ -12,6 +12,12 @@ const ap = new APlayer({
 		lrc: '/lrc/Shangri-La.lrc'
 	 },
 	 {
+		name: '明日方舟铅封行动主界面BGM',
+		artist: '塞壬唱片',
+		url: 'https://ro-ki.coding.net/api/share/download/fd045d86-3b44-434e-907e-f397eb329d71',
+		cover: 'http://p1.music.126.net/on0pf3l8qsaktyMeKl4YtA==/109951165641467155.jpg?param=140y140',
+	 },
+	 {
 		name: '六兆年と一夜物語',
 		artist: 'Roselia',
 		url: 'http://music.163.com/song/media/outer/url?id=1451142196.mp3',
