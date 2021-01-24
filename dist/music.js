@@ -18,6 +18,20 @@ const ap = new APlayer({
 		cover: 'http://p1.music.126.net/on0pf3l8qsaktyMeKl4YtA==/109951165641467155.jpg?param=140y140',
 	 },
 	 {
+		name: 'Renegade',
+		artist: '塞壬唱片-MSR',
+		url: 'http://music.163.com/song/media/outer/url?id=1444493657.mp3',
+		cover: 'http://p1.music.126.net/qKU7UETrrdH-x7cZf-FfIw==/109951164949003058.jpg?param=130y130',
+		lrc: '/lrc/Renegade.lrc'
+	 },
+	 {
+		name: '届かない恋',
+		artist: '上原れな',
+		url: 'https://ro-ki.coding.net/api/share/download/b9163b0a-57eb-4bdd-9650-6c5d63ae728d',
+		cover: 'http://p2.music.126.net/WPmDDxZRmvTLwYOTs_zVPA==/2938994582872957.jpg?param=130y130',
+		lrc: '/lrc/届かない恋.lrc'
+	 },
+	 {
 		name: '六兆年と一夜物語',
 		artist: 'Roselia',
 		url: 'http://music.163.com/song/media/outer/url?id=1451142196.mp3',
