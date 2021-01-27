@@ -25,6 +25,20 @@ const ap = new APlayer({
 		lrc: '/lrc/Renegade.lrc'
 	 },
 	 {
+		name: 'Everything\'s Alright',
+		artist: '塞壬唱片-MSR / DJ Okawari / 澤田かおり',
+		url: 'http://music.163.com/song/media/outer/url?id=1460626792.mp3',
+		cover: 'http://p2.music.126.net/C_dc-WuRU4YKJREo4A2Wbw==/109951165115215198.jpg?param=130y130',
+		lrc: '/lrc/Everything is Alright.lrc'
+	 },
+	 {
+		name: 'Try Try Try',
+		artist: 'Jason Mraz',
+		url: 'http://music.163.com/song/media/outer/url?id=1474821.mp3',
+		cover: 'http://p1.music.126.net/EG3TlLCxPIQf1S055Q-D6g==/908196604592765.jpg?param=130y130',
+		lrc: '/lrc/Try Try Try.lrc'
+	 },
+	 {
 		name: '届かない恋',
 		artist: '上原れな',
 		url: 'https://ro-ki.coding.net/api/share/download/b9163b0a-57eb-4bdd-9650-6c5d63ae728d',
