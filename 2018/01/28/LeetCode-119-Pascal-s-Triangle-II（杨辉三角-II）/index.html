@@ -20,15 +20,25 @@
     var CONFIG = {"hostname":"www.shuocloud.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Roki">
-<meta property="og:url" content="https://www.shuocloud.top/tags/%E6%95%B0%E7%BB%84/index.html">
+  <meta name="description" content="杨辉三角 II给定一个非负索引 k，其中 k ≤ 33，返回杨辉三角的第 k 行。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode-119. Pascal&#39;s Triangle II（杨辉三角 II）">
+<meta property="og:url" content="https://www.shuocloud.top/2018/01/28/LeetCode-119-Pascal-s-Triangle-II%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92-II%EF%BC%89/index.html">
 <meta property="og:site_name" content="Roki">
+<meta property="og:description" content="杨辉三角 II给定一个非负索引 k，其中 k ≤ 33，返回杨辉三角的第 k 行。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019021318314726.gif">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190213183722217.gif">
+<meta property="article:published_time" content="2018-01-28T09:20:46.000Z">
+<meta property="article:modified_time" content="2021-01-29T06:43:29.734Z">
 <meta property="article:author" content="ChenShuo">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="Array">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019021318314726.gif">
 
-<link rel="canonical" href="https://www.shuocloud.top/tags/%E6%95%B0%E7%BB%84/">
+<link rel="canonical" href="https://www.shuocloud.top/2018/01/28/LeetCode-119-Pascal-s-Triangle-II%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92-II%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -36,12 +46,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 数组 | Roki</title>
+  <title>LeetCode-119. Pascal's Triangle II（杨辉三角 II） | Roki</title>
   
 
 
@@ -194,217 +204,174 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.shuocloud.top/2018/01/28/LeetCode-119-Pascal-s-Triangle-II%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92-II%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cs-picture.oss-cn-qingdao.aliyuncs.com/futaba.png">
+      <meta itemprop="name" content="ChenShuo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Roki">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode-119. Pascal's Triangle II（杨辉三角 II）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-01-28 17:20:46" itemprop="dateCreated datePublished" datetime="2018-01-28T17:20:46+08:00">2018-01-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-29 14:43:29" itemprop="dateModified" datetime="2021-01-29T14:43:29+08:00">2021-01-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/%E7%AE%80%E5%8D%95/" itemprop="url" rel="index"><span itemprop="name">简单</span></a>
+                </span>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">数组
-          <small>标签</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2018/01/28/LeetCode-119-Pascal-s-Triangle-II%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92-II%EF%BC%89/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/01/28/LeetCode-119-Pascal-s-Triangle-II%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92-II%EF%BC%89/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2018</span>
-    </div>
+        <h2 id="杨辉三角-II"><a href="#杨辉三角-II" class="headerlink" title="杨辉三角 II"></a>杨辉三角 II</h2><p>给定一个非负索引 <em>k</em>，其中 <em>k ≤ 33</em>，返回杨辉三角的第 <em>k</em> 行。</p>
+<a id="more"></a>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-28T17:20:46+08:00"
-              content="2018-01-28">
-          01-28
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/28/LeetCode-119-Pascal-s-Triangle-II%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92-II%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-119. Pascal's Triangle II（杨辉三角 II）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-27T12:24:45+08:00"
-              content="2018-01-27">
-          01-27
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/27/LeetCode-118-Pascal-s-Triangle%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-118. Pascal's Triangle（杨辉三角）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-20T11:57:15+08:00"
-              content="2018-01-20">
-          01-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/20/LeetCode-88-Merge-Sorted-Array%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-88. Merge Sorted Array（合并两个有序数组）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-20T11:11:06+08:00"
-              content="2018-01-20">
-          01-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/20/LeetCode-66-Plus-One%EF%BC%88%E5%8A%A0%E4%B8%80%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-66. Plus One（加一）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-12T18:31:42+08:00"
-              content="2018-01-12">
-          01-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/12/LeetCode-53-Maximum-Subarray%EF%BC%88%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-53. Maximum Subarray（最大子序和）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-12T18:30:42+08:00"
-              content="2018-01-12">
-          01-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/12/LeetCode-35-Search-Insert-Position%EF%BC%88%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-35. Search Insert Position（搜索插入位置）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-12T18:29:42+08:00"
-              content="2018-01-12">
-          01-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/12/LeetCode-27-Remove-Element%EF%BC%88%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-27. Remove Element（移除元素）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-12T17:29:42+08:00"
-              content="2018-01-12">
-          01-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/12/LeetCode-26-Remove-Duplicates-from-Sorted-Array%EF%BC%88%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-26. Remove Duplicates from Sorted Array（删除排序数组中的重复项）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-12T11:37:21+08:00"
-              content="2018-01-12">
-          01-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/12/LeetCode-1-Two-Sum%EF%BC%88%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%89/" itemprop="url">
-            <span itemprop="name">LeetCode-1. Two Sum（两数之和）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+<p><img src="https://img-blog.csdnimg.cn/2019021318314726.gif" alt="在这里插入图片描述"><br>在杨辉三角中，每个数是它左上方和右上方的数的和。</p>
+<p>示例:</p>
+<blockquote>
+<p>输入: 3<br>输出: [1,3,3,1]</p>
+</blockquote>
+<p><strong>进阶：</strong></p>
+<p>你可以优化你的算法到 O(k) 空间复杂度吗？</p>
+<h2 id="Pascal’s-Triangle-II"><a href="#Pascal’s-Triangle-II" class="headerlink" title="Pascal’s Triangle II"></a>Pascal’s Triangle II</h2><p>Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal’s triangle.</p>
+<p>Note that the row index starts from 0.<br><img src="https://img-blog.csdnimg.cn/20190213183722217.gif" alt="在这里插入图片描述"><br>In Pascal’s triangle, each number is the sum of the two numbers directly above it.</p>
+<p>Example:</p>
+<blockquote>
+<p>Input: 3<br>Output: [1,3,3,1]</p>
+</blockquote>
+<p><strong>Follow up:</strong></p>
+<p>Could you optimize your algorithm to use only O(k) extra space?</p>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>由<a href="https://ichen2000.com/2018/01/27/LeetCode-118-Pascal-s-Triangle%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%EF%BC%89/"  target="_blank">第118题的题解</a>中的性质5：二项式 $(a+b)^n$ 的系数对应杨辉三角第 $n$ 行的每一个数。</p>
+<p>同时我们知道<br>$$<br>\begin{align}<br>c^i_n&amp;=\frac{n!}{i!(n-i)!} \newline<br>c^{i+1}_n&amp;=\frac{n!}{(i+1)!(n-i-1)!}<br>\end{align}<br>$$<br>由(1)(2)得</p>
+<p>$$c^{i+1}_n=\frac{n-i}{i+1}c^i_n$$</p>
+<p>然后们就有如下解法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">getRow</span><span class="params">(<span class="keyword">int</span> rowIndex)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">res</span><span class="params">(rowIndex + <span class="number">1</span>)</span></span>;</span><br><span class="line">        res[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= rowIndex; ++ i)</span><br><span class="line">            res[i] = (<span class="keyword">long</span> <span class="keyword">long</span>)res[i - <span class="number">1</span>] * (rowIndex - i + <span class="number">1</span>) / i;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+	<div>
+		
+			<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ChenShuo
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://www.shuocloud.top/2018/01/28/LeetCode-119-Pascal-s-Triangle-II%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92-II%EF%BC%89/" title="LeetCode-119. Pascal&#39;s Triangle II（杨辉三角 II）">https://www.shuocloud.top/2018/01/28/LeetCode-119-Pascal-s-Triangle-II（杨辉三角-II）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
+              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"><i class="fa fa-tag"></i> 数组</a>
+              <a href="/tags/Array/" rel="tag"><i class="fa fa-tag"></i> Array</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/01/27/LeetCode-118-Pascal-s-Triangle%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%EF%BC%89/" rel="prev" title="LeetCode-118. Pascal's Triangle（杨辉三角）">
+      <i class="fa fa-chevron-left"></i> LeetCode-118. Pascal's Triangle（杨辉三角）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/29/%E3%80%8A%E5%B4%A9%E5%9D%8F3%E3%80%8B%E5%8A%A8%E7%94%BB%E7%9F%AD%E7%89%87%E3%80%8C%E6%B8%A1%E5%B0%98%E3%80%8D/" rel="next" title="《崩坏3》动画短片「渡尘」">
+      《崩坏3》动画短片「渡尘」 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -452,6 +419,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92-II"><span class="nav-number">1.</span> <span class="nav-text">杨辉三角 II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pascal%E2%80%99s-Triangle-II"><span class="nav-number">2.</span> <span class="nav-text">Pascal’s Triangle II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">解</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -697,6 +665,59 @@ document.querySelectorAll('.pdfobject-container').forEach(element => {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
