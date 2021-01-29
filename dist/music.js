@@ -5,6 +5,13 @@ const ap = new APlayer({
 	lrcType: 3,
     audio: [
 	 {
+		name: 'Rubia',
+		artist: '周深',
+		url: 'http://music.163.com/song/media/outer/url?id=1815684465.mp3',
+		cover: 'http://p2.music.126.net/499AYZ3epP1T7GJYvnJZZQ==/109951165671947083.jpg?param=130y130',
+		lrc: '/lrc/Rubia.lrc'
+	 },
+	 {
 		name: 'Shangri-La',
 		artist: '今井麻美',
 		url: 'http://music.163.com/song/media/outer/url?id=28063305.mp3',
@@ -44,6 +51,13 @@ const ap = new APlayer({
 		url: 'https://ro-ki.coding.net/api/share/download/b9163b0a-57eb-4bdd-9650-6c5d63ae728d',
 		cover: 'http://p2.music.126.net/WPmDDxZRmvTLwYOTs_zVPA==/2938994582872957.jpg?param=130y130',
 		lrc: '/lrc/届かない恋.lrc'
+	 },
+	 {
+		name: '墜ちない空',
+		artist: 'ENA☆',
+		url: 'http://music.163.com/song/media/outer/url?id=31830711.mp3',
+		cover: 'http://p2.music.126.net/Gtt0DhLi62rIf04I8V1Suw==/7828522790543880.jpg?param=130y130',
+		lrc: '/lrc/墜ちない空.lrc'
 	 },
 	 {
 		name: '六兆年と一夜物語',
