@@ -1,46 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>LeetCode-118. Pascal&#39;s Triangle（杨辉三角）</title>
-    <url>/2018/01/27/LeetCode-118-Pascal-s-Triangle%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h2><p>给定一个非负整数 <em>numRows</em>，生成杨辉三角的前 <em>numRows</em> 行。</p>
-<a id="more"></a>
-
-<p><img src="https://img-blog.csdnimg.cn/20190213182724160.gif" alt="在这里插入图片描述"><br>在杨辉三角中，每个数是它左上方和右上方的数的和。<br>示例:</p>
-<blockquote>
-<p>输入: 5<br>输出:<br>[<br>       [1],<br>     [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]</p>
-</blockquote>
-<h2 id="Pascal’s-Triangle"><a href="#Pascal’s-Triangle" class="headerlink" title="Pascal’s Triangle"></a>Pascal’s Triangle</h2><p>Given a non-negative integer numRows, generate the first numRows of Pascal’s triangle.<br><img src="https://img-blog.csdnimg.cn/20190213182902277.gif" alt="在这里插入图片描述"><br>In Pascal’s triangle, each number is the sum of the two numbers directly above it.</p>
-<p>Example:</p>
-<blockquote>
-<p>Input: 5<br>Output:<br>[<br>     [1],<br>    [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一</strong></p>
-<p>在小学二年级学习组合数的时候，我们就知道杨辉三角能够表示二项式的系数，且有以下性质：</p>
-<ol>
-<li>对称性：首项和末项都为1</li>
-<li>第 $n$ 行（从 $0$ 编号）有 $n+1$ 项，前 $n$ 行共有 $\frac{n(n+1)}{2}$ 个数。</li>
-<li>第 $n$ 行第 $m$ 个数可以用组合数 $C^m_n$ 表示，且 $c^m_n=\frac{n!}{m!(n-m)!}$</li>
-<li>每个数字等于其两肩上的数之和，这也是组合数的性质之一，即 $c_n^i=c_{n-1}^{i-1}+c_{n-1}^i$</li>
-<li>二项式 $(a+b)^n$ 的系数对应杨辉三角第 $n$ 行的每一个数。</li>
-</ol>
-<p>由性质4我们可有解法：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret(numRows);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; ++i) &#123;</span><br><span class="line">            ret[i].resize(i + <span class="number">1</span>);</span><br><span class="line">            ret[i][<span class="number">0</span>] = ret[i][i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; ++j) &#123;</span><br><span class="line">                ret[i][j] = ret[i - <span class="number">1</span>][j] + ret[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>方法二：打表（不讲武德法</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a = &#123;</span><br><span class="line">            &#123;<span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">6</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">15</span>, <span class="number">6</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">21</span>, <span class="number">35</span>, <span class="number">35</span>, <span class="number">21</span>, <span class="number">7</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">8</span>, <span class="number">28</span>, <span class="number">56</span>, <span class="number">70</span>, <span class="number">56</span>, <span class="number">28</span>, <span class="number">8</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">9</span>, <span class="number">36</span>, <span class="number">84</span>, <span class="number">126</span>, <span class="number">126</span>, <span class="number">84</span>, <span class="number">36</span>, <span class="number">9</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">10</span>, <span class="number">45</span>, <span class="number">120</span>, <span class="number">210</span>, <span class="number">252</span>, <span class="number">210</span>, <span class="number">120</span>, <span class="number">45</span>, <span class="number">10</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">11</span>, <span class="number">55</span>, <span class="number">165</span>, <span class="number">330</span>, <span class="number">462</span>, <span class="number">462</span>, <span class="number">330</span>, <span class="number">165</span>, <span class="number">55</span>, <span class="number">11</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">12</span>, <span class="number">66</span>, <span class="number">220</span>, <span class="number">495</span>, <span class="number">792</span>, <span class="number">924</span>, <span class="number">792</span>, <span class="number">495</span>, <span class="number">220</span>, <span class="number">66</span>, <span class="number">12</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">13</span>, <span class="number">78</span>, <span class="number">286</span>, <span class="number">715</span>, <span class="number">1287</span>, <span class="number">1716</span>, <span class="number">1716</span>, <span class="number">1287</span>, <span class="number">715</span>, <span class="number">286</span>, <span class="number">78</span>, <span class="number">13</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">14</span>, <span class="number">91</span>, <span class="number">364</span>, <span class="number">1001</span>, <span class="number">2002</span>, <span class="number">3003</span>, <span class="number">3432</span>, <span class="number">3003</span>, <span class="number">2002</span>, <span class="number">1001</span>, <span class="number">364</span>, <span class="number">91</span>, <span class="number">14</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">15</span>, <span class="number">105</span>, <span class="number">455</span>, <span class="number">1365</span>, <span class="number">3003</span>, <span class="number">5005</span>, <span class="number">6435</span>, <span class="number">6435</span>, <span class="number">5005</span>, <span class="number">3003</span>, <span class="number">1365</span>, <span class="number">455</span>, <span class="number">105</span>, <span class="number">15</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">16</span>, <span class="number">120</span>, <span class="number">560</span>, <span class="number">1820</span>, <span class="number">4368</span>, <span class="number">8008</span>, <span class="number">11440</span>, <span class="number">12870</span>, <span class="number">11440</span>, <span class="number">8008</span>, <span class="number">4368</span>, <span class="number">1820</span>, <span class="number">560</span>, <span class="number">120</span>, <span class="number">16</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">17</span>, <span class="number">136</span>, <span class="number">680</span>, <span class="number">2380</span>, <span class="number">6188</span>, <span class="number">12376</span>, <span class="number">19448</span>, <span class="number">24310</span>, <span class="number">24310</span>, <span class="number">19448</span>, <span class="number">12376</span>, <span class="number">6188</span>, <span class="number">2380</span>, <span class="number">680</span>, <span class="number">136</span>, <span class="number">17</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">18</span>, <span class="number">153</span>, <span class="number">816</span>, <span class="number">3060</span>, <span class="number">8568</span>, <span class="number">18564</span>, <span class="number">31824</span>, <span class="number">43758</span>, <span class="number">48620</span>, <span class="number">43758</span>, <span class="number">31824</span>, <span class="number">18564</span>, <span class="number">8568</span>, <span class="number">3060</span>, <span class="number">816</span>, <span class="number">153</span>, <span class="number">18</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">19</span>, <span class="number">171</span>, <span class="number">969</span>, <span class="number">3876</span>, <span class="number">11628</span>, <span class="number">27132</span>, <span class="number">50388</span>, <span class="number">75582</span>, <span class="number">92378</span>, <span class="number">92378</span>, <span class="number">75582</span>, <span class="number">50388</span>, <span class="number">27132</span>, <span class="number">11628</span>, <span class="number">3876</span>, <span class="number">969</span>, <span class="number">171</span>, <span class="number">19</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">20</span>, <span class="number">190</span>, <span class="number">1140</span>, <span class="number">4845</span>, <span class="number">15504</span>, <span class="number">38760</span>, <span class="number">77520</span>, <span class="number">125970</span>, <span class="number">167960</span>, <span class="number">184756</span>, <span class="number">167960</span>, <span class="number">125970</span>, <span class="number">77520</span>, <span class="number">38760</span>, <span class="number">15504</span>, <span class="number">4845</span>, <span class="number">1140</span>, <span class="number">190</span>, <span class="number">20</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">21</span>, <span class="number">210</span>, <span class="number">1330</span>, <span class="number">5985</span>, <span class="number">20349</span>, <span class="number">54264</span>, <span class="number">116280</span>, <span class="number">203490</span>, <span class="number">293930</span>, <span class="number">352716</span>, <span class="number">352716</span>, <span class="number">293930</span>, <span class="number">203490</span>, <span class="number">116280</span>, <span class="number">54264</span>, <span class="number">20349</span>, <span class="number">5985</span>, <span class="number">1330</span>, <span class="number">210</span>, <span class="number">21</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">22</span>, <span class="number">231</span>, <span class="number">1540</span>, <span class="number">7315</span>, <span class="number">26334</span>, <span class="number">74613</span>, <span class="number">170544</span>, <span class="number">319770</span>, <span class="number">497420</span>, <span class="number">646646</span>, <span class="number">705432</span>, <span class="number">646646</span>, <span class="number">497420</span>, <span class="number">319770</span>, <span class="number">170544</span>, <span class="number">74613</span>, <span class="number">26334</span>, <span class="number">7315</span>, <span class="number">1540</span>, <span class="number">231</span>, <span class="number">22</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">23</span>, <span class="number">253</span>, <span class="number">1771</span>, <span class="number">8855</span>, <span class="number">33649</span>, <span class="number">100947</span>, <span class="number">245157</span>, <span class="number">490314</span>, <span class="number">817190</span>, <span class="number">1144066</span>, <span class="number">1352078</span>, <span class="number">1352078</span>, <span class="number">1144066</span>, <span class="number">817190</span>, <span class="number">490314</span>, <span class="number">245157</span>, <span class="number">100947</span>, <span class="number">33649</span>, <span class="number">8855</span>, <span class="number">1771</span>, <span class="number">253</span>, <span class="number">23</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">24</span>, <span class="number">276</span>, <span class="number">2024</span>, <span class="number">10626</span>, <span class="number">42504</span>, <span class="number">134596</span>, <span class="number">346104</span>, <span class="number">735471</span>, <span class="number">1307504</span>, <span class="number">1961256</span>, <span class="number">2496144</span>, <span class="number">2704156</span>, <span class="number">2496144</span>, <span class="number">1961256</span>, <span class="number">1307504</span>, <span class="number">735471</span>, <span class="number">346104</span>, <span class="number">134596</span>, <span class="number">42504</span>, <span class="number">10626</span>, <span class="number">2024</span>, <span class="number">276</span>, <span class="number">24</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">25</span>, <span class="number">300</span>, <span class="number">2300</span>, <span class="number">12650</span>, <span class="number">53130</span>, <span class="number">177100</span>, <span class="number">480700</span>, <span class="number">1081575</span>, <span class="number">2042975</span>, <span class="number">3268760</span>, <span class="number">4457400</span>, <span class="number">5200300</span>, <span class="number">5200300</span>, <span class="number">4457400</span>, <span class="number">3268760</span>, <span class="number">2042975</span>, <span class="number">1081575</span>, <span class="number">480700</span>, <span class="number">177100</span>, <span class="number">53130</span>, <span class="number">12650</span>, <span class="number">2300</span>, <span class="number">300</span>, <span class="number">25</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">26</span>, <span class="number">325</span>, <span class="number">2600</span>, <span class="number">14950</span>, <span class="number">65780</span>, <span class="number">230230</span>, <span class="number">657800</span>, <span class="number">1562275</span>, <span class="number">3124550</span>, <span class="number">5311735</span>, <span class="number">7726160</span>, <span class="number">9657700</span>, <span class="number">10400600</span>, <span class="number">9657700</span>, <span class="number">7726160</span>, <span class="number">5311735</span>, <span class="number">3124550</span>, <span class="number">1562275</span>, <span class="number">657800</span>, <span class="number">230230</span>, <span class="number">65780</span>, <span class="number">14950</span>, <span class="number">2600</span>, <span class="number">325</span>, <span class="number">26</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">27</span>, <span class="number">351</span>, <span class="number">2925</span>, <span class="number">17550</span>, <span class="number">80730</span>, <span class="number">296010</span>, <span class="number">888030</span>, <span class="number">2220075</span>, <span class="number">4686825</span>, <span class="number">8436285</span>, <span class="number">13037895</span>, <span class="number">17383860</span>, <span class="number">20058300</span>, <span class="number">20058300</span>, <span class="number">17383860</span>, <span class="number">13037895</span>, <span class="number">8436285</span>, <span class="number">4686825</span>, <span class="number">2220075</span>, <span class="number">888030</span>, <span class="number">296010</span>, <span class="number">80730</span>, <span class="number">17550</span>, <span class="number">2925</span>, <span class="number">351</span>, <span class="number">27</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">28</span>, <span class="number">378</span>, <span class="number">3276</span>, <span class="number">20475</span>, <span class="number">98280</span>, <span class="number">376740</span>, <span class="number">1184040</span>, <span class="number">3108105</span>, <span class="number">6906900</span>, <span class="number">13123110</span>, <span class="number">21474180</span>, <span class="number">30421755</span>, <span class="number">37442160</span>, <span class="number">40116600</span>, <span class="number">37442160</span>, <span class="number">30421755</span>, <span class="number">21474180</span>, <span class="number">13123110</span>, <span class="number">6906900</span>, <span class="number">3108105</span>, <span class="number">1184040</span>, <span class="number">376740</span>, <span class="number">98280</span>, <span class="number">20475</span>, <span class="number">3276</span>, <span class="number">378</span>, <span class="number">28</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">29</span>, <span class="number">406</span>, <span class="number">3654</span>, <span class="number">23751</span>, <span class="number">118755</span>, <span class="number">475020</span>, <span class="number">1560780</span>, <span class="number">4292145</span>, <span class="number">10015005</span>, <span class="number">20030010</span>, <span class="number">34597290</span>, <span class="number">51895935</span>, <span class="number">67863915</span>, <span class="number">77558760</span>, <span class="number">77558760</span>, <span class="number">67863915</span>, <span class="number">51895935</span>, <span class="number">34597290</span>, <span class="number">20030010</span>, <span class="number">10015005</span>, <span class="number">4292145</span>, <span class="number">1560780</span>, <span class="number">475020</span>, <span class="number">118755</span>, <span class="number">23751</span>, <span class="number">3654</span>, <span class="number">406</span>, <span class="number">29</span>, <span class="number">1</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">            ret.push_back(a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>哈哈哈哈哈哈哈哈</p>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode-1. Two Sum（两数之和）</title>
     <url>/2018/01/12/LeetCode-1-Two-Sum%EF%BC%88%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%89/</url>
     <content><![CDATA[<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
@@ -70,8 +30,8 @@
       <tags>
         <tag>LeetCode</tag>
         <tag>数组</tag>
-        <tag>Array</tag>
         <tag>哈希表</tag>
+        <tag>Array</tag>
         <tag>Hash Table</tag>
       </tags>
   </entry>
@@ -112,6 +72,46 @@
       </tags>
   </entry>
   <entry>
+    <title>LeetCode-118. Pascal&#39;s Triangle（杨辉三角）</title>
+    <url>/2018/01/27/LeetCode-118-Pascal-s-Triangle%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h2><p>给定一个非负整数 <em>numRows</em>，生成杨辉三角的前 <em>numRows</em> 行。</p>
+<a id="more"></a>
+
+<p><img src="https://img-blog.csdnimg.cn/20190213182724160.gif" alt="在这里插入图片描述"><br>在杨辉三角中，每个数是它左上方和右上方的数的和。<br>示例:</p>
+<blockquote>
+<p>输入: 5<br>输出:<br>[<br>       [1],<br>     [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]</p>
+</blockquote>
+<h2 id="Pascal’s-Triangle"><a href="#Pascal’s-Triangle" class="headerlink" title="Pascal’s Triangle"></a>Pascal’s Triangle</h2><p>Given a non-negative integer numRows, generate the first numRows of Pascal’s triangle.<br><img src="https://img-blog.csdnimg.cn/20190213182902277.gif" alt="在这里插入图片描述"><br>In Pascal’s triangle, each number is the sum of the two numbers directly above it.</p>
+<p>Example:</p>
+<blockquote>
+<p>Input: 5<br>Output:<br>[<br>     [1],<br>    [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一</strong></p>
+<p>在小学二年级学习组合数的时候，我们就知道杨辉三角能够表示二项式的系数，且有以下性质：</p>
+<ol>
+<li>对称性：首项和末项都为1</li>
+<li>第 $n$ 行（从 $0$ 编号）有 $n+1$ 项，前 $n$ 行共有 $\frac{n(n+1)}{2}$ 个数。</li>
+<li>第 $n$ 行第 $m$ 个数可以用组合数 $C^m_n$ 表示，且 $c^m_n=\frac{n!}{m!(n-m)!}$</li>
+<li>每个数字等于其两肩上的数之和，这也是组合数的性质之一，即 $c_n^i=c_{n-1}^{i-1}+c_{n-1}^i$</li>
+<li>二项式 $(a+b)^n$ 的系数对应杨辉三角第 $n$ 行的每一个数。</li>
+</ol>
+<p>由性质4我们可有解法：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret(numRows);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; ++i) &#123;</span><br><span class="line">            ret[i].resize(i + <span class="number">1</span>);</span><br><span class="line">            ret[i][<span class="number">0</span>] = ret[i][i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; ++j) &#123;</span><br><span class="line">                ret[i][j] = ret[i - <span class="number">1</span>][j] + ret[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二：打表（不讲武德法</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a = &#123;</span><br><span class="line">            &#123;<span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">6</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">15</span>, <span class="number">6</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">21</span>, <span class="number">35</span>, <span class="number">35</span>, <span class="number">21</span>, <span class="number">7</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">8</span>, <span class="number">28</span>, <span class="number">56</span>, <span class="number">70</span>, <span class="number">56</span>, <span class="number">28</span>, <span class="number">8</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">9</span>, <span class="number">36</span>, <span class="number">84</span>, <span class="number">126</span>, <span class="number">126</span>, <span class="number">84</span>, <span class="number">36</span>, <span class="number">9</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">10</span>, <span class="number">45</span>, <span class="number">120</span>, <span class="number">210</span>, <span class="number">252</span>, <span class="number">210</span>, <span class="number">120</span>, <span class="number">45</span>, <span class="number">10</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">11</span>, <span class="number">55</span>, <span class="number">165</span>, <span class="number">330</span>, <span class="number">462</span>, <span class="number">462</span>, <span class="number">330</span>, <span class="number">165</span>, <span class="number">55</span>, <span class="number">11</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">12</span>, <span class="number">66</span>, <span class="number">220</span>, <span class="number">495</span>, <span class="number">792</span>, <span class="number">924</span>, <span class="number">792</span>, <span class="number">495</span>, <span class="number">220</span>, <span class="number">66</span>, <span class="number">12</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">13</span>, <span class="number">78</span>, <span class="number">286</span>, <span class="number">715</span>, <span class="number">1287</span>, <span class="number">1716</span>, <span class="number">1716</span>, <span class="number">1287</span>, <span class="number">715</span>, <span class="number">286</span>, <span class="number">78</span>, <span class="number">13</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">14</span>, <span class="number">91</span>, <span class="number">364</span>, <span class="number">1001</span>, <span class="number">2002</span>, <span class="number">3003</span>, <span class="number">3432</span>, <span class="number">3003</span>, <span class="number">2002</span>, <span class="number">1001</span>, <span class="number">364</span>, <span class="number">91</span>, <span class="number">14</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">15</span>, <span class="number">105</span>, <span class="number">455</span>, <span class="number">1365</span>, <span class="number">3003</span>, <span class="number">5005</span>, <span class="number">6435</span>, <span class="number">6435</span>, <span class="number">5005</span>, <span class="number">3003</span>, <span class="number">1365</span>, <span class="number">455</span>, <span class="number">105</span>, <span class="number">15</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">16</span>, <span class="number">120</span>, <span class="number">560</span>, <span class="number">1820</span>, <span class="number">4368</span>, <span class="number">8008</span>, <span class="number">11440</span>, <span class="number">12870</span>, <span class="number">11440</span>, <span class="number">8008</span>, <span class="number">4368</span>, <span class="number">1820</span>, <span class="number">560</span>, <span class="number">120</span>, <span class="number">16</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">17</span>, <span class="number">136</span>, <span class="number">680</span>, <span class="number">2380</span>, <span class="number">6188</span>, <span class="number">12376</span>, <span class="number">19448</span>, <span class="number">24310</span>, <span class="number">24310</span>, <span class="number">19448</span>, <span class="number">12376</span>, <span class="number">6188</span>, <span class="number">2380</span>, <span class="number">680</span>, <span class="number">136</span>, <span class="number">17</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">18</span>, <span class="number">153</span>, <span class="number">816</span>, <span class="number">3060</span>, <span class="number">8568</span>, <span class="number">18564</span>, <span class="number">31824</span>, <span class="number">43758</span>, <span class="number">48620</span>, <span class="number">43758</span>, <span class="number">31824</span>, <span class="number">18564</span>, <span class="number">8568</span>, <span class="number">3060</span>, <span class="number">816</span>, <span class="number">153</span>, <span class="number">18</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">19</span>, <span class="number">171</span>, <span class="number">969</span>, <span class="number">3876</span>, <span class="number">11628</span>, <span class="number">27132</span>, <span class="number">50388</span>, <span class="number">75582</span>, <span class="number">92378</span>, <span class="number">92378</span>, <span class="number">75582</span>, <span class="number">50388</span>, <span class="number">27132</span>, <span class="number">11628</span>, <span class="number">3876</span>, <span class="number">969</span>, <span class="number">171</span>, <span class="number">19</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">20</span>, <span class="number">190</span>, <span class="number">1140</span>, <span class="number">4845</span>, <span class="number">15504</span>, <span class="number">38760</span>, <span class="number">77520</span>, <span class="number">125970</span>, <span class="number">167960</span>, <span class="number">184756</span>, <span class="number">167960</span>, <span class="number">125970</span>, <span class="number">77520</span>, <span class="number">38760</span>, <span class="number">15504</span>, <span class="number">4845</span>, <span class="number">1140</span>, <span class="number">190</span>, <span class="number">20</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">21</span>, <span class="number">210</span>, <span class="number">1330</span>, <span class="number">5985</span>, <span class="number">20349</span>, <span class="number">54264</span>, <span class="number">116280</span>, <span class="number">203490</span>, <span class="number">293930</span>, <span class="number">352716</span>, <span class="number">352716</span>, <span class="number">293930</span>, <span class="number">203490</span>, <span class="number">116280</span>, <span class="number">54264</span>, <span class="number">20349</span>, <span class="number">5985</span>, <span class="number">1330</span>, <span class="number">210</span>, <span class="number">21</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">22</span>, <span class="number">231</span>, <span class="number">1540</span>, <span class="number">7315</span>, <span class="number">26334</span>, <span class="number">74613</span>, <span class="number">170544</span>, <span class="number">319770</span>, <span class="number">497420</span>, <span class="number">646646</span>, <span class="number">705432</span>, <span class="number">646646</span>, <span class="number">497420</span>, <span class="number">319770</span>, <span class="number">170544</span>, <span class="number">74613</span>, <span class="number">26334</span>, <span class="number">7315</span>, <span class="number">1540</span>, <span class="number">231</span>, <span class="number">22</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">23</span>, <span class="number">253</span>, <span class="number">1771</span>, <span class="number">8855</span>, <span class="number">33649</span>, <span class="number">100947</span>, <span class="number">245157</span>, <span class="number">490314</span>, <span class="number">817190</span>, <span class="number">1144066</span>, <span class="number">1352078</span>, <span class="number">1352078</span>, <span class="number">1144066</span>, <span class="number">817190</span>, <span class="number">490314</span>, <span class="number">245157</span>, <span class="number">100947</span>, <span class="number">33649</span>, <span class="number">8855</span>, <span class="number">1771</span>, <span class="number">253</span>, <span class="number">23</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">24</span>, <span class="number">276</span>, <span class="number">2024</span>, <span class="number">10626</span>, <span class="number">42504</span>, <span class="number">134596</span>, <span class="number">346104</span>, <span class="number">735471</span>, <span class="number">1307504</span>, <span class="number">1961256</span>, <span class="number">2496144</span>, <span class="number">2704156</span>, <span class="number">2496144</span>, <span class="number">1961256</span>, <span class="number">1307504</span>, <span class="number">735471</span>, <span class="number">346104</span>, <span class="number">134596</span>, <span class="number">42504</span>, <span class="number">10626</span>, <span class="number">2024</span>, <span class="number">276</span>, <span class="number">24</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">25</span>, <span class="number">300</span>, <span class="number">2300</span>, <span class="number">12650</span>, <span class="number">53130</span>, <span class="number">177100</span>, <span class="number">480700</span>, <span class="number">1081575</span>, <span class="number">2042975</span>, <span class="number">3268760</span>, <span class="number">4457400</span>, <span class="number">5200300</span>, <span class="number">5200300</span>, <span class="number">4457400</span>, <span class="number">3268760</span>, <span class="number">2042975</span>, <span class="number">1081575</span>, <span class="number">480700</span>, <span class="number">177100</span>, <span class="number">53130</span>, <span class="number">12650</span>, <span class="number">2300</span>, <span class="number">300</span>, <span class="number">25</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">26</span>, <span class="number">325</span>, <span class="number">2600</span>, <span class="number">14950</span>, <span class="number">65780</span>, <span class="number">230230</span>, <span class="number">657800</span>, <span class="number">1562275</span>, <span class="number">3124550</span>, <span class="number">5311735</span>, <span class="number">7726160</span>, <span class="number">9657700</span>, <span class="number">10400600</span>, <span class="number">9657700</span>, <span class="number">7726160</span>, <span class="number">5311735</span>, <span class="number">3124550</span>, <span class="number">1562275</span>, <span class="number">657800</span>, <span class="number">230230</span>, <span class="number">65780</span>, <span class="number">14950</span>, <span class="number">2600</span>, <span class="number">325</span>, <span class="number">26</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">27</span>, <span class="number">351</span>, <span class="number">2925</span>, <span class="number">17550</span>, <span class="number">80730</span>, <span class="number">296010</span>, <span class="number">888030</span>, <span class="number">2220075</span>, <span class="number">4686825</span>, <span class="number">8436285</span>, <span class="number">13037895</span>, <span class="number">17383860</span>, <span class="number">20058300</span>, <span class="number">20058300</span>, <span class="number">17383860</span>, <span class="number">13037895</span>, <span class="number">8436285</span>, <span class="number">4686825</span>, <span class="number">2220075</span>, <span class="number">888030</span>, <span class="number">296010</span>, <span class="number">80730</span>, <span class="number">17550</span>, <span class="number">2925</span>, <span class="number">351</span>, <span class="number">27</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">28</span>, <span class="number">378</span>, <span class="number">3276</span>, <span class="number">20475</span>, <span class="number">98280</span>, <span class="number">376740</span>, <span class="number">1184040</span>, <span class="number">3108105</span>, <span class="number">6906900</span>, <span class="number">13123110</span>, <span class="number">21474180</span>, <span class="number">30421755</span>, <span class="number">37442160</span>, <span class="number">40116600</span>, <span class="number">37442160</span>, <span class="number">30421755</span>, <span class="number">21474180</span>, <span class="number">13123110</span>, <span class="number">6906900</span>, <span class="number">3108105</span>, <span class="number">1184040</span>, <span class="number">376740</span>, <span class="number">98280</span>, <span class="number">20475</span>, <span class="number">3276</span>, <span class="number">378</span>, <span class="number">28</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">29</span>, <span class="number">406</span>, <span class="number">3654</span>, <span class="number">23751</span>, <span class="number">118755</span>, <span class="number">475020</span>, <span class="number">1560780</span>, <span class="number">4292145</span>, <span class="number">10015005</span>, <span class="number">20030010</span>, <span class="number">34597290</span>, <span class="number">51895935</span>, <span class="number">67863915</span>, <span class="number">77558760</span>, <span class="number">77558760</span>, <span class="number">67863915</span>, <span class="number">51895935</span>, <span class="number">34597290</span>, <span class="number">20030010</span>, <span class="number">10015005</span>, <span class="number">4292145</span>, <span class="number">1560780</span>, <span class="number">475020</span>, <span class="number">118755</span>, <span class="number">23751</span>, <span class="number">3654</span>, <span class="number">406</span>, <span class="number">29</span>, <span class="number">1</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">            ret.push_back(a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>哈哈哈哈哈哈哈哈</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode-119. Pascal&#39;s Triangle II（杨辉三角 II）</title>
     <url>/2018/01/28/LeetCode-119-Pascal-s-Triangle-II%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92-II%EF%BC%89/</url>
     <content><![CDATA[<h2 id="杨辉三角-II"><a href="#杨辉三角-II" class="headerlink" title="杨辉三角 II"></a>杨辉三角 II</h2><p>给定一个非负索引 <em>k</em>，其中 <em>k ≤ 33</em>，返回杨辉三角的第 <em>k</em> 行。</p>
@@ -146,65 +146,6 @@
         <tag>LeetCode</tag>
         <tag>数组</tag>
         <tag>Array</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-35. Search Insert Position（搜索插入位置）</title>
-    <url>/2018/01/12/LeetCode-35-Search-Insert-Position%EF%BC%88%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="搜索插入位置"><a href="#搜索插入位置" class="headerlink" title="搜索插入位置"></a>搜索插入位置</h2><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
-<p>你可以假设数组中无重复元素。</p>
-<a id="more"></a>
-
-<p>示例 1:</p>
-<blockquote>
-<p>输入: [1,3,5,6], 5<br>输出: 2</p>
-</blockquote>
-<p>示例 2:</p>
-<blockquote>
-<p>输入: [1,3,5,6], 2<br>输出: 1</p>
-</blockquote>
-<p>示例 3:</p>
-<blockquote>
-<p>输入: [1,3,5,6], 7<br>输出: 4</p>
-</blockquote>
-<p>示例 4:</p>
-<blockquote>
-<p>输入: [1,3,5,6], 0<br>输出: 0</p>
-</blockquote>
-<h2 id="Search-Insert-Position"><a href="#Search-Insert-Position" class="headerlink" title="Search Insert Position"></a>Search Insert Position</h2><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
-<p>You may assume no duplicates in the array.</p>
-<p>Example 1:</p>
-<blockquote>
-<p>Input: [1,3,5,6], 5<br>Output: 2</p>
-</blockquote>
-<p>Example 2:</p>
-<blockquote>
-<p>Input: [1,3,5,6], 2<br>Output: 1</p>
-</blockquote>
-<p>Example 3:</p>
-<blockquote>
-<p>Input: [1,3,5,6], 7<br>Output: 4</p>
-</blockquote>
-<p>Example 4:</p>
-<blockquote>
-<p>Input: [1,3,5,6], 0<br>Output: 0</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>二分查找</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &lt; target)&#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>另外，我们还可以使用c++的STL</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lower_bound(nums.begin(),nums.end(),target) - nums.begin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><code>lower_bound()</code>也是用二分法实现的。</p>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-        <tag>二分查找</tag>
-        <tag>Binary Search</tag>
       </tags>
   </entry>
   <entry>
@@ -318,6 +259,65 @@
         <tag>Array</tag>
         <tag>双指针</tag>
         <tag>Two Pointers</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-35. Search Insert Position（搜索插入位置）</title>
+    <url>/2018/01/12/LeetCode-35-Search-Insert-Position%EF%BC%88%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="搜索插入位置"><a href="#搜索插入位置" class="headerlink" title="搜索插入位置"></a>搜索插入位置</h2><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>你可以假设数组中无重复元素。</p>
+<a id="more"></a>
+
+<p>示例 1:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 5<br>输出: 2</p>
+</blockquote>
+<p>示例 2:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 2<br>输出: 1</p>
+</blockquote>
+<p>示例 3:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 7<br>输出: 4</p>
+</blockquote>
+<p>示例 4:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 0<br>输出: 0</p>
+</blockquote>
+<h2 id="Search-Insert-Position"><a href="#Search-Insert-Position" class="headerlink" title="Search Insert Position"></a>Search Insert Position</h2><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p>You may assume no duplicates in the array.</p>
+<p>Example 1:</p>
+<blockquote>
+<p>Input: [1,3,5,6], 5<br>Output: 2</p>
+</blockquote>
+<p>Example 2:</p>
+<blockquote>
+<p>Input: [1,3,5,6], 2<br>Output: 1</p>
+</blockquote>
+<p>Example 3:</p>
+<blockquote>
+<p>Input: [1,3,5,6], 7<br>Output: 4</p>
+</blockquote>
+<p>Example 4:</p>
+<blockquote>
+<p>Input: [1,3,5,6], 0<br>Output: 0</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>二分查找</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &lt; target)&#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>另外，我们还可以使用c++的STL</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lower_bound(nums.begin(),nums.end(),target) - nums.begin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>lower_bound()</code>也是用二分法实现的。</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+        <tag>二分查找</tag>
+        <tag>Binary Search</tag>
       </tags>
   </entry>
   <entry>
@@ -471,60 +471,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-88. Merge Sorted Array（合并两个有序数组）</title>
-    <url>/2018/01/20/LeetCode-88-Merge-Sorted-Array%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="合并两个有序数组"><a href="#合并两个有序数组" class="headerlink" title="合并两个有序数组"></a>合并两个有序数组</h2><p>给定两个有序整数数组 <code>nums1</code> 和 <code>nums2</code>，将 <code>nums2</code> 合并到 <code>nums1</code> 中，使得 <code>num1</code> 成为一个有序数组。</p>
-<a id="more"></a>
-
-<p><strong>说明:</strong></p>
-<ul>
-<li>初始化 nums1 和 nums2 的元素数量分别为 m 和 n。 </li>
-<li>你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。</li>
-</ul>
-<p>示例:</p>
-<blockquote>
-<p>输入:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3<br>输出: [1,2,2,3,5,6]</p>
-</blockquote>
-<h2 id="Merge-Sorted-Array"><a href="#Merge-Sorted-Array" class="headerlink" title="Merge Sorted Array"></a>Merge Sorted Array</h2><p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p>
-<p><strong>Note:</strong></p>
-<ul>
-<li>The number of elements initialized in nums1 and nums2 are m and n respectively.</li>
-<li>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2.</li>
-</ul>
-<p>Example:</p>
-<blockquote>
-<p>Input:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3<br>Output: [1,2,2,3,5,6]</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：暴力法</strong></p>
-<p>最朴素的方法就是合并数组，然后再排序。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != n; ++i) &#123;</span><br><span class="line">            nums1[m + i] = nums2[i];</span><br><span class="line">        &#125;</span><br><span class="line">        sort(nums1.begin(), nums1.end());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>方法二：正向双指针</strong></p>
-<p>申请一个临时数组，设置两个头部指针，每次比较两个数组的头部，将较小的放入临时数组中，最后再将临时数组赋值给<code>nums1</code>。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p1 = <span class="number">0</span>, p2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sorted[m + n];</span><br><span class="line">        <span class="keyword">int</span> cur;</span><br><span class="line">        <span class="keyword">while</span> (p1 &lt; m || p2 &lt; n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1 == m) &#123;</span><br><span class="line">                cur = nums2[p2++];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p2 == n) &#123;</span><br><span class="line">                cur = nums1[p1++];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[p1] &lt; nums2[p2]) &#123;</span><br><span class="line">                cur = nums1[p1++];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur = nums2[p2++];</span><br><span class="line">            &#125;</span><br><span class="line">            sorted[p1 + p2 - <span class="number">1</span>] = cur;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != m + n; ++i) &#123;</span><br><span class="line">            nums1[i] = sorted[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>方法三：逆向双指针</strong></p>
-<p>我们注意到，在方法二中需要使用一个临时数组来防止<code>nums1</code>的元素被覆盖，如果我们逆向使用双指针则可以实现原地修改，证明如下：</p>
-<p>设 $p1$ 和 $p2$ 是两个数组的尾部指针，即 $p1 = m-1$ ，$p2=n-1$，在遍历的某一时刻，<code>nums1</code>有$m-p1-1$个元素被放入<code>nums1</code>的后半部，<code>nums2</code>有$n-p2-1$个元素被放入<code>nums2</code>的后半部，而在 $p1$ 的后面有$m+n-p1-1$个位置。由于：</p>
-<p>$$m+n-p1-1\geq m-p1-1+n-p2-1$$</p>
-<p>等价于</p>
-<p>$$p2\geq -1$$</p>
-<p>永远成立，因此<code>nums1</code>后面有足够的位置容纳被插入的元素，可以实现原地修改。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p1 = m - <span class="number">1</span>, p2 = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> tail = m + n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> cur;</span><br><span class="line">        <span class="keyword">while</span> (p1 &gt;= <span class="number">0</span> || p2 &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1 == <span class="number">-1</span>) &#123;</span><br><span class="line">                cur = nums2[p2--];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p2 == <span class="number">-1</span>) &#123;</span><br><span class="line">                cur = nums1[p1--];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[p1] &gt; nums2[p2]) &#123;</span><br><span class="line">                cur = nums1[p1--];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur = nums2[p2--];</span><br><span class="line">            &#125;</span><br><span class="line">            nums1[tail--] = cur;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-        <tag>双指针</tag>
-        <tag>Two Pointers</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode-839. Similar String Groups（相似字符串组）</title>
     <url>/2019/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/</url>
     <content><![CDATA[<h2 id="相似字符串组"><a href="#相似字符串组" class="headerlink" title="相似字符串组"></a>相似字符串组</h2><p>如果交换字符串 <code>X</code> 中的两个不同位置的字母，使得它和字符串 <code>Y</code> 相等，那么称 <code>X</code> 和 <code>Y</code> 两个字符串相似。如果这两个字符串本身是相等的，那它们也是相似的。</p>
@@ -586,47 +532,65 @@
       </tags>
   </entry>
   <entry>
-    <title>《崩坏3》动画短片「渡尘」</title>
-    <url>/2021/01/29/%E3%80%8A%E5%B4%A9%E5%9D%8F3%E3%80%8B%E5%8A%A8%E7%94%BB%E7%9F%AD%E7%89%87%E3%80%8C%E6%B8%A1%E5%B0%98%E3%80%8D/</url>
-    <content><![CDATA[<h2 id="《崩坏3》动画短片「渡尘」"><a href="#《崩坏3》动画短片「渡尘」" class="headerlink" title="《崩坏3》动画短片「渡尘」"></a>《崩坏3》动画短片「渡尘」</h2><p><strong>世间之纷扰，早已麻木</strong><br><strong>珍重之羁绊，尽皆离散</strong><br><strong>千年之坚守，只为拯救苍生</strong></p>
+    <title>LeetCode-88. Merge Sorted Array（合并两个有序数组）</title>
+    <url>/2018/01/20/LeetCode-88-Merge-Sorted-Array%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="合并两个有序数组"><a href="#合并两个有序数组" class="headerlink" title="合并两个有序数组"></a>合并两个有序数组</h2><p>给定两个有序整数数组 <code>nums1</code> 和 <code>nums2</code>，将 <code>nums2</code> 合并到 <code>nums1</code> 中，使得 <code>num1</code> 成为一个有序数组。</p>
 <a id="more"></a>
 
-<p>是糖是糖！</p>
-<p>一路走来，符华真的太不容易了，希望这次是阿符的新生。</p>
-<div class="bilibili">
-    <iframe src="//player.bilibili.com/player.html?aid=501440303&bvid=BV1jN411o7zS&cid=289175447&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-</div>
+<p><strong>说明:</strong></p>
+<ul>
+<li>初始化 nums1 和 nums2 的元素数量分别为 m 和 n。 </li>
+<li>你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。</li>
+</ul>
+<p>示例:</p>
+<blockquote>
+<p>输入:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3<br>输出: [1,2,2,3,5,6]</p>
+</blockquote>
+<h2 id="Merge-Sorted-Array"><a href="#Merge-Sorted-Array" class="headerlink" title="Merge Sorted Array"></a>Merge Sorted Array</h2><p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>The number of elements initialized in nums1 and nums2 are m and n respectively.</li>
+<li>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2.</li>
+</ul>
+<p>Example:</p>
+<blockquote>
+<p>Input:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3<br>Output: [1,2,2,3,5,6]</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：暴力法</strong></p>
+<p>最朴素的方法就是合并数组，然后再排序。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != n; ++i) &#123;</span><br><span class="line">            nums1[m + i] = nums2[i];</span><br><span class="line">        &#125;</span><br><span class="line">        sort(nums1.begin(), nums1.end());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二：正向双指针</strong></p>
+<p>申请一个临时数组，设置两个头部指针，每次比较两个数组的头部，将较小的放入临时数组中，最后再将临时数组赋值给<code>nums1</code>。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p1 = <span class="number">0</span>, p2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sorted[m + n];</span><br><span class="line">        <span class="keyword">int</span> cur;</span><br><span class="line">        <span class="keyword">while</span> (p1 &lt; m || p2 &lt; n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1 == m) &#123;</span><br><span class="line">                cur = nums2[p2++];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p2 == n) &#123;</span><br><span class="line">                cur = nums1[p1++];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[p1] &lt; nums2[p2]) &#123;</span><br><span class="line">                cur = nums1[p1++];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur = nums2[p2++];</span><br><span class="line">            &#125;</span><br><span class="line">            sorted[p1 + p2 - <span class="number">1</span>] = cur;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != m + n; ++i) &#123;</span><br><span class="line">            nums1[i] = sorted[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>方法三：逆向双指针</strong></p>
+<p>我们注意到，在方法二中需要使用一个临时数组来防止<code>nums1</code>的元素被覆盖，如果我们逆向使用双指针则可以实现原地修改，证明如下：</p>
+<p>设 $p1$ 和 $p2$ 是两个数组的尾部指针，即 $p1 = m-1$ ，$p2=n-1$，在遍历的某一时刻，<code>nums1</code>有$m-p1-1$个元素被放入<code>nums1</code>的后半部，<code>nums2</code>有$n-p2-1$个元素被放入<code>nums2</code>的后半部，而在 $p1$ 的后面有$m+n-p1-1$个位置。由于：</p>
+<p>$$m+n-p1-1\geq m-p1-1+n-p2-1$$</p>
+<p>等价于</p>
+<p>$$p2\geq -1$$</p>
+<p>永远成立，因此<code>nums1</code>后面有足够的位置容纳被插入的元素，可以实现原地修改。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p1 = m - <span class="number">1</span>, p2 = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> tail = m + n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> cur;</span><br><span class="line">        <span class="keyword">while</span> (p1 &gt;= <span class="number">0</span> || p2 &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1 == <span class="number">-1</span>) &#123;</span><br><span class="line">                cur = nums2[p2--];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p2 == <span class="number">-1</span>) &#123;</span><br><span class="line">                cur = nums1[p1--];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[p1] &gt; nums2[p2]) &#123;</span><br><span class="line">                cur = nums1[p1--];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur = nums2[p2--];</span><br><span class="line">            &#125;</span><br><span class="line">            nums1[tail--] = cur;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>4:47的上仙绝美！</p>
-<p>5:32开始真的要哭出来了</p>
-<p><strong>日月沉浮 ，沧海桑田</strong></p>
-<p><strong>历尽了离别，习惯了绝望</strong></p>
-<p><strong>不知时间为何物</strong></p>
-<p><strong>亡命于无尽的轮回</strong></p>
-<p><strong>只为——</strong></p>
-<p><strong>使命！</strong></p>
-<p><strong>欢迎回家，班长！</strong></p>
-<p>也恭喜短片登顶！</p>
-<p>另外这次「Rubia」——《崩坏3》印象曲（演唱者：周深）也超赞，</p>
-<div class="bilibili">
-    <iframe src="//player.bilibili.com/player.html?aid=543949325&bvid=BV1Yv4y1o7dw&cid=289220053&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-</div>
 
 ]]></content>
       <categories>
-        <category>个人动态</category>
-        <category>游戏</category>
-        <category>崩坏三</category>
+        <category>LeetCode</category>
+        <category>简单</category>
       </categories>
       <tags>
-        <tag>日常谈</tag>
-        <tag>游戏</tag>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+        <tag>双指针</tag>
+        <tag>Two Pointers</tag>
       </tags>
   </entry>
   <entry>
     <title>《明日方舟》SideStory「画中人」活动宣传PV</title>
     <url>/2021/01/28/%E3%80%8A%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F%E3%80%8BSideStory%E3%80%8C%E7%94%BB%E4%B8%AD%E4%BA%BA%E3%80%8D%E6%B4%BB%E5%8A%A8%E5%AE%A3%E4%BC%A0PV/</url>
     <content><![CDATA[<h2 id="《明日方舟》SideStory「画中人」活动宣传PV"><a href="#《明日方舟》SideStory「画中人」活动宣传PV" class="headerlink" title="《明日方舟》SideStory「画中人」活动宣传PV"></a>《明日方舟》SideStory「画中人」活动宣传PV</h2><p>鹰角终于发饼啦！</p>
+<a id="more"></a>
+
 <div class="bilibili">
     <iframe src="//player.bilibili.com/player.html?aid=543761542&bvid=BV1jv4y1f7jH&cid=288439321&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 </div>
@@ -670,6 +634,44 @@
         <category>个人动态</category>
         <category>游戏</category>
         <category>明日方舟</category>
+      </categories>
+      <tags>
+        <tag>日常谈</tag>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《崩坏3》动画短片「渡尘」</title>
+    <url>/2021/01/29/%E3%80%8A%E5%B4%A9%E5%9D%8F3%E3%80%8B%E5%8A%A8%E7%94%BB%E7%9F%AD%E7%89%87%E3%80%8C%E6%B8%A1%E5%B0%98%E3%80%8D/</url>
+    <content><![CDATA[<h2 id="《崩坏3》动画短片「渡尘」"><a href="#《崩坏3》动画短片「渡尘」" class="headerlink" title="《崩坏3》动画短片「渡尘」"></a>《崩坏3》动画短片「渡尘」</h2><p><strong>世间之纷扰，早已麻木</strong><br><strong>珍重之羁绊，尽皆离散</strong><br><strong>千年之坚守，只为拯救苍生</strong></p>
+<a id="more"></a>
+
+<p>是糖是糖！</p>
+<p>一路走来，符华真的太不容易了，希望这次是阿符的新生。</p>
+<div class="bilibili">
+    <iframe src="//player.bilibili.com/player.html?aid=501440303&bvid=BV1jN411o7zS&cid=289175447&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
+
+<p>4:47的上仙绝美！</p>
+<p>5:32开始真的要哭出来了</p>
+<p><strong>日月沉浮 ，沧海桑田</strong></p>
+<p><strong>历尽了离别，习惯了绝望</strong></p>
+<p><strong>不知时间为何物</strong></p>
+<p><strong>亡命于无尽的轮回</strong></p>
+<p><strong>只为——</strong></p>
+<p><strong>使命！</strong></p>
+<p><strong>欢迎回家，班长！</strong></p>
+<p>也恭喜短片登顶！</p>
+<p>另外这次「Rubia」——《崩坏3》印象曲（演唱者：周深）也超赞，</p>
+<div class="bilibili">
+    <iframe src="//player.bilibili.com/player.html?aid=543949325&bvid=BV1Yv4y1o7dw&cid=289220053&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
+
+]]></content>
+      <categories>
+        <category>个人动态</category>
+        <category>游戏</category>
+        <category>崩坏三</category>
       </categories>
       <tags>
         <tag>日常谈</tag>
