@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>LeetCode-1. Two Sum（两数之和）</title>
+    <url>/2018/01/12/LeetCode-1-Two-Sum%EF%BC%88%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
+<a id="more"></a>
+
+<p> 示例:</p>
+<blockquote>
+<p>给定 nums = [2, 7, 11, 15], target = 9<br>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
+</blockquote>
+<h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h2><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>Example:</p>
+<blockquote>
+<p>Given nums = [2, 7, 11, 15], target = 9,<br>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>梦开始的地方（</p>
+<p>使用哈希表对于每一个<code>x</code>，我们首先查询哈希表中是否存在<code>target - x</code>，然后将<code>x</code>插入到哈希表中，即可保证不会让<code>x</code>和自己匹配。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; hashtable;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = hashtable.find(target - nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (it != hashtable.end()) &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;it-&gt;second, i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashtable[nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>下面这个是初学时用的暴力搜索</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">twoSum</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j,flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> a[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; numsSize; i++ )&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; numsSize; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] + nums[j] == target)&#123;</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">break</span>;           </span><br><span class="line">    &#125;</span><br><span class="line">    a[<span class="number">0</span>] = i;</span><br><span class="line">    a[<span class="number">1</span>] = j;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>哈希表</tag>
+        <tag>Array</tag>
+        <tag>Hash Table</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode-118. Pascal&#39;s Triangle（杨辉三角）</title>
     <url>/2018/01/27/LeetCode-118-Pascal-s-Triangle%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%EF%BC%89/</url>
     <content><![CDATA[<h2 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h2><p>给定一个非负整数 <em>numRows</em>，生成杨辉三角的前 <em>numRows</em> 行。</p>
@@ -38,41 +73,6 @@
         <tag>LeetCode</tag>
         <tag>数组</tag>
         <tag>Array</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-1. Two Sum（两数之和）</title>
-    <url>/2018/01/12/LeetCode-1-Two-Sum%EF%BC%88%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
-<p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
-<a id="more"></a>
-
-<p> 示例:</p>
-<blockquote>
-<p>给定 nums = [2, 7, 11, 15], target = 9<br>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
-</blockquote>
-<h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h2><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
-<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
-<p>Example:</p>
-<blockquote>
-<p>Given nums = [2, 7, 11, 15], target = 9,<br>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>梦开始的地方（</p>
-<p>使用哈希表对于每一个<code>x</code>，我们首先查询哈希表中是否存在<code>target - x</code>，然后将<code>x</code>插入到哈希表中，即可保证不会让<code>x</code>和自己匹配。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; hashtable;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = hashtable.find(target - nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (it != hashtable.end()) &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;it-&gt;second, i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashtable[nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>下面这个是初学时用的暴力搜索</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">twoSum</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j,flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> a[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; numsSize; i++ )&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; numsSize; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] + nums[j] == target)&#123;</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">break</span>;           </span><br><span class="line">    &#125;</span><br><span class="line">    a[<span class="number">0</span>] = i;</span><br><span class="line">    a[<span class="number">1</span>] = j;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-        <tag>哈希表</tag>
-        <tag>Hash Table</tag>
       </tags>
   </entry>
   <entry>
@@ -321,104 +321,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-53. Maximum Subarray（最大子序和）</title>
-    <url>/2018/01/12/LeetCode-53-Maximum-Subarray%EF%BC%88%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="最大子序和"><a href="#最大子序和" class="headerlink" title="最大子序和"></a>最大子序和</h2><p>给定一个整数数组 <code>nums</code> ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
-<a id="more"></a>
-
-<p>示例:</p>
-<blockquote>
-<p>输入: [-2,1,-3,4,-1,2,1,-5,4],<br>输出: 6<br>解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</p>
-</blockquote>
-<p><strong>进阶:</strong></p>
-<p>如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的<strong>分治法</strong>求解。</p>
-<h2 id="Maximum-Subarray"><a href="#Maximum-Subarray" class="headerlink" title="Maximum Subarray"></a>Maximum Subarray</h2><p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
-<p>Example:</p>
-<blockquote>
-<p>Input: [-2,1,-3,4,-1,2,1,-5,4],<br>Output: 6<br>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
-</blockquote>
-<p><strong>Follow up:</strong></p>
-<p>If you have figured out the O(n) solution, try coding another solution using <strong>the divide and conquer approach</strong>, which is more subtle.</p>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一(动态规划)</strong><br>设数组<code>nums</code>的长度为$n$。</p>
-<p>设$f(i)$为以<code>nums[i]</code>结尾的连续子数组的最大和，我们要求的就是：</p>
-<p>$$\max \limits_{0\leq i\leq n-1}{f(i)}$$</p>
-<p>因此我们只需要求出每个$f(i)$，然后取其最大值即可。在求$f(i)$的时候，我们要注意$f(i-1)$的值，如果它为负值，那么我们可以直接将其舍弃掉，因为一个数加上一个负数后会变小。由此，我们有状态转移方程：</p>
-<p>$$f(i)=\max {f(i-1)+nums[i], nums[i]}$$</p>
-<p>我们可以将空间复杂度优化到$O(1)$。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> sum = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; numsSize;i++)&#123;</span><br><span class="line">        sum = (sum + nums[i]) &gt; nums[i] ? (sum + nums[i]) : nums[i];</span><br><span class="line">        max = sum &gt; max ? sum : max;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>方法二（分治法）</strong><br>分成子问题解决。结构体中<code>l</code>表示数组中以最左侧数字起的连续最大值，<code>max</code>表示数组中的连续最大值，<code>r</code>表示数组中以最右侧数字为终点的连续最大值，<code>sum</code>表示数组之和。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">val</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> l;</span><br><span class="line">    <span class="keyword">int</span> max;</span><br><span class="line">    <span class="keyword">int</span> r;</span><br><span class="line">    <span class="keyword">int</span> sum;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max(a, b) (a &gt; b ? a : b)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> min(a, b) (a &gt; b ? b : a)</span></span><br><span class="line"><span class="function">struct val <span class="title">maxSub</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">t</span> =</span> &#123;nums[<span class="number">0</span>], nums[<span class="number">0</span>], nums[<span class="number">0</span>], nums[<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v1</span> =</span> maxSub(nums, n / <span class="number">2</span>);</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v2</span> =</span> maxSub(nums + n / <span class="number">2</span>, n - n / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">int</span> l = max(v1.l, v1.sum + v2. l);</span><br><span class="line">    <span class="keyword">int</span> max = max(max(v1.max, v2.max), v1.r + v2.l);</span><br><span class="line">    <span class="keyword">int</span> r = max(v2.r, v1.r + v2.sum);</span><br><span class="line">    <span class="keyword">int</span> sum = v1.sum + v2.sum;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">t</span> =</span> &#123;l, max, r, sum&#125;;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v</span> =</span> maxSub(nums, numsSize);</span><br><span class="line">    <span class="keyword">return</span> v.max;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//转 载</span></span><br></pre></td></tr></table></figure>
-<p><strong>方法三（贪心算法）</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, sum = <span class="number">0</span>, min = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; numsSize; i++) &#123;</span><br><span class="line">        sum += nums[i];</span><br><span class="line">        <span class="keyword">if</span>(sum - min &gt; max)</span><br><span class="line">            max = sum - min;</span><br><span class="line">        <span class="keyword">if</span>(sum &lt; min)</span><br><span class="line">            min = sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-        <tag>分治算法</tag>
-        <tag>动态规划</tag>
-        <tag>Divide and Conquer</tag>
-        <tag>Dynamic Programming</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-88. Merge Sorted Array（合并两个有序数组）</title>
-    <url>/2018/01/20/LeetCode-88-Merge-Sorted-Array%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="合并两个有序数组"><a href="#合并两个有序数组" class="headerlink" title="合并两个有序数组"></a>合并两个有序数组</h2><p>给定两个有序整数数组 <code>nums1</code> 和 <code>nums2</code>，将 <code>nums2</code> 合并到 <code>nums1</code> 中，使得 <code>num1</code> 成为一个有序数组。</p>
-<a id="more"></a>
-
-<p><strong>说明:</strong></p>
-<ul>
-<li>初始化 nums1 和 nums2 的元素数量分别为 m 和 n。 </li>
-<li>你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。</li>
-</ul>
-<p>示例:</p>
-<blockquote>
-<p>输入:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3<br>输出: [1,2,2,3,5,6]</p>
-</blockquote>
-<h2 id="Merge-Sorted-Array"><a href="#Merge-Sorted-Array" class="headerlink" title="Merge Sorted Array"></a>Merge Sorted Array</h2><p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p>
-<p><strong>Note:</strong></p>
-<ul>
-<li>The number of elements initialized in nums1 and nums2 are m and n respectively.</li>
-<li>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2.</li>
-</ul>
-<p>Example:</p>
-<blockquote>
-<p>Input:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3<br>Output: [1,2,2,3,5,6]</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：暴力法</strong></p>
-<p>最朴素的方法就是合并数组，然后再排序。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != n; ++i) &#123;</span><br><span class="line">            nums1[m + i] = nums2[i];</span><br><span class="line">        &#125;</span><br><span class="line">        sort(nums1.begin(), nums1.end());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>方法二：正向双指针</strong></p>
-<p>申请一个临时数组，设置两个头部指针，每次比较两个数组的头部，将较小的放入临时数组中，最后再将临时数组赋值给<code>nums1</code>。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p1 = <span class="number">0</span>, p2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sorted[m + n];</span><br><span class="line">        <span class="keyword">int</span> cur;</span><br><span class="line">        <span class="keyword">while</span> (p1 &lt; m || p2 &lt; n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1 == m) &#123;</span><br><span class="line">                cur = nums2[p2++];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p2 == n) &#123;</span><br><span class="line">                cur = nums1[p1++];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[p1] &lt; nums2[p2]) &#123;</span><br><span class="line">                cur = nums1[p1++];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur = nums2[p2++];</span><br><span class="line">            &#125;</span><br><span class="line">            sorted[p1 + p2 - <span class="number">1</span>] = cur;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != m + n; ++i) &#123;</span><br><span class="line">            nums1[i] = sorted[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>方法三：逆向双指针</strong></p>
-<p>我们注意到，在方法二中需要使用一个临时数组来防止<code>nums1</code>的元素被覆盖，如果我们逆向使用双指针则可以实现原地修改，证明如下：</p>
-<p>设 $p1$ 和 $p2$ 是两个数组的尾部指针，即 $p1 = m-1$ ，$p2=n-1$，在遍历的某一时刻，<code>nums1</code>有$m-p1-1$个元素被放入<code>nums1</code>的后半部，<code>nums2</code>有$n-p2-1$个元素被放入<code>nums2</code>的后半部，而在 $p1$ 的后面有$m+n-p1-1$个位置。由于：</p>
-<p>$$m+n-p1-1\geq m-p1-1+n-p2-1$$</p>
-<p>等价于</p>
-<p>$$p2\geq -1$$</p>
-<p>永远成立，因此<code>nums1</code>后面有足够的位置容纳被插入的元素，可以实现原地修改。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p1 = m - <span class="number">1</span>, p2 = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> tail = m + n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> cur;</span><br><span class="line">        <span class="keyword">while</span> (p1 &gt;= <span class="number">0</span> || p2 &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1 == <span class="number">-1</span>) &#123;</span><br><span class="line">                cur = nums2[p2--];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p2 == <span class="number">-1</span>) &#123;</span><br><span class="line">                cur = nums1[p1--];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[p1] &gt; nums2[p2]) &#123;</span><br><span class="line">                cur = nums1[p1--];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur = nums2[p2--];</span><br><span class="line">            &#125;</span><br><span class="line">            nums1[tail--] = cur;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-        <tag>双指针</tag>
-        <tag>Two Pointers</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode-66. Plus One（加一）</title>
     <url>/2018/01/20/LeetCode-66-Plus-One%EF%BC%88%E5%8A%A0%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h2 id="加一"><a href="#加一" class="headerlink" title="加一"></a>加一</h2><p>给定一个由<strong>整数</strong>组成的<strong>非空</strong>数组所表示的非负整数，在该数的基础上加一。</p>
@@ -468,41 +370,47 @@
       </tags>
   </entry>
   <entry>
-    <title>《崩坏3》动画短片「渡尘」</title>
-    <url>/2021/01/29/%E3%80%8A%E5%B4%A9%E5%9D%8F3%E3%80%8B%E5%8A%A8%E7%94%BB%E7%9F%AD%E7%89%87%E3%80%8C%E6%B8%A1%E5%B0%98%E3%80%8D/</url>
-    <content><![CDATA[<h2 id="《崩坏3》动画短片「渡尘」"><a href="#《崩坏3》动画短片「渡尘」" class="headerlink" title="《崩坏3》动画短片「渡尘」"></a>《崩坏3》动画短片「渡尘」</h2><p><strong>世间之纷扰，早已麻木</strong><br><strong>珍重之羁绊，尽皆离散</strong><br><strong>千年之坚守，只为拯救苍生</strong></p>
+    <title>LeetCode-53. Maximum Subarray（最大子序和）</title>
+    <url>/2018/01/12/LeetCode-53-Maximum-Subarray%EF%BC%88%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="最大子序和"><a href="#最大子序和" class="headerlink" title="最大子序和"></a>最大子序和</h2><p>给定一个整数数组 <code>nums</code> ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
 <a id="more"></a>
 
-<p>是糖是糖！</p>
-<p>一路走来，符华真的太不容易了，希望这次是阿符的新生。</p>
-<div class="bilibili">
-    <iframe src="//player.bilibili.com/player.html?aid=501440303&bvid=BV1jN411o7zS&cid=289175447&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-</div>
-
-<p>4:47的上仙绝美！</p>
-<p>5:32开始真的要哭出来了</p>
-<p><strong>日月沉浮 ，沧海桑田</strong></p>
-<p><strong>历尽了离别，习惯了绝望</strong></p>
-<p><strong>不知时间为何物</strong></p>
-<p><strong>亡命于无尽的轮回</strong></p>
-<p><strong>只为——</strong></p>
-<p><strong>使命！</strong></p>
-<p><strong>欢迎回家，班长！</strong></p>
-<p>也恭喜短片登顶！</p>
-<p>另外这次「Rubia」——《崩坏3》印象曲（演唱者：周深）也超赞，</p>
-<div class="bilibili">
-    <iframe src="//player.bilibili.com/player.html?aid=543949325&bvid=BV1Yv4y1o7dw&cid=289220053&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-</div>
-
-]]></content>
+<p>示例:</p>
+<blockquote>
+<p>输入: [-2,1,-3,4,-1,2,1,-5,4],<br>输出: 6<br>解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</p>
+</blockquote>
+<p><strong>进阶:</strong></p>
+<p>如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的<strong>分治法</strong>求解。</p>
+<h2 id="Maximum-Subarray"><a href="#Maximum-Subarray" class="headerlink" title="Maximum Subarray"></a>Maximum Subarray</h2><p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
+<p>Example:</p>
+<blockquote>
+<p>Input: [-2,1,-3,4,-1,2,1,-5,4],<br>Output: 6<br>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
+</blockquote>
+<p><strong>Follow up:</strong></p>
+<p>If you have figured out the O(n) solution, try coding another solution using <strong>the divide and conquer approach</strong>, which is more subtle.</p>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一(动态规划)</strong><br>设数组<code>nums</code>的长度为$n$。</p>
+<p>设$f(i)$为以<code>nums[i]</code>结尾的连续子数组的最大和，我们要求的就是：</p>
+<p>$$\max \limits_{0\leq i\leq n-1}{f(i)}$$</p>
+<p>因此我们只需要求出每个$f(i)$，然后取其最大值即可。在求$f(i)$的时候，我们要注意$f(i-1)$的值，如果它为负值，那么我们可以直接将其舍弃掉，因为一个数加上一个负数后会变小。由此，我们有状态转移方程：</p>
+<p>$$f(i)=\max {f(i-1)+nums[i], nums[i]}$$</p>
+<p>我们可以将空间复杂度优化到$O(1)$。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> sum = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; numsSize;i++)&#123;</span><br><span class="line">        sum = (sum + nums[i]) &gt; nums[i] ? (sum + nums[i]) : nums[i];</span><br><span class="line">        max = sum &gt; max ? sum : max;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二（分治法）</strong><br>分成子问题解决。结构体中<code>l</code>表示数组中以最左侧数字起的连续最大值，<code>max</code>表示数组中的连续最大值，<code>r</code>表示数组中以最右侧数字为终点的连续最大值，<code>sum</code>表示数组之和。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">val</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> l;</span><br><span class="line">    <span class="keyword">int</span> max;</span><br><span class="line">    <span class="keyword">int</span> r;</span><br><span class="line">    <span class="keyword">int</span> sum;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max(a, b) (a &gt; b ? a : b)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> min(a, b) (a &gt; b ? b : a)</span></span><br><span class="line"><span class="function">struct val <span class="title">maxSub</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">t</span> =</span> &#123;nums[<span class="number">0</span>], nums[<span class="number">0</span>], nums[<span class="number">0</span>], nums[<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v1</span> =</span> maxSub(nums, n / <span class="number">2</span>);</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v2</span> =</span> maxSub(nums + n / <span class="number">2</span>, n - n / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">int</span> l = max(v1.l, v1.sum + v2. l);</span><br><span class="line">    <span class="keyword">int</span> max = max(max(v1.max, v2.max), v1.r + v2.l);</span><br><span class="line">    <span class="keyword">int</span> r = max(v2.r, v1.r + v2.sum);</span><br><span class="line">    <span class="keyword">int</span> sum = v1.sum + v2.sum;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">t</span> =</span> &#123;l, max, r, sum&#125;;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v</span> =</span> maxSub(nums, numsSize);</span><br><span class="line">    <span class="keyword">return</span> v.max;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//转 载</span></span><br></pre></td></tr></table></figure>
+<p><strong>方法三（贪心算法）</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, sum = <span class="number">0</span>, min = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; numsSize; i++) &#123;</span><br><span class="line">        sum += nums[i];</span><br><span class="line">        <span class="keyword">if</span>(sum - min &gt; max)</span><br><span class="line">            max = sum - min;</span><br><span class="line">        <span class="keyword">if</span>(sum &lt; min)</span><br><span class="line">            min = sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>个人动态</category>
-        <category>游戏</category>
-        <category>崩坏三</category>
+        <category>LeetCode</category>
+        <category>简单</category>
       </categories>
       <tags>
-        <tag>日常谈</tag>
-        <tag>游戏</tag>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+        <tag>分治算法</tag>
+        <tag>动态规划</tag>
+        <tag>Divide and Conquer</tag>
+        <tag>Dynamic Programming</tag>
       </tags>
   </entry>
   <entry>
@@ -563,8 +471,62 @@
       </tags>
   </entry>
   <entry>
+    <title>LeetCode-88. Merge Sorted Array（合并两个有序数组）</title>
+    <url>/2018/01/20/LeetCode-88-Merge-Sorted-Array%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="合并两个有序数组"><a href="#合并两个有序数组" class="headerlink" title="合并两个有序数组"></a>合并两个有序数组</h2><p>给定两个有序整数数组 <code>nums1</code> 和 <code>nums2</code>，将 <code>nums2</code> 合并到 <code>nums1</code> 中，使得 <code>num1</code> 成为一个有序数组。</p>
+<a id="more"></a>
+
+<p><strong>说明:</strong></p>
+<ul>
+<li>初始化 nums1 和 nums2 的元素数量分别为 m 和 n。 </li>
+<li>你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。</li>
+</ul>
+<p>示例:</p>
+<blockquote>
+<p>输入:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3<br>输出: [1,2,2,3,5,6]</p>
+</blockquote>
+<h2 id="Merge-Sorted-Array"><a href="#Merge-Sorted-Array" class="headerlink" title="Merge Sorted Array"></a>Merge Sorted Array</h2><p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>The number of elements initialized in nums1 and nums2 are m and n respectively.</li>
+<li>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2.</li>
+</ul>
+<p>Example:</p>
+<blockquote>
+<p>Input:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3<br>Output: [1,2,2,3,5,6]</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：暴力法</strong></p>
+<p>最朴素的方法就是合并数组，然后再排序。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != n; ++i) &#123;</span><br><span class="line">            nums1[m + i] = nums2[i];</span><br><span class="line">        &#125;</span><br><span class="line">        sort(nums1.begin(), nums1.end());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二：正向双指针</strong></p>
+<p>申请一个临时数组，设置两个头部指针，每次比较两个数组的头部，将较小的放入临时数组中，最后再将临时数组赋值给<code>nums1</code>。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p1 = <span class="number">0</span>, p2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sorted[m + n];</span><br><span class="line">        <span class="keyword">int</span> cur;</span><br><span class="line">        <span class="keyword">while</span> (p1 &lt; m || p2 &lt; n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1 == m) &#123;</span><br><span class="line">                cur = nums2[p2++];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p2 == n) &#123;</span><br><span class="line">                cur = nums1[p1++];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[p1] &lt; nums2[p2]) &#123;</span><br><span class="line">                cur = nums1[p1++];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur = nums2[p2++];</span><br><span class="line">            &#125;</span><br><span class="line">            sorted[p1 + p2 - <span class="number">1</span>] = cur;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != m + n; ++i) &#123;</span><br><span class="line">            nums1[i] = sorted[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>方法三：逆向双指针</strong></p>
+<p>我们注意到，在方法二中需要使用一个临时数组来防止<code>nums1</code>的元素被覆盖，如果我们逆向使用双指针则可以实现原地修改，证明如下：</p>
+<p>设 $p1$ 和 $p2$ 是两个数组的尾部指针，即 $p1 = m-1$ ，$p2=n-1$，在遍历的某一时刻，<code>nums1</code>有$m-p1-1$个元素被放入<code>nums1</code>的后半部，<code>nums2</code>有$n-p2-1$个元素被放入<code>nums2</code>的后半部，而在 $p1$ 的后面有$m+n-p1-1$个位置。由于：</p>
+<p>$$m+n-p1-1\geq m-p1-1+n-p2-1$$</p>
+<p>等价于</p>
+<p>$$p2\geq -1$$</p>
+<p>永远成立，因此<code>nums1</code>后面有足够的位置容纳被插入的元素，可以实现原地修改。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p1 = m - <span class="number">1</span>, p2 = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> tail = m + n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> cur;</span><br><span class="line">        <span class="keyword">while</span> (p1 &gt;= <span class="number">0</span> || p2 &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1 == <span class="number">-1</span>) &#123;</span><br><span class="line">                cur = nums2[p2--];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p2 == <span class="number">-1</span>) &#123;</span><br><span class="line">                cur = nums1[p1--];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[p1] &gt; nums2[p2]) &#123;</span><br><span class="line">                cur = nums1[p1--];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur = nums2[p2--];</span><br><span class="line">            &#125;</span><br><span class="line">            nums1[tail--] = cur;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+        <tag>双指针</tag>
+        <tag>Two Pointers</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode-839. Similar String Groups（相似字符串组）</title>
-    <url>/2021/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/</url>
+    <url>/2018/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/</url>
     <content><![CDATA[<h2 id="相似字符串组"><a href="#相似字符串组" class="headerlink" title="相似字符串组"></a>相似字符串组</h2><p>如果交换字符串 <code>X</code> 中的两个不同位置的字母，使得它和字符串 <code>Y</code> 相等，那么称 <code>X</code> 和 <code>Y</code> 两个字符串相似。如果这两个字符串本身是相等的，那它们也是相似的。</p>
 <p>例如，<code>&quot;tars&quot;</code> 和 <code>&quot;rats&quot;</code> 是相似的 (交换 <code>0</code> 与 <code>2</code> 的位置)； <code>&quot;rats&quot;</code> 和 <code>&quot;arts&quot;</code> 也是相似的，但是 <code>&quot;star&quot;</code> 不与 <code>&quot;tars&quot;</code>，<code>&quot;rats&quot;</code>，或 <code>&quot;arts&quot;</code> 相似。</p>
 <p>总之，它们通过相似性形成了两个关联组：<code>&#123;&quot;tars&quot;, &quot;rats&quot;, &quot;arts&quot;&#125;</code> 和 <code>&#123;&quot;star&quot;&#125;</code>。注意，<code>&quot;tars&quot;</code> 和 <code>&quot;arts&quot;</code> 是在同一组中，即使它们并不相似。形式上，对每个组而言，要确定一个单词在组中，只需要这个词和该组中至少一个单词相似。</p>
@@ -621,6 +583,44 @@
         <tag>并查集</tag>
         <tag>图</tag>
         <tag>Graph</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《崩坏3》动画短片「渡尘」</title>
+    <url>/2021/01/29/%E3%80%8A%E5%B4%A9%E5%9D%8F3%E3%80%8B%E5%8A%A8%E7%94%BB%E7%9F%AD%E7%89%87%E3%80%8C%E6%B8%A1%E5%B0%98%E3%80%8D/</url>
+    <content><![CDATA[<h2 id="《崩坏3》动画短片「渡尘」"><a href="#《崩坏3》动画短片「渡尘」" class="headerlink" title="《崩坏3》动画短片「渡尘」"></a>《崩坏3》动画短片「渡尘」</h2><p><strong>世间之纷扰，早已麻木</strong><br><strong>珍重之羁绊，尽皆离散</strong><br><strong>千年之坚守，只为拯救苍生</strong></p>
+<a id="more"></a>
+
+<p>是糖是糖！</p>
+<p>一路走来，符华真的太不容易了，希望这次是阿符的新生。</p>
+<div class="bilibili">
+    <iframe src="//player.bilibili.com/player.html?aid=501440303&bvid=BV1jN411o7zS&cid=289175447&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
+
+<p>4:47的上仙绝美！</p>
+<p>5:32开始真的要哭出来了</p>
+<p><strong>日月沉浮 ，沧海桑田</strong></p>
+<p><strong>历尽了离别，习惯了绝望</strong></p>
+<p><strong>不知时间为何物</strong></p>
+<p><strong>亡命于无尽的轮回</strong></p>
+<p><strong>只为——</strong></p>
+<p><strong>使命！</strong></p>
+<p><strong>欢迎回家，班长！</strong></p>
+<p>也恭喜短片登顶！</p>
+<p>另外这次「Rubia」——《崩坏3》印象曲（演唱者：周深）也超赞，</p>
+<div class="bilibili">
+    <iframe src="//player.bilibili.com/player.html?aid=543949325&bvid=BV1Yv4y1o7dw&cid=289220053&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
+
+]]></content>
+      <categories>
+        <category>个人动态</category>
+        <category>游戏</category>
+        <category>崩坏三</category>
+      </categories>
+      <tags>
+        <tag>日常谈</tag>
+        <tag>游戏</tag>
       </tags>
   </entry>
 </search>
