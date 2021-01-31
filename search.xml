@@ -1,41 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>LeetCode-1. Two Sum（两数之和）</title>
-    <url>/2018/01/12/LeetCode-1-Two-Sum%EF%BC%88%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
-<p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
-<a id="more"></a>
-
-<p> 示例:</p>
-<blockquote>
-<p>给定 nums = [2, 7, 11, 15], target = 9<br>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
-</blockquote>
-<h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h2><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
-<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
-<p>Example:</p>
-<blockquote>
-<p>Given nums = [2, 7, 11, 15], target = 9,<br>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>梦开始的地方（</p>
-<p>使用哈希表对于每一个<code>x</code>，我们首先查询哈希表中是否存在<code>target - x</code>，然后将<code>x</code>插入到哈希表中，即可保证不会让<code>x</code>和自己匹配。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; hashtable;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = hashtable.find(target - nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (it != hashtable.end()) &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;it-&gt;second, i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashtable[nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>下面这个是初学时用的暴力搜索</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">twoSum</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j,flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> a[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; numsSize; i++ )&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; numsSize; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] + nums[j] == target)&#123;</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">break</span>;           </span><br><span class="line">    &#125;</span><br><span class="line">    a[<span class="number">0</span>] = i;</span><br><span class="line">    a[<span class="number">1</span>] = j;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>哈希表</tag>
-        <tag>Array</tag>
-        <tag>Hash Table</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode-118. Pascal&#39;s Triangle（杨辉三角）</title>
     <url>/2018/01/27/LeetCode-118-Pascal-s-Triangle%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%EF%BC%89/</url>
     <content><![CDATA[<h2 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h2><p>给定一个非负整数 <em>numRows</em>，生成杨辉三角的前 <em>numRows</em> 行。</p>
@@ -76,6 +41,77 @@
       </tags>
   </entry>
   <entry>
+    <title>LeetCode-1. Two Sum（两数之和）</title>
+    <url>/2018/01/12/LeetCode-1-Two-Sum%EF%BC%88%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
+<a id="more"></a>
+
+<p> 示例:</p>
+<blockquote>
+<p>给定 nums = [2, 7, 11, 15], target = 9<br>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
+</blockquote>
+<h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h2><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>Example:</p>
+<blockquote>
+<p>Given nums = [2, 7, 11, 15], target = 9,<br>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>梦开始的地方（</p>
+<p>使用哈希表对于每一个<code>x</code>，我们首先查询哈希表中是否存在<code>target - x</code>，然后将<code>x</code>插入到哈希表中，即可保证不会让<code>x</code>和自己匹配。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; hashtable;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = hashtable.find(target - nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (it != hashtable.end()) &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;it-&gt;second, i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashtable[nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>下面这个是初学时用的暴力搜索</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">twoSum</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j,flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> a[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; numsSize; i++ )&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; numsSize; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] + nums[j] == target)&#123;</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">break</span>;           </span><br><span class="line">    &#125;</span><br><span class="line">    a[<span class="number">0</span>] = i;</span><br><span class="line">    a[<span class="number">1</span>] = j;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+        <tag>哈希表</tag>
+        <tag>Hash Table</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-21. Merge Two Sorted Lists（合并两个有序链表）</title>
+    <url>/2018/01/12/LeetCode-21-Merge-Two-Sorted-Lists%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="合并两个有序链表"><a href="#合并两个有序链表" class="headerlink" title="合并两个有序链表"></a>合并两个有序链表</h2><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
+<p>示例：</p>
+<blockquote>
+<p>输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="Merge-Two-Sorted-Lists"><a href="#Merge-Two-Sorted-Lists" class="headerlink" title="Merge Two Sorted Lists"></a>Merge Two Sorted Lists</h2><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+<p>Example:</p>
+<blockquote>
+<p>Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：递归</strong></p>
+<p>递归结束条件为：任意一个链表为空。</p>
+<p>每次返回两个链表中较小的一个。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l1 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二：迭代</strong></p>
+<p>在两个链表中分别设置一个结点<code>prev</code>，然后比较这两个结点，将较小的那个插入新链表中，并将该结点后移，如此下去，直到某一个链表为空。由上述的步骤可知，剩下的链表的所有元素一定比新链表中的大，因此直接插入到新链表尾部即可。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>注：题解为官方题解。链接：<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/">https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/</a></p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>递归</tag>
+        <tag>链表</tag>
+        <tag>Recursion</tag>
+        <tag>Linked List</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode-119. Pascal&#39;s Triangle II（杨辉三角 II）</title>
     <url>/2018/01/28/LeetCode-119-Pascal-s-Triangle-II%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92-II%EF%BC%89/</url>
     <content><![CDATA[<h2 id="杨辉三角-II"><a href="#杨辉三角-II" class="headerlink" title="杨辉三角 II"></a>杨辉三角 II</h2><p>给定一个非负索引 <em>k</em>，其中 <em>k ≤ 33</em>，返回杨辉三角的第 <em>k</em> 行。</p>
@@ -113,28 +149,51 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-21. Merge Two Sorted Lists（合并两个有序链表）</title>
-    <url>/2018/01/12/LeetCode-21-Merge-Two-Sorted-Lists%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="合并两个有序链表"><a href="#合并两个有序链表" class="headerlink" title="合并两个有序链表"></a>合并两个有序链表</h2><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
-<p>示例：</p>
-<blockquote>
-<p>输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
-</blockquote>
+    <title>LeetCode-35. Search Insert Position（搜索插入位置）</title>
+    <url>/2018/01/12/LeetCode-35-Search-Insert-Position%EF%BC%88%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="搜索插入位置"><a href="#搜索插入位置" class="headerlink" title="搜索插入位置"></a>搜索插入位置</h2><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>你可以假设数组中无重复元素。</p>
 <a id="more"></a>
 
-<h2 id="Merge-Two-Sorted-Lists"><a href="#Merge-Two-Sorted-Lists" class="headerlink" title="Merge Two Sorted Lists"></a>Merge Two Sorted Lists</h2><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
-<p>Example:</p>
+<p>示例 1:</p>
 <blockquote>
-<p>Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
+<p>输入: [1,3,5,6], 5<br>输出: 2</p>
 </blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：递归</strong></p>
-<p>递归结束条件为：任意一个链表为空。</p>
-<p>每次返回两个链表中较小的一个。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l1 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>方法二：迭代</strong></p>
-<p>在两个链表中分别设置一个结点<code>prev</code>，然后比较这两个结点，将较小的那个插入新链表中，并将该结点后移，如此下去，直到某一个链表为空。由上述的步骤可知，剩下的链表的所有元素一定比新链表中的大，因此直接插入到新链表尾部即可。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>注：题解为官方题解。链接：<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/">https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/</a></p>
+<p>示例 2:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 2<br>输出: 1</p>
+</blockquote>
+<p>示例 3:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 7<br>输出: 4</p>
+</blockquote>
+<p>示例 4:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 0<br>输出: 0</p>
+</blockquote>
+<h2 id="Search-Insert-Position"><a href="#Search-Insert-Position" class="headerlink" title="Search Insert Position"></a>Search Insert Position</h2><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p>You may assume no duplicates in the array.</p>
+<p>Example 1:</p>
+<blockquote>
+<p>Input: [1,3,5,6], 5<br>Output: 2</p>
+</blockquote>
+<p>Example 2:</p>
+<blockquote>
+<p>Input: [1,3,5,6], 2<br>Output: 1</p>
+</blockquote>
+<p>Example 3:</p>
+<blockquote>
+<p>Input: [1,3,5,6], 7<br>Output: 4</p>
+</blockquote>
+<p>Example 4:</p>
+<blockquote>
+<p>Input: [1,3,5,6], 0<br>Output: 0</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>二分查找</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &lt; target)&#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>另外，我们还可以使用c++的STL</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lower_bound(nums.begin(),nums.end(),target) - nums.begin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>lower_bound()</code>也是用二分法实现的。</p>
 ]]></content>
       <categories>
         <category>LeetCode</category>
@@ -142,10 +201,10 @@
       </categories>
       <tags>
         <tag>LeetCode</tag>
-        <tag>递归</tag>
-        <tag>链表</tag>
-        <tag>Recursion</tag>
-        <tag>Linked List</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+        <tag>二分查找</tag>
+        <tag>Binary Search</tag>
       </tags>
   </entry>
   <entry>
@@ -262,52 +321,35 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-35. Search Insert Position（搜索插入位置）</title>
-    <url>/2018/01/12/LeetCode-35-Search-Insert-Position%EF%BC%88%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="搜索插入位置"><a href="#搜索插入位置" class="headerlink" title="搜索插入位置"></a>搜索插入位置</h2><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
-<p>你可以假设数组中无重复元素。</p>
+    <title>LeetCode-53. Maximum Subarray（最大子序和）</title>
+    <url>/2018/01/12/LeetCode-53-Maximum-Subarray%EF%BC%88%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="最大子序和"><a href="#最大子序和" class="headerlink" title="最大子序和"></a>最大子序和</h2><p>给定一个整数数组 <code>nums</code> ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
 <a id="more"></a>
 
-<p>示例 1:</p>
+<p>示例:</p>
 <blockquote>
-<p>输入: [1,3,5,6], 5<br>输出: 2</p>
+<p>输入: [-2,1,-3,4,-1,2,1,-5,4],<br>输出: 6<br>解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</p>
 </blockquote>
-<p>示例 2:</p>
+<p><strong>进阶:</strong></p>
+<p>如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的<strong>分治法</strong>求解。</p>
+<h2 id="Maximum-Subarray"><a href="#Maximum-Subarray" class="headerlink" title="Maximum Subarray"></a>Maximum Subarray</h2><p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
+<p>Example:</p>
 <blockquote>
-<p>输入: [1,3,5,6], 2<br>输出: 1</p>
+<p>Input: [-2,1,-3,4,-1,2,1,-5,4],<br>Output: 6<br>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
 </blockquote>
-<p>示例 3:</p>
-<blockquote>
-<p>输入: [1,3,5,6], 7<br>输出: 4</p>
-</blockquote>
-<p>示例 4:</p>
-<blockquote>
-<p>输入: [1,3,5,6], 0<br>输出: 0</p>
-</blockquote>
-<h2 id="Search-Insert-Position"><a href="#Search-Insert-Position" class="headerlink" title="Search Insert Position"></a>Search Insert Position</h2><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
-<p>You may assume no duplicates in the array.</p>
-<p>Example 1:</p>
-<blockquote>
-<p>Input: [1,3,5,6], 5<br>Output: 2</p>
-</blockquote>
-<p>Example 2:</p>
-<blockquote>
-<p>Input: [1,3,5,6], 2<br>Output: 1</p>
-</blockquote>
-<p>Example 3:</p>
-<blockquote>
-<p>Input: [1,3,5,6], 7<br>Output: 4</p>
-</blockquote>
-<p>Example 4:</p>
-<blockquote>
-<p>Input: [1,3,5,6], 0<br>Output: 0</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>二分查找</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &lt; target)&#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>另外，我们还可以使用c++的STL</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lower_bound(nums.begin(),nums.end(),target) - nums.begin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><code>lower_bound()</code>也是用二分法实现的。</p>
-]]></content>
+<p><strong>Follow up:</strong></p>
+<p>If you have figured out the O(n) solution, try coding another solution using <strong>the divide and conquer approach</strong>, which is more subtle.</p>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一(动态规划)</strong><br>设数组<code>nums</code>的长度为$n$。</p>
+<p>设$f(i)$为以<code>nums[i]</code>结尾的连续子数组的最大和，我们要求的就是：</p>
+<p>$$\max \limits_{0\leq i\leq n-1}{f(i)}$$</p>
+<p>因此我们只需要求出每个$f(i)$，然后取其最大值即可。在求$f(i)$的时候，我们要注意$f(i-1)$的值，如果它为负值，那么我们可以直接将其舍弃掉，因为一个数加上一个负数后会变小。由此，我们有状态转移方程：</p>
+<p>$$f(i)=\max {f(i-1)+nums[i], nums[i]}$$</p>
+<p>我们可以将空间复杂度优化到$O(1)$。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> sum = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; numsSize;i++)&#123;</span><br><span class="line">        sum = (sum + nums[i]) &gt; nums[i] ? (sum + nums[i]) : nums[i];</span><br><span class="line">        max = sum &gt; max ? sum : max;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二（分治法）</strong><br>分成子问题解决。结构体中<code>l</code>表示数组中以最左侧数字起的连续最大值，<code>max</code>表示数组中的连续最大值，<code>r</code>表示数组中以最右侧数字为终点的连续最大值，<code>sum</code>表示数组之和。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">val</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> l;</span><br><span class="line">    <span class="keyword">int</span> max;</span><br><span class="line">    <span class="keyword">int</span> r;</span><br><span class="line">    <span class="keyword">int</span> sum;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max(a, b) (a &gt; b ? a : b)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> min(a, b) (a &gt; b ? b : a)</span></span><br><span class="line"><span class="function">struct val <span class="title">maxSub</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">t</span> =</span> &#123;nums[<span class="number">0</span>], nums[<span class="number">0</span>], nums[<span class="number">0</span>], nums[<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v1</span> =</span> maxSub(nums, n / <span class="number">2</span>);</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v2</span> =</span> maxSub(nums + n / <span class="number">2</span>, n - n / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">int</span> l = max(v1.l, v1.sum + v2. l);</span><br><span class="line">    <span class="keyword">int</span> max = max(max(v1.max, v2.max), v1.r + v2.l);</span><br><span class="line">    <span class="keyword">int</span> r = max(v2.r, v1.r + v2.sum);</span><br><span class="line">    <span class="keyword">int</span> sum = v1.sum + v2.sum;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">t</span> =</span> &#123;l, max, r, sum&#125;;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v</span> =</span> maxSub(nums, numsSize);</span><br><span class="line">    <span class="keyword">return</span> v.max;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//转 载</span></span><br></pre></td></tr></table></figure>
+<p><strong>方法三（贪心算法）</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, sum = <span class="number">0</span>, min = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; numsSize; i++) &#123;</span><br><span class="line">        sum += nums[i];</span><br><span class="line">        <span class="keyword">if</span>(sum - min &gt; max)</span><br><span class="line">            max = sum - min;</span><br><span class="line">        <span class="keyword">if</span>(sum &lt; min)</span><br><span class="line">            min = sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>LeetCode</category>
         <category>简单</category>
@@ -316,8 +358,10 @@
         <tag>LeetCode</tag>
         <tag>数组</tag>
         <tag>Array</tag>
-        <tag>二分查找</tag>
-        <tag>Binary Search</tag>
+        <tag>分治算法</tag>
+        <tag>动态规划</tag>
+        <tag>Divide and Conquer</tag>
+        <tag>Dynamic Programming</tag>
       </tags>
   </entry>
   <entry>
@@ -370,52 +414,8 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-53. Maximum Subarray（最大子序和）</title>
-    <url>/2018/01/12/LeetCode-53-Maximum-Subarray%EF%BC%88%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="最大子序和"><a href="#最大子序和" class="headerlink" title="最大子序和"></a>最大子序和</h2><p>给定一个整数数组 <code>nums</code> ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
-<a id="more"></a>
-
-<p>示例:</p>
-<blockquote>
-<p>输入: [-2,1,-3,4,-1,2,1,-5,4],<br>输出: 6<br>解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</p>
-</blockquote>
-<p><strong>进阶:</strong></p>
-<p>如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的<strong>分治法</strong>求解。</p>
-<h2 id="Maximum-Subarray"><a href="#Maximum-Subarray" class="headerlink" title="Maximum Subarray"></a>Maximum Subarray</h2><p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
-<p>Example:</p>
-<blockquote>
-<p>Input: [-2,1,-3,4,-1,2,1,-5,4],<br>Output: 6<br>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
-</blockquote>
-<p><strong>Follow up:</strong></p>
-<p>If you have figured out the O(n) solution, try coding another solution using <strong>the divide and conquer approach</strong>, which is more subtle.</p>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一(动态规划)</strong><br>设数组<code>nums</code>的长度为$n$。</p>
-<p>设$f(i)$为以<code>nums[i]</code>结尾的连续子数组的最大和，我们要求的就是：</p>
-<p>$$\max \limits_{0\leq i\leq n-1}{f(i)}$$</p>
-<p>因此我们只需要求出每个$f(i)$，然后取其最大值即可。在求$f(i)$的时候，我们要注意$f(i-1)$的值，如果它为负值，那么我们可以直接将其舍弃掉，因为一个数加上一个负数后会变小。由此，我们有状态转移方程：</p>
-<p>$$f(i)=\max {f(i-1)+nums[i], nums[i]}$$</p>
-<p>我们可以将空间复杂度优化到$O(1)$。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> sum = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; numsSize;i++)&#123;</span><br><span class="line">        sum = (sum + nums[i]) &gt; nums[i] ? (sum + nums[i]) : nums[i];</span><br><span class="line">        max = sum &gt; max ? sum : max;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>方法二（分治法）</strong><br>分成子问题解决。结构体中<code>l</code>表示数组中以最左侧数字起的连续最大值，<code>max</code>表示数组中的连续最大值，<code>r</code>表示数组中以最右侧数字为终点的连续最大值，<code>sum</code>表示数组之和。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">val</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> l;</span><br><span class="line">    <span class="keyword">int</span> max;</span><br><span class="line">    <span class="keyword">int</span> r;</span><br><span class="line">    <span class="keyword">int</span> sum;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max(a, b) (a &gt; b ? a : b)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> min(a, b) (a &gt; b ? b : a)</span></span><br><span class="line"><span class="function">struct val <span class="title">maxSub</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">t</span> =</span> &#123;nums[<span class="number">0</span>], nums[<span class="number">0</span>], nums[<span class="number">0</span>], nums[<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v1</span> =</span> maxSub(nums, n / <span class="number">2</span>);</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v2</span> =</span> maxSub(nums + n / <span class="number">2</span>, n - n / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">int</span> l = max(v1.l, v1.sum + v2. l);</span><br><span class="line">    <span class="keyword">int</span> max = max(max(v1.max, v2.max), v1.r + v2.l);</span><br><span class="line">    <span class="keyword">int</span> r = max(v2.r, v1.r + v2.sum);</span><br><span class="line">    <span class="keyword">int</span> sum = v1.sum + v2.sum;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">t</span> =</span> &#123;l, max, r, sum&#125;;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v</span> =</span> maxSub(nums, numsSize);</span><br><span class="line">    <span class="keyword">return</span> v.max;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//转 载</span></span><br></pre></td></tr></table></figure>
-<p><strong>方法三（贪心算法）</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, sum = <span class="number">0</span>, min = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; numsSize; i++) &#123;</span><br><span class="line">        sum += nums[i];</span><br><span class="line">        <span class="keyword">if</span>(sum - min &gt; max)</span><br><span class="line">            max = sum - min;</span><br><span class="line">        <span class="keyword">if</span>(sum &lt; min)</span><br><span class="line">            min = sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-        <tag>分治算法</tag>
-        <tag>动态规划</tag>
-        <tag>Divide and Conquer</tag>
-        <tag>Dynamic Programming</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode-778.Swim in Rising Water（水位上升的泳池中游泳）</title>
-    <url>/2018/01/31/LeetCode-778-Swim-in-Rising-Water%EF%BC%88%E6%B0%B4%E4%BD%8D%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B3%B3%E6%B1%A0%E4%B8%AD%E6%B8%B8%E6%B3%B3%EF%BC%89/</url>
+    <url>/2019/01/31/LeetCode-778-Swim-in-Rising-Water%EF%BC%88%E6%B0%B4%E4%BD%8D%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B3%B3%E6%B1%A0%E4%B8%AD%E6%B8%B8%E6%B3%B3%EF%BC%89/</url>
     <content><![CDATA[<h2 id="水位上升的泳池中游泳"><a href="#水位上升的泳池中游泳" class="headerlink" title="水位上升的泳池中游泳"></a>水位上升的泳池中游泳</h2><p>在一个 N x N 的坐标方格 <code>grid</code> 中，每一个方格的值 <code>grid[i][j]</code> 表示在位置 <code>(i,j)</code> 的平台高度。</p>
 <p>现在开始下雨了。当时间为 <code>t</code> 时，此时雨水导致水池中任意位置的水位为 <code>t</code> 。你可以从一个平台游向四周相邻的任意一个平台，但是前提是此时水位必须同时淹没这两个平台。假定你可以瞬间移动无限距离，也就是默认在方格内部游动是不耗时的。当然，在你游泳的时候你必须待在坐标方格里面。</p>
 <p>你从坐标方格的左上平台 <code>(0，0)</code> 出发。最少耗时多久你才能到达坐标方格的右下平台 <code>(N-1, N-1)</code>？</p>
@@ -526,13 +526,13 @@
   </entry>
   <entry>
     <title>LeetCode-839. Similar String Groups（相似字符串组）</title>
-    <url>/2018/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/</url>
+    <url>/2019/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/</url>
     <content><![CDATA[<h2 id="相似字符串组"><a href="#相似字符串组" class="headerlink" title="相似字符串组"></a>相似字符串组</h2><p>如果交换字符串 <code>X</code> 中的两个不同位置的字母，使得它和字符串 <code>Y</code> 相等，那么称 <code>X</code> 和 <code>Y</code> 两个字符串相似。如果这两个字符串本身是相等的，那它们也是相似的。</p>
+<a id="more"></a>
+
 <p>例如，<code>&quot;tars&quot;</code> 和 <code>&quot;rats&quot;</code> 是相似的 (交换 <code>0</code> 与 <code>2</code> 的位置)； <code>&quot;rats&quot;</code> 和 <code>&quot;arts&quot;</code> 也是相似的，但是 <code>&quot;star&quot;</code> 不与 <code>&quot;tars&quot;</code>，<code>&quot;rats&quot;</code>，或 <code>&quot;arts&quot;</code> 相似。</p>
 <p>总之，它们通过相似性形成了两个关联组：<code>&#123;&quot;tars&quot;, &quot;rats&quot;, &quot;arts&quot;&#125;</code> 和 <code>&#123;&quot;star&quot;&#125;</code>。注意，<code>&quot;tars&quot;</code> 和 <code>&quot;arts&quot;</code> 是在同一组中，即使它们并不相似。形式上，对每个组而言，要确定一个单词在组中，只需要这个词和该组中至少一个单词相似。</p>
 <p>给你一个字符串列表 <code>strs</code>。列表中的每个字符串都是 <code>strs</code> 中其它所有字符串的一个字母异位词。请问 <code>strs</code> 中有多少个相似字符串组？</p>
-<a id="more"></a>
-
 <p><strong>示例 1：</strong></p>
 <blockquote>
 <p><strong>输入</strong>：strs = [“tars”,”rats”,”arts”,”star”]<br><strong>输出</strong>：2</p>
@@ -617,6 +617,59 @@
         <category>个人动态</category>
         <category>游戏</category>
         <category>崩坏三</category>
+      </categories>
+      <tags>
+        <tag>日常谈</tag>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《明日方舟》SideStory「画中人」活动宣传PV</title>
+    <url>/2021/01/28/%E3%80%8A%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F%E3%80%8BSideStory%E3%80%8C%E7%94%BB%E4%B8%AD%E4%BA%BA%E3%80%8D%E6%B4%BB%E5%8A%A8%E5%AE%A3%E4%BC%A0PV/</url>
+    <content><![CDATA[<h2 id="《明日方舟》SideStory「画中人」活动宣传PV"><a href="#《明日方舟》SideStory「画中人」活动宣传PV" class="headerlink" title="《明日方舟》SideStory「画中人」活动宣传PV"></a>《明日方舟》SideStory「画中人」活动宣传PV</h2><p>鹰角终于发饼啦！</p>
+<div class="bilibili">
+    <iframe src="//player.bilibili.com/player.html?aid=543761542&bvid=BV1jv4y1f7jH&cid=288439321&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
+
+<p><strong>话术，那古往今来</strong></p>
+<p><strong>多少文人雅士，喜画爱画</strong></p>
+<p><strong>大炎江山万里，风光无限</strong></p>
+<p><strong>奇人妙事，数不胜数</strong></p>
+<p><strong>却要说有一人，一笔涂尽人间事</strong></p>
+<p><strong>见过沧海桑田，望过白日飞升</strong></p>
+<p><strong>走过拙山枯水，笑过月隐晦明</strong></p>
+<p><strong>列位看官可知</strong></p>
+<p><strong>此人姓甚名谁，又来自何方</strong></p>
+<p>本期重点：</p>
+<p>绝赞的国风</p>
+<p>Zc乌有说</p>
+<p>井夕夕</p>
+<p>旗袍年</p>
+<p>老陈懂个锤子旗袍</p>
+<p>一介车夫——吽</p>
+<p>老鲤，我治死个人.jpg</p>
+<p>水母皮肤</p>
+<h3 id="旗袍——年"><a href="#旗袍——年" class="headerlink" title="旗袍——年"></a>旗袍——年</h3><blockquote>
+<p>年的旗袍皮肤真的太香了，年本身就是超级大美人，双臂以及大腿处的鲜红花纹已经将年的身体凸显得异常白嫩。这回皮肤又用了白色为主色调，加以红色花纹点缀的优雅旗袍，简直就是为了年特意量身定制的绝美衣裳。（本来就是.jpg）<br>另外，稍显“桀骜不驯”的动作不会让优雅的服饰局限住年本身的性格，左腿穿着白色高跟鞋轻轻点地，又恰到好处的展现了年极佳的身段。<br>同时，黑扇朝唇下轻轻一点，整个人的神态动作浑然天成，悄无声息地体现其特有的慵懒气质。再加上年的大尾巴从椅子下方穿过翘起，更是又给其增添了几分色气。有一说一，真的很有年这个角色的独特韵味。<br>背景方面，为了不让整个画面被白色或红色冲的太扎眼，巧妙使用了暗色调的现代房间，在保留了高格调和神秘感的同时，凸显了坐在前方的年本人，并与其他皮肤的风格达成了统一。背后那不知是雕塑还是化作的巨大龙头更好像是要冲出平面，阳面与阴面划分自然，张力十足。<br>废话说了这么多，总结下来就一句。<br>这皮肤，我买爆！</p>
+</blockquote>
+<blockquote>
+<p>一身素白的旗袍配上玩世不恭的气质，纯洁的圣兽配上大胆的动作<br>清纯与火热交融促进，保守与开放相得益彰<br>一双玲珑玉腿舒展的有如白玉兰枝<br>微微翘起的一玉足更是勾起无数内心的悸动一把黑扇点下颔，纤纤五指如削葱。<br>红臂更衬衣袍白，琉璃眼眸送秋波。<br>白尾勾焰挑欲火，朱唇皓齿媚不尽。<br>风起扇开半遮面，未语先有郎妾意。<br>颦笑莲步逶迤近，软玉入怀情入心。<br>大炎万里山河壮，不若美人配才郎。<br>正是<br>上得厅堂下得厨房，玲珑有致风情万种，端的是素白好贤妻<br>剑劈锡灼盾展铁御，炉起融金铸铜锻银，好一个威风女将军</p>
+<p>年酱，永远的单推</p>
+</blockquote>
+<h3 id="音乐"><a href="#音乐" class="headerlink" title="音乐"></a>音乐</h3><blockquote>
+<p>开场的笛声娓娓道来，配合背景的水墨画一瞬间将人置入仙境，随后的古筝虽为辅，但却令人沉浸在她的温柔中无法自拔，使人忍不住闭上眼去感受那澄澈如露的绝妙音律。突然，众乐器一同奏起，我仿佛听到了东方神龙的吼声，睁眼，我看到那威严的神龙蜿蜒盘旋与崇山峻岭之间，那吼声响彻大地，顿时百鸟争鸣，百花齐放，衬托出东方巨龙神圣气魄。此时的我正疑惑自己所处莫非真是人们所向往的桃源乡时，突然狂风呼啸，晨雾被驱散，而后显现出这“桃源乡”的本貌：那巍峨的山其实是城，大气磅礴的辉煌古城，那花鸟，则是人。百鸟争鸣，是欢声笑语，引吭高歌的人们，百花齐放，是不同民族的人汇聚在一起，绽放出的百种不同样貌。神龙腾空而起，翱翔与这九州大地之上，守护着人们。如果这世上真有桃源乡，那这里便是了吧。</p>
+<p>这次简直高潮迭起一波三折！先是清雅的音乐配合一幅幅晕开的画面将观众期待值拉满，在逐渐加速的节奏中干员依次登场，两六星的出场是音乐的第一次高潮，接一小段水波粼粼般的间奏给活动主界面一个结束亮相，本以为pv就要平稳荡开了，突然高潮再起，四套时装一齐亮相，更激烈更欢快于第一段的音乐将观众情绪推向下一个高峰，随后伴随着活动其余内容的依次展示音乐强中渐强，余音绕梁回味无穷～</p>
+</blockquote>
+<h3 id="有关嵯峨"><a href="#有关嵯峨" class="headerlink" title="有关嵯峨"></a>有关嵯峨</h3><p>公元804年，唐德宗李适(kuo, 第四声)驾崩，葬嵯峨山崇陵(今陕西泾阳) 。日遣唐使给德宗皇帝送灵观礼，到了嵯峨山后见到了德宗的崇陵，觉得山势巍峨，帝陵宏伟，不禁感叹:真乃大唐气象!回国后面见平城天皇，把大唐吹得那是天花乱坠,说他在天朝见到了万年难遇的神造之山!并绘制了一幅莲花形的嵯峨山图。</p>
+<p>太子神野听了以后十分神往，即位之后直接将自己的尊号叫做“嵯峨天皇”，并于京都郊外营建离宫,起名“嵯峨院”。</p>
+<p>嵯峨天皇在位期间大力推行唐化，从礼仪、服饰、殿堂建筑到生活方式都模仿大唐风度。同时，他还迷恋汉学，在诗赋、书法、音律方面都有相当造诣，与空海、橘逸势并称为“平安三笔”。公元823年，嵯峨天皇退位成为上皇，即日移驾京都郊外的嵯峨院，并长住于此，最终崩于嵯峨院。嵯峨院周围的原野即被称作“嵯峨野”，所在的山峰亦被命名为“嵯峨山”。嵯峨天皇驾崩后，遵照其遗愿埋葬于嵯峨山，称“嵯峨山上陵”。嵯峨天皇可谓是历史最知名的海外“唐吹”之一。</p>
+<p>干员“嵯峨”的设定，或许就是东国的“遣炎使”，代表着崇拜炎国的意义。</p>
+<p>ps：有关配音的是话题我不想多说了，是没别的刺可挑了才开的配音的团吧。文化自信可不是这么用的。</p>
+]]></content>
+      <categories>
+        <category>个人动态</category>
+        <category>游戏</category>
+        <category>明日方舟</category>
       </categories>
       <tags>
         <tag>日常谈</tag>
