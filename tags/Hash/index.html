@@ -20,26 +20,15 @@
     var CONFIG = {"hostname":"www.shuocloud.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="相似字符串组如果交换字符串 X 中的两个不同位置的字母，使得它和字符串 Y 相等，那么称 X 和 Y 两个字符串相似。如果这两个字符串本身是相等的，那它们也是相似的。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-839. Similar String Groups（相似字符串组）">
-<meta property="og:url" content="https://www.shuocloud.top/2019/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Roki">
+<meta property="og:url" content="https://www.shuocloud.top/tags/Hash/index.html">
 <meta property="og:site_name" content="Roki">
-<meta property="og:description" content="相似字符串组如果交换字符串 X 中的两个不同位置的字母，使得它和字符串 Y 相等，那么称 X 和 Y 两个字符串相似。如果这两个字符串本身是相等的，那它们也是相似的。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-01-31T11:50:31.000Z">
-<meta property="article:modified_time" content="2021-01-31T14:42:37.031Z">
 <meta property="article:author" content="ChenShuo">
-<meta property="article:tag" content="LeetCode">
-<meta property="article:tag" content="Depth-first Search">
-<meta property="article:tag" content="Union Find">
-<meta property="article:tag" content="深度优先搜索">
-<meta property="article:tag" content="并查集">
-<meta property="article:tag" content="图">
-<meta property="article:tag" content="Graph">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://www.shuocloud.top/2019/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/">
+<link rel="canonical" href="https://www.shuocloud.top/tags/Hash/">
 
 
 <script id="page-configurations">
@@ -47,12 +36,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>LeetCode-839. Similar String Groups（相似字符串组） | Roki</title>
+  <title>标签: Hash | Roki</title>
   
 
 
@@ -139,7 +128,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">28</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -149,7 +138,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">14</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">15</span></a>
 
   </li>
         <li class="menu-item menu-item-书籍">
@@ -205,198 +194,57 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content tag">
             
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.shuocloud.top/2019/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cs-picture.oss-cn-qingdao.aliyuncs.com/futaba.png">
-      <meta itemprop="name" content="ChenShuo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Roki">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          LeetCode-839. Similar String Groups（相似字符串组）
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-31 19:50:31" itemprop="dateCreated datePublished" datetime="2019-01-31T19:50:31+08:00">2019-01-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-31 22:42:37" itemprop="dateModified" datetime="2021-01-31T22:42:37+08:00">2021-01-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/%E5%9B%B0%E9%9A%BE/" itemprop="url" rel="index"><span itemprop="name">困难</span></a>
-                </span>
-            </span>
-
-          
   
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <h2 class="collection-header">Hash
+          <small>标签</small>
+        </h2>
+      </div>
 
       
-        <h2 id="相似字符串组"><a href="#相似字符串组" class="headerlink" title="相似字符串组"></a>相似字符串组</h2><p>如果交换字符串 <code>X</code> 中的两个不同位置的字母，使得它和字符串 <code>Y</code> 相等，那么称 <code>X</code> 和 <code>Y</code> 两个字符串相似。如果这两个字符串本身是相等的，那它们也是相似的。</p>
-<a id="more"></a>
-
-<p>例如，<code>&quot;tars&quot;</code> 和 <code>&quot;rats&quot;</code> 是相似的 (交换 <code>0</code> 与 <code>2</code> 的位置)； <code>&quot;rats&quot;</code> 和 <code>&quot;arts&quot;</code> 也是相似的，但是 <code>&quot;star&quot;</code> 不与 <code>&quot;tars&quot;</code>，<code>&quot;rats&quot;</code>，或 <code>&quot;arts&quot;</code> 相似。</p>
-<p>总之，它们通过相似性形成了两个关联组：<code>&#123;&quot;tars&quot;, &quot;rats&quot;, &quot;arts&quot;&#125;</code> 和 <code>&#123;&quot;star&quot;&#125;</code>。注意，<code>&quot;tars&quot;</code> 和 <code>&quot;arts&quot;</code> 是在同一组中，即使它们并不相似。形式上，对每个组而言，要确定一个单词在组中，只需要这个词和该组中至少一个单词相似。</p>
-<p>给你一个字符串列表 <code>strs</code>。列表中的每个字符串都是 <code>strs</code> 中其它所有字符串的一个字母异位词。请问 <code>strs</code> 中有多少个相似字符串组？</p>
-<p><strong>示例 1：</strong></p>
-<blockquote>
-<p><strong>输入</strong>：strs = [“tars”,”rats”,”arts”,”star”]<br><strong>输出</strong>：2</p>
-</blockquote>
-<p><strong>示例 2：</strong></p>
-<blockquote>
-<p><strong>输入</strong>：strs = [“omv”,”ovm”]<br><strong>输出</strong>：1</p>
-</blockquote>
-<p><strong>提示：</strong></p>
-<ol>
-<li><code>1 &lt;= strs.length &lt;= 100</code></li>
-<li><code>1 &lt;= strs[i].length &lt;= 1000</code></li>
-<li><code>sum(strs[i].length) &lt;= 2 * 104</code></li>
-<li><code>strs[i]</code> 只包含小写字母。</li>
-<li><code>strs</code> 中的所有单词都具有相同的长度，且是彼此的字母异位词。</li>
-</ol>
-<p><strong>备注：</strong><br>字母异位词（anagram），一种把某个字符串的字母的位置（顺序）加以改换所形成的新词。</p>
-<h2 id="Similar-String-Groups"><a href="#Similar-String-Groups" class="headerlink" title="Similar String Groups"></a>Similar String Groups</h2><p>Two strings <code>X</code> and <code>Y</code> are similar if we can swap two letters (in different positions) of <code>X</code>, so that it equals <code>Y</code>. Also two strings <code>X</code> and <code>Y</code> are similar if they are equal.</p>
-<p>For example, <code>&quot;tars&quot;</code> and <code>&quot;rats&quot;</code> are similar (swapping at positions <code>0</code> and <code>2</code>), and <code>&quot;rats&quot;</code> and <code>&quot;arts&quot;</code> are similar, but <code>&quot;star&quot;</code> is not similar to <code>&quot;tars&quot;</code>, <code>&quot;rats&quot;</code>, or <code>&quot;arts&quot;</code>.</p>
-<p>Together, these form two connected groups by similarity: <code>&#123;&quot;tars&quot;, &quot;rats&quot;, &quot;arts&quot;&#125;</code> and <code>&#123;&quot;star&quot;&#125;</code>.  Notice that <code>&quot;tars&quot;</code> and <code>&quot;arts&quot;</code> are in the same group even though they are not similar.  Formally, each group is such that a word is in the group if and only if it is similar to at least one other word in the group.</p>
-<p>We are given a list strs of strings where every string in strs is an anagram of every other string in strs. How many groups are there?<br><strong>Example 1:</strong></p>
-<blockquote>
-<p><strong>Input</strong>: strs = [“tars”,”rats”,”arts”,”star”]<br><strong>Output</strong>: 2</p>
-</blockquote>
-<p><strong>Example 2:</strong></p>
-<blockquote>
-<p><strong>Input</strong>: strs = [“omv”,”ovm”]<br><strong>Output</strong>: 1</p>
-</blockquote>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code>1 &lt;= strs.length &lt;= 100</code></li>
-<li><code>1 &lt;= strs[i].length &lt;= 1000</code></li>
-<li><code>sum(strs[i].length) &lt;= 2 * 104</code></li>
-<li><code>strs[i]</code> consists of lowercase letters only.</li>
-<li>All words in <code>strs</code> have the same length and are anagrams of each other.</li>
-</ul>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>并查集</strong><br>相似字符串的意思是：通过交换字符串<code>str1</code>某两个字母的位置，使得<code>str1</code>与<code>str2</code>相同。注意，这里<strong>只能交换两个字母的位置</strong>。<br><strong>具体做法是，将每个字符串当做图的一个节点，当两个字符串相似时，就将两个结点之间画一条边，如此，相似的字符串组就形成了一个连通图，连通区域的个数就是我们想要的答案。</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numSimilarGroups</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">        n = strs.size();</span><br><span class="line">        <span class="function">UnionFind <span class="title">unionFind</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (isSimilar(strs[i], strs[j])) &#123;</span><br><span class="line">                    unionFind.connect(i, j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> unionFind.getRegions();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isSimilar</span><span class="params">(<span class="built_in">string</span> str1, <span class="built_in">string</span> str2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str1.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (str1[i] != str2[i]) &#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count == <span class="number">2</span> || count == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span> &#123;</span></span><br><span class="line">       <span class="keyword">private</span>:</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; parent;</span><br><span class="line">        <span class="keyword">int</span> regions;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">public</span>:</span><br><span class="line">        UnionFind(<span class="keyword">int</span> n) : parent(n), regions(n) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">                parent[i] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">root</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">while</span> (x != parent[x]) &#123;</span><br><span class="line">                parent[x] = parent[parent[x]];</span><br><span class="line">                x = parent[x];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">bool</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; <span class="keyword">return</span> root(x) == root(y); &#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (isConnected(p, q)) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            parent[root(p)] = root(q);</span><br><span class="line">            regions--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">getRegions</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> regions; &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    <div class="collection-year">
+      <span class="collection-header">2021</span>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-	<div>
-		
-			<div>
-    
-        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-    
-</div>
-		
-	</div>
-        
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2021-02-01T13:11:54+08:00"
+              content="2021-02-01">
+          02-01
+        </time>
+      </div>
 
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>ChenShuo
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://www.shuocloud.top/2019/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/" title="LeetCode-839. Similar String Groups（相似字符串组）">https://www.shuocloud.top/2019/01/31/LeetCode-839-Similar-String-Groups（相似字符串组）/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
+      <div class="post-title">
+          <a class="post-title-link" href="/2021/02/01/LeetCode-888-Fair-Candy-Swap%EF%BC%88%E5%85%AC%E5%B9%B3%E7%9A%84%E7%B3%96%E6%9E%9C%E6%A3%92%E4%BA%A4%E6%8D%A2%EF%BC%89/" itemprop="url">
+            <span itemprop="name">LeetCode-888.Fair Candy Swap（公平的糖果棒交换）</span>
+          </a>
+      </div>
 
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
-              <a href="/tags/Depth-first-Search/" rel="tag"><i class="fa fa-tag"></i> Depth-first Search</a>
-              <a href="/tags/Union-Find/" rel="tag"><i class="fa fa-tag"></i> Union Find</a>
-              <a href="/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" rel="tag"><i class="fa fa-tag"></i> 深度优先搜索</a>
-              <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag"><i class="fa fa-tag"></i> 并查集</a>
-              <a href="/tags/%E5%9B%BE/" rel="tag"><i class="fa fa-tag"></i> 图</a>
-              <a href="/tags/Graph/" rel="tag"><i class="fa fa-tag"></i> Graph</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2019/01/31/LeetCode-778-Swim-in-Rising-Water%EF%BC%88%E6%B0%B4%E4%BD%8D%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B3%B3%E6%B1%A0%E4%B8%AD%E6%B8%B8%E6%B3%B3%EF%BC%89/" rel="prev" title="LeetCode-778.Swim in Rising Water（水位上升的泳池中游泳）">
-      <i class="fa fa-chevron-left"></i> LeetCode-778.Swim in Rising Water（水位上升的泳池中游泳）
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/01/28/%E3%80%8A%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F%E3%80%8BSideStory%E3%80%8C%E7%94%BB%E4%B8%AD%E4%BA%BA%E3%80%8D%E6%B4%BB%E5%8A%A8%E5%AE%A3%E4%BC%A0PV/" rel="next" title="《明日方舟》SideStory「画中人」活动宣传PV">
-      《明日方舟》SideStory「画中人」活动宣传PV <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
+    </header>
   </article>
+
+    </div>
+  </div>
   
   
+  
+
   
 
 
 
           </div>
           
-    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -444,7 +292,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">相似字符串组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Similar-String-Groups"><span class="nav-number">2.</span> <span class="nav-text">Similar String Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">解</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -460,7 +307,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -473,7 +320,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

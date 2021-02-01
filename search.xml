@@ -36,42 +36,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-21. Merge Two Sorted Lists（合并两个有序链表）</title>
-    <url>/2018/01/12/LeetCode-21-Merge-Two-Sorted-Lists%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="合并两个有序链表"><a href="#合并两个有序链表" class="headerlink" title="合并两个有序链表"></a>合并两个有序链表</h2><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
-<p>示例：</p>
-<blockquote>
-<p>输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="Merge-Two-Sorted-Lists"><a href="#Merge-Two-Sorted-Lists" class="headerlink" title="Merge Two Sorted Lists"></a>Merge Two Sorted Lists</h2><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
-<p>Example:</p>
-<blockquote>
-<p>Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：递归</strong></p>
-<p>递归结束条件为：任意一个链表为空。</p>
-<p>每次返回两个链表中较小的一个。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l1 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>方法二：迭代</strong></p>
-<p>在两个链表中分别设置一个结点<code>prev</code>，然后比较这两个结点，将较小的那个插入新链表中，并将该结点后移，如此下去，直到某一个链表为空。由上述的步骤可知，剩下的链表的所有元素一定比新链表中的大，因此直接插入到新链表尾部即可。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>注：题解为官方题解。链接：<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/">https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/</a></p>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>递归</tag>
-        <tag>链表</tag>
-        <tag>Recursion</tag>
-        <tag>Linked List</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode-118. Pascal&#39;s Triangle（杨辉三角）</title>
     <url>/2018/01/27/LeetCode-118-Pascal-s-Triangle%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%EF%BC%89/</url>
     <content><![CDATA[<h2 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h2><p>给定一个非负整数 <em>numRows</em>，生成杨辉三角的前 <em>numRows</em> 行。</p>
@@ -146,6 +110,42 @@
         <tag>LeetCode</tag>
         <tag>数组</tag>
         <tag>Array</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-21. Merge Two Sorted Lists（合并两个有序链表）</title>
+    <url>/2018/01/12/LeetCode-21-Merge-Two-Sorted-Lists%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="合并两个有序链表"><a href="#合并两个有序链表" class="headerlink" title="合并两个有序链表"></a>合并两个有序链表</h2><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
+<p>示例：</p>
+<blockquote>
+<p>输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="Merge-Two-Sorted-Lists"><a href="#Merge-Two-Sorted-Lists" class="headerlink" title="Merge Two Sorted Lists"></a>Merge Two Sorted Lists</h2><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+<p>Example:</p>
+<blockquote>
+<p>Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：递归</strong></p>
+<p>递归结束条件为：任意一个链表为空。</p>
+<p>每次返回两个链表中较小的一个。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l1 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二：迭代</strong></p>
+<p>在两个链表中分别设置一个结点<code>prev</code>，然后比较这两个结点，将较小的那个插入新链表中，并将该结点后移，如此下去，直到某一个链表为空。由上述的步骤可知，剩下的链表的所有元素一定比新链表中的大，因此直接插入到新链表尾部即可。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>注：题解为官方题解。链接：<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/">https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/</a></p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>递归</tag>
+        <tag>链表</tag>
+        <tag>Recursion</tag>
+        <tag>Linked List</tag>
       </tags>
   </entry>
   <entry>
@@ -365,58 +365,10 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-66. Plus One（加一）</title>
-    <url>/2018/01/20/LeetCode-66-Plus-One%EF%BC%88%E5%8A%A0%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="加一"><a href="#加一" class="headerlink" title="加一"></a>加一</h2><p>给定一个由<strong>整数</strong>组成的<strong>非空</strong>数组所表示的非负整数，在该数的基础上加一。</p>
-<p>最高位数字存放在数组的首位， 数组中每个元素只存储一个数字。</p>
-<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
-<a id="more"></a>
-
-<p>示例 1:</p>
-<blockquote>
-<p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。</p>
-</blockquote>
-<p>示例 2:</p>
-<blockquote>
-<p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
-</blockquote>
-<h2 id="Plus-One"><a href="#Plus-One" class="headerlink" title="Plus One"></a>Plus One</h2><p>Given a <strong>non-empty</strong> array of digits representing a <strong>non-negative</strong> integer, plus one to the integer.</p>
-<p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</p>
-<p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
-<p>Example 1:</p>
-<blockquote>
-<p>Input: [1,2,3]<br>Output: [1,2,4]<br>Explanation: The array represents the integer 123.</p>
-</blockquote>
-<p>Example 2:</p>
-<blockquote>
-<p>Input: [4,3,2,1]<br>Output: [4,3,2,2]<br>Explanation: The array represents the integer 4321.</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>根据题意，我们无需考虑负数的情况。（当然负数的做法也是类似）</p>
-<p>非负数加法可以分为两类：</p>
-<ol>
-<li>非9的数字加一</li>
-<li>9加一</li>
-</ol>
-<p>第一种情况，我们只需将原数字加一返回即可。</p>
-<p>第二种情况，有进位。</p>
-<p>因此我们可以将加一后的数字对10取余，如果不为0，则是第一种情况；如果为0，则有进位，遍历前一个元素，重复上述操作。</p>
-<p>如果遍历循环能够全部执行完毕，则需要在数组的第一位增加一位1。例如<code>[9, 9]</code>需要变成<code>[1, 0, 0]</code>。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">plusOne</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = digits.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            digits[i] = (++digits[i]) % <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span> (digits[i] != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        digits.insert(digits.begin(), <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode-778.Swim in Rising Water（水位上升的泳池中游泳）</title>
-    <url>/2019/01/31/LeetCode-778-Swim-in-Rising-Water%EF%BC%88%E6%B0%B4%E4%BD%8D%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B3%B3%E6%B1%A0%E4%B8%AD%E6%B8%B8%E6%B3%B3%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="水位上升的泳池中游泳"><a href="#水位上升的泳池中游泳" class="headerlink" title="水位上升的泳池中游泳"></a>水位上升的泳池中游泳</h2><p>在一个 N x N 的坐标方格 <code>grid</code> 中，每一个方格的值 <code>grid[i][j]</code> 表示在位置 <code>(i,j)</code> 的平台高度。</p>
+    <url>/2021/01/30/LeetCode-778-Swim-in-Rising-Water%EF%BC%88%E6%B0%B4%E4%BD%8D%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B3%B3%E6%B1%A0%E4%B8%AD%E6%B8%B8%E6%B3%B3%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="水位上升的泳池中游泳"><a href="#水位上升的泳池中游泳" class="headerlink" title="水位上升的泳池中游泳"></a>水位上升的泳池中游泳</h2><p><strong>每日一题</strong></p>
+<p>在一个 N x N 的坐标方格 <code>grid</code> 中，每一个方格的值 <code>grid[i][j]</code> 表示在位置 <code>(i,j)</code> 的平台高度。</p>
 <p>现在开始下雨了。当时间为 <code>t</code> 时，此时雨水导致水池中任意位置的水位为 <code>t</code> 。你可以从一个平台游向四周相邻的任意一个平台，但是前提是此时水位必须同时淹没这两个平台。假定你可以瞬间移动无限距离，也就是默认在方格内部游动是不耗时的。当然，在你游泳的时候你必须待在坐标方格里面。</p>
 <p>你从坐标方格的左上平台 <code>(0，0)</code> 出发。最少耗时多久你才能到达坐标方格的右下平台 <code>(N-1, N-1)</code>？</p>
 <a id="more"></a>
@@ -471,9 +423,59 @@
       </tags>
   </entry>
   <entry>
+    <title>LeetCode-66. Plus One（加一）</title>
+    <url>/2018/01/20/LeetCode-66-Plus-One%EF%BC%88%E5%8A%A0%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="加一"><a href="#加一" class="headerlink" title="加一"></a>加一</h2><p>给定一个由<strong>整数</strong>组成的<strong>非空</strong>数组所表示的非负整数，在该数的基础上加一。</p>
+<p>最高位数字存放在数组的首位， 数组中每个元素只存储一个数字。</p>
+<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
+<a id="more"></a>
+
+<p>示例 1:</p>
+<blockquote>
+<p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。</p>
+</blockquote>
+<p>示例 2:</p>
+<blockquote>
+<p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
+</blockquote>
+<h2 id="Plus-One"><a href="#Plus-One" class="headerlink" title="Plus One"></a>Plus One</h2><p>Given a <strong>non-empty</strong> array of digits representing a <strong>non-negative</strong> integer, plus one to the integer.</p>
+<p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</p>
+<p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
+<p>Example 1:</p>
+<blockquote>
+<p>Input: [1,2,3]<br>Output: [1,2,4]<br>Explanation: The array represents the integer 123.</p>
+</blockquote>
+<p>Example 2:</p>
+<blockquote>
+<p>Input: [4,3,2,1]<br>Output: [4,3,2,2]<br>Explanation: The array represents the integer 4321.</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>根据题意，我们无需考虑负数的情况。（当然负数的做法也是类似）</p>
+<p>非负数加法可以分为两类：</p>
+<ol>
+<li>非9的数字加一</li>
+<li>9加一</li>
+</ol>
+<p>第一种情况，我们只需将原数字加一返回即可。</p>
+<p>第二种情况，有进位。</p>
+<p>因此我们可以将加一后的数字对10取余，如果不为0，则是第一种情况；如果为0，则有进位，遍历前一个元素，重复上述操作。</p>
+<p>如果遍历循环能够全部执行完毕，则需要在数组的第一位增加一位1。例如<code>[9, 9]</code>需要变成<code>[1, 0, 0]</code>。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">plusOne</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = digits.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            digits[i] = (++digits[i]) % <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span> (digits[i] != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        digits.insert(digits.begin(), <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode-839. Similar String Groups（相似字符串组）</title>
-    <url>/2019/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="相似字符串组"><a href="#相似字符串组" class="headerlink" title="相似字符串组"></a>相似字符串组</h2><p>如果交换字符串 <code>X</code> 中的两个不同位置的字母，使得它和字符串 <code>Y</code> 相等，那么称 <code>X</code> 和 <code>Y</code> 两个字符串相似。如果这两个字符串本身是相等的，那它们也是相似的。</p>
+    <url>/2021/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="相似字符串组"><a href="#相似字符串组" class="headerlink" title="相似字符串组"></a>相似字符串组</h2><p><strong>每日一题</strong></p>
+<p>如果交换字符串 <code>X</code> 中的两个不同位置的字母，使得它和字符串 <code>Y</code> 相等，那么称 <code>X</code> 和 <code>Y</code> 两个字符串相似。如果这两个字符串本身是相等的，那它们也是相似的。</p>
 <a id="more"></a>
 
 <p>例如，<code>&quot;tars&quot;</code> 和 <code>&quot;rats&quot;</code> 是相似的 (交换 <code>0</code> 与 <code>2</code> 的位置)； <code>&quot;rats&quot;</code> 和 <code>&quot;arts&quot;</code> 也是相似的，但是 <code>&quot;star&quot;</code> 不与 <code>&quot;tars&quot;</code>，<code>&quot;rats&quot;</code>，或 <code>&quot;arts&quot;</code> 相似。</p>
@@ -586,6 +588,125 @@
       </tags>
   </entry>
   <entry>
+    <title>LeetCode-888.Fair Candy Swap（公平的糖果棒交换）</title>
+    <url>/2021/02/01/LeetCode-888-Fair-Candy-Swap%EF%BC%88%E5%85%AC%E5%B9%B3%E7%9A%84%E7%B3%96%E6%9E%9C%E6%A3%92%E4%BA%A4%E6%8D%A2%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="公平的糖果棒交换"><a href="#公平的糖果棒交换" class="headerlink" title="公平的糖果棒交换"></a>公平的糖果棒交换</h2><p><strong>每日一题</strong></p>
+<p>爱丽丝和鲍勃有不同大小的糖果棒：<code>A[i]</code> 是爱丽丝拥有的第 <code>i</code> 根糖果棒的大小，<code>B[j]</code> 是鲍勃拥有的第 <code>j</code> 根糖果棒的大小。<br>因为他们是朋友，所以他们想交换一根糖果棒，这样交换后，他们都有相同的糖果总量。（一个人拥有的糖果总量是他们拥有的糖果棒大小的总和。）<br>返回一个整数数组 <code>ans</code>，其中 <code>ans[0]</code> 是爱丽丝必须交换的糖果棒的大小，<code>ans[1]</code> 是鲍勃必须交换的糖果棒的大小。</p>
+<a id="more"></a>
+
+<p>如果有多个答案，你可以返回其中任何一个。保证答案存在。<br><strong>示例 1：</strong></p>
+<blockquote>
+<p><strong>输入</strong>：A = [1,1], B = [2,2]<br><strong>输出</strong>：[1,2]</p>
+</blockquote>
+<p><strong>示例 2：</strong></p>
+<blockquote>
+<p><strong>输入</strong>：A = [1,2], B = [2,3]<br><strong>输出</strong>：[1,2]</p>
+</blockquote>
+<p><strong>示例 3：</strong></p>
+<blockquote>
+<p><strong>输入</strong>：A = [2], B = [1,3]<br><strong>输出</strong>：[2,3]</p>
+</blockquote>
+<p><strong>示例 4：</strong></p>
+<blockquote>
+<p><strong>输入</strong>：A = [1,2,5], B = [2,4]<br><strong>输出</strong>：[5,4]</p>
+</blockquote>
+<p><strong>提示：</strong></p>
+<ol>
+<li><code>1 &lt;= A.length &lt;= 10000</code></li>
+<li><code>1 &lt;= B.length &lt;= 10000</code></li>
+<li><code>1 &lt;= A[i] &lt;= 100000</code></li>
+<li><code>1 &lt;= B[i] &lt;= 100000</code></li>
+<li>保证爱丽丝与鲍勃的糖果总量不同。</li>
+<li>答案肯定存在</li>
+</ol>
+<h2 id="Fair-Candy-Swap"><a href="#Fair-Candy-Swap" class="headerlink" title="Fair Candy Swap"></a>Fair Candy Swap</h2><p>Alice and Bob have candy bars of different sizes: <code>A[i]</code> is the size of the <code>i</code>-th bar of candy that Alice has, and <code>B[j]</code> is the size of the <code>j</code>-th bar of candy that Bob has.<br>Since they are friends, they would like to exchange one candy bar each so that after the exchange, they both have the same total amount of candy.  (The total amount of candy a person has is the sum of the sizes of candy bars they have.)<br>Return an integer array ans where <code>ans[0]</code> is the size of the candy bar that Alice must exchange, and <code>ans[1]</code> is the size of the candy bar that Bob must exchange.<br>If there are multiple answers, you may return any one of them.  It is guaranteed an answer exists.<br><strong>Example 1:</strong></p>
+<blockquote>
+<p>Input: A = [1,1], B = [2,2]<br>Output: [1,2]</p>
+</blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<p>Input: A = [1,2], B = [2,3]<br>Output: [1,2]</p>
+</blockquote>
+<p><strong>Example 3:</strong></p>
+<blockquote>
+<p>Input: A = [2], B = [1,3]<br>Output: [2,3]</p>
+</blockquote>
+<p><strong>Example 4:</strong></p>
+<blockquote>
+<p>Input: A = [1,2,5], B = [2,4]<br>Output: [5,4]</p>
+</blockquote>
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>1 &lt;= A.length &lt;= 10000</code></li>
+<li><code>1 &lt;= B.length &lt;= 10000</code></li>
+<li><code>1 &lt;= A[i] &lt;= 100000</code></li>
+<li><code>1 &lt;= B[i] &lt;= 100000</code></li>
+<li>It is guaranteed that Alice and Bob have different total amounts of candy.</li>
+<li>It is guaranteed there exists an answer.</li>
+</ul>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：哈希表</strong><br>设爱丽丝和鲍勃的糖果总数分别为$sumA$和$sumB$，交换的糖果数分别为$xA$和$xB$，由此我们有等式：<br>$$sumA-xA+xB=sumB+xA-xB$$<br>化简可得：<br>$$xA=xB+\frac{sumA-sumB}{2}$$<br>因此对于<br>$$\forall xB\in B,\exists xA\in A,s.t.\ xA=xB+\frac{sumA-sumB}{2}$$<br>那么<code>&#123;xA, xB&#125;</code>就是一组可行解。<br>为了加快查找速度，我们使用哈希表。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">fairCandySwap</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sumA = accumulate(A.begin(), A.end(), <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> sumB = accumulate(B.begin(), B.end(), <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> delta = (sumA - sumB) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    	<span class="function"><span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt; <span class="title">hashA</span><span class="params">(A.begin(), A.end())</span></span>;</span><br><span class="line">    	<span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">ret</span><span class="params">(<span class="number">2</span>)</span></span>;	<span class="comment">//因为答案一定存在，所以这样写也不会出错</span></span><br><span class="line">    	<span class="keyword">for</span>(<span class="keyword">auto</span> xB: B)&#123;</span><br><span class="line">    		<span class="keyword">int</span> xA = xB + delta;</span><br><span class="line">    		<span class="keyword">if</span>(hashA.count(xA))&#123;	<span class="comment">//能找到解</span></span><br><span class="line">    			ret[<span class="number">0</span>] = xA;</span><br><span class="line">    			ret[<span class="number">1</span>] = xB;</span><br><span class="line">    			<span class="keyword">break</span>;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二：双指针</strong><br>首先将两个数组升序排序。<br>设$$\Delta=\frac{sumA-sumB}{2}$$<br>根据上面的分析，我们知道有以下等式<br>$$xA-xB=\Delta$$<br>设<code>i</code>，<code>j</code>为两个指针，同时设$k=A[i]-B[j]$我们有以下三种情况：</p>
+<ol>
+<li><code>k==delta</code>，直接返回答案</li>
+<li><code>k&gt;delta</code>，增大<code>j</code></li>
+<li><code>k&lt;delta</code>，增大<code>i</code></li>
+</ol>
+<p>由此，代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">fairCandySwap</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sumA = accumulate(A.begin(), A.end(), <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> sumB = accumulate(B.begin(), B.end(), <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> delta = (sumA - sumB) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">ret</span><span class="params">(<span class="number">2</span>)</span></span>;</span><br><span class="line">        sort(A.begin(), A.end());</span><br><span class="line">        sort(B.begin(), B.end());</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; A.size() &amp;&amp; j &lt; B.size()) &#123;</span><br><span class="line">            <span class="keyword">int</span> k = A[i] - B[j];</span><br><span class="line">            <span class="keyword">if</span> (k == delta) &#123;</span><br><span class="line">                ret[<span class="number">0</span>] = A[i];</span><br><span class="line">                ret[<span class="number">1</span>] = B[j];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (k &gt; delta) &#123;</span><br><span class="line">                ++j;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>哈希表</tag>
+        <tag>Array</tag>
+        <tag>双指针</tag>
+        <tag>Two Pointers</tag>
+        <tag>Hash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《崩坏3》动画短片「渡尘」</title>
+    <url>/2021/01/29/%E3%80%8A%E5%B4%A9%E5%9D%8F3%E3%80%8B%E5%8A%A8%E7%94%BB%E7%9F%AD%E7%89%87%E3%80%8C%E6%B8%A1%E5%B0%98%E3%80%8D/</url>
+    <content><![CDATA[<h2 id="《崩坏3》动画短片「渡尘」"><a href="#《崩坏3》动画短片「渡尘」" class="headerlink" title="《崩坏3》动画短片「渡尘」"></a>《崩坏3》动画短片「渡尘」</h2><p><strong>世间之纷扰，早已麻木</strong><br><strong>珍重之羁绊，尽皆离散</strong><br><strong>千年之坚守，只为拯救苍生</strong></p>
+<a id="more"></a>
+
+<p>是糖是糖！</p>
+<p>一路走来，符华真的太不容易了，希望这次是阿符的新生。</p>
+<div class="bilibili">
+    <iframe src="//player.bilibili.com/player.html?aid=501440303&bvid=BV1jN411o7zS&cid=289175447&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
+
+<p>4:47的上仙绝美！</p>
+<p>5:32开始真的要哭出来了</p>
+<p><strong>日月沉浮 ，沧海桑田</strong></p>
+<p><strong>历尽了离别，习惯了绝望</strong></p>
+<p><strong>不知时间为何物</strong></p>
+<p><strong>亡命于无尽的轮回</strong></p>
+<p><strong>只为——</strong></p>
+<p><strong>使命！</strong></p>
+<p><strong>欢迎回家，班长！</strong></p>
+<p>也恭喜短片登顶！</p>
+<p>另外这次「Rubia」——《崩坏3》印象曲（演唱者：周深）也超赞，</p>
+<div class="bilibili">
+    <iframe src="//player.bilibili.com/player.html?aid=543949325&bvid=BV1Yv4y1o7dw&cid=289220053&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
+
+]]></content>
+      <categories>
+        <category>个人动态</category>
+        <category>游戏</category>
+        <category>崩坏三</category>
+      </categories>
+      <tags>
+        <tag>日常谈</tag>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>《明日方舟》SideStory「画中人」活动宣传PV</title>
     <url>/2021/01/28/%E3%80%8A%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F%E3%80%8BSideStory%E3%80%8C%E7%94%BB%E4%B8%AD%E4%BA%BA%E3%80%8D%E6%B4%BB%E5%8A%A8%E5%AE%A3%E4%BC%A0PV/</url>
     <content><![CDATA[<h2 id="《明日方舟》SideStory「画中人」活动宣传PV"><a href="#《明日方舟》SideStory「画中人」活动宣传PV" class="headerlink" title="《明日方舟》SideStory「画中人」活动宣传PV"></a>《明日方舟》SideStory「画中人」活动宣传PV</h2><p>鹰角终于发饼啦！</p>
@@ -634,44 +755,6 @@
         <category>个人动态</category>
         <category>游戏</category>
         <category>明日方舟</category>
-      </categories>
-      <tags>
-        <tag>日常谈</tag>
-        <tag>游戏</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《崩坏3》动画短片「渡尘」</title>
-    <url>/2021/01/29/%E3%80%8A%E5%B4%A9%E5%9D%8F3%E3%80%8B%E5%8A%A8%E7%94%BB%E7%9F%AD%E7%89%87%E3%80%8C%E6%B8%A1%E5%B0%98%E3%80%8D/</url>
-    <content><![CDATA[<h2 id="《崩坏3》动画短片「渡尘」"><a href="#《崩坏3》动画短片「渡尘」" class="headerlink" title="《崩坏3》动画短片「渡尘」"></a>《崩坏3》动画短片「渡尘」</h2><p><strong>世间之纷扰，早已麻木</strong><br><strong>珍重之羁绊，尽皆离散</strong><br><strong>千年之坚守，只为拯救苍生</strong></p>
-<a id="more"></a>
-
-<p>是糖是糖！</p>
-<p>一路走来，符华真的太不容易了，希望这次是阿符的新生。</p>
-<div class="bilibili">
-    <iframe src="//player.bilibili.com/player.html?aid=501440303&bvid=BV1jN411o7zS&cid=289175447&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-</div>
-
-<p>4:47的上仙绝美！</p>
-<p>5:32开始真的要哭出来了</p>
-<p><strong>日月沉浮 ，沧海桑田</strong></p>
-<p><strong>历尽了离别，习惯了绝望</strong></p>
-<p><strong>不知时间为何物</strong></p>
-<p><strong>亡命于无尽的轮回</strong></p>
-<p><strong>只为——</strong></p>
-<p><strong>使命！</strong></p>
-<p><strong>欢迎回家，班长！</strong></p>
-<p>也恭喜短片登顶！</p>
-<p>另外这次「Rubia」——《崩坏3》印象曲（演唱者：周深）也超赞，</p>
-<div class="bilibili">
-    <iframe src="//player.bilibili.com/player.html?aid=543949325&bvid=BV1Yv4y1o7dw&cid=289220053&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-</div>
-
-]]></content>
-      <categories>
-        <category>个人动态</category>
-        <category>游戏</category>
-        <category>崩坏三</category>
       </categories>
       <tags>
         <tag>日常谈</tag>
