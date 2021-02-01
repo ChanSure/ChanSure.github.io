@@ -1,593 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>LeetCode-1. Two Sum（两数之和）</title>
-    <url>/2018/01/12/LeetCode-1-Two-Sum%EF%BC%88%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
-<p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
-<a id="more"></a>
-
-<p> 示例:</p>
-<blockquote>
-<p>给定 nums = [2, 7, 11, 15], target = 9<br>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
-</blockquote>
-<h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h2><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
-<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
-<p>Example:</p>
-<blockquote>
-<p>Given nums = [2, 7, 11, 15], target = 9,<br>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>梦开始的地方（</p>
-<p>使用哈希表对于每一个<code>x</code>，我们首先查询哈希表中是否存在<code>target - x</code>，然后将<code>x</code>插入到哈希表中，即可保证不会让<code>x</code>和自己匹配。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; hashtable;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = hashtable.find(target - nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (it != hashtable.end()) &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;it-&gt;second, i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashtable[nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>下面这个是初学时用的暴力搜索</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">twoSum</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j,flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> a[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; numsSize; i++ )&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; numsSize; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] + nums[j] == target)&#123;</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">break</span>;           </span><br><span class="line">    &#125;</span><br><span class="line">    a[<span class="number">0</span>] = i;</span><br><span class="line">    a[<span class="number">1</span>] = j;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>哈希表</tag>
-        <tag>Array</tag>
-        <tag>Hash Table</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-119. Pascal&#39;s Triangle II（杨辉三角 II）</title>
-    <url>/2018/01/28/LeetCode-119-Pascal-s-Triangle-II%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92-II%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="杨辉三角-II"><a href="#杨辉三角-II" class="headerlink" title="杨辉三角 II"></a>杨辉三角 II</h2><p>给定一个非负索引 <em>k</em>，其中 <em>k ≤ 33</em>，返回杨辉三角的第 <em>k</em> 行。</p>
-<a id="more"></a>
-
-<p><img src="https://img-blog.csdnimg.cn/2019021318314726.gif" alt="在这里插入图片描述"><br>在杨辉三角中，每个数是它左上方和右上方的数的和。</p>
-<p>示例:</p>
-<blockquote>
-<p>输入: 3<br>输出: [1,3,3,1]</p>
-</blockquote>
-<p><strong>进阶：</strong></p>
-<p>你可以优化你的算法到 O(k) 空间复杂度吗？</p>
-<h2 id="Pascal’s-Triangle-II"><a href="#Pascal’s-Triangle-II" class="headerlink" title="Pascal’s Triangle II"></a>Pascal’s Triangle II</h2><p>Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal’s triangle.</p>
-<p>Note that the row index starts from 0.<br><img src="https://img-blog.csdnimg.cn/20190213183722217.gif" alt="在这里插入图片描述"><br>In Pascal’s triangle, each number is the sum of the two numbers directly above it.</p>
-<p>Example:</p>
-<blockquote>
-<p>Input: 3<br>Output: [1,3,3,1]</p>
-</blockquote>
-<p><strong>Follow up:</strong></p>
-<p>Could you optimize your algorithm to use only O(k) extra space?</p>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>由<a href="https://ichen2000.com/2018/01/27/LeetCode-118-Pascal-s-Triangle%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%EF%BC%89/"  target="_blank">第118题的题解</a>中的性质5：二项式 $(a+b)^n$ 的系数对应杨辉三角第 $n$ 行的每一个数。</p>
-<p>同时我们知道<br>$$<br>\begin{align}<br>c^i_n&amp;=\frac{n!}{i!(n-i)!} \newline<br>c^{i+1}_n&amp;=\frac{n!}{(i+1)!(n-i-1)!}<br>\end{align}<br>$$<br>由(1)(2)得</p>
-<p>$$c^{i+1}_n=\frac{n-i}{i+1}c^i_n$$</p>
-<p>然后们就有如下解法</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">getRow</span><span class="params">(<span class="keyword">int</span> rowIndex)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">res</span><span class="params">(rowIndex + <span class="number">1</span>)</span></span>;</span><br><span class="line">        res[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= rowIndex; ++ i)</span><br><span class="line">            res[i] = (<span class="keyword">long</span> <span class="keyword">long</span>)res[i - <span class="number">1</span>] * (rowIndex - i + <span class="number">1</span>) / i;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-21. Merge Two Sorted Lists（合并两个有序链表）</title>
-    <url>/2018/01/12/LeetCode-21-Merge-Two-Sorted-Lists%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="合并两个有序链表"><a href="#合并两个有序链表" class="headerlink" title="合并两个有序链表"></a>合并两个有序链表</h2><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
-<p>示例：</p>
-<blockquote>
-<p>输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="Merge-Two-Sorted-Lists"><a href="#Merge-Two-Sorted-Lists" class="headerlink" title="Merge Two Sorted Lists"></a>Merge Two Sorted Lists</h2><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
-<p>Example:</p>
-<blockquote>
-<p>Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：递归</strong></p>
-<p>递归结束条件为：任意一个链表为空。</p>
-<p>每次返回两个链表中较小的一个。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l1 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>方法二：迭代</strong></p>
-<p>在两个链表中分别设置一个结点<code>prev</code>，然后比较这两个结点，将较小的那个插入新链表中，并将该结点后移，如此下去，直到某一个链表为空。由上述的步骤可知，剩下的链表的所有元素一定比新链表中的大，因此直接插入到新链表尾部即可。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>注：题解为官方题解。链接：<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/">https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/</a></p>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>递归</tag>
-        <tag>链表</tag>
-        <tag>Recursion</tag>
-        <tag>Linked List</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-26. Remove Duplicates from Sorted Array（删除排序数组中的重复项）</title>
-    <url>/2018/01/12/LeetCode-26-Remove-Duplicates-from-Sorted-Array%EF%BC%88%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="删除排序数组中的重复项"><a href="#删除排序数组中的重复项" class="headerlink" title="删除排序数组中的重复项"></a>删除排序数组中的重复项</h2><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
-<a id="more"></a>
-
-<p>示例 1:</p>
-<blockquote>
-<p>给定数组 nums = [1,1,2],<br>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。<br>你不需要考虑数组中超出新长度后面的元素。</p>
-</blockquote>
-<p>示例 2:</p>
-<blockquote>
-<p>给定 nums = [0,0,1,1,1,2,2,3,3,4],<br>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。<br>你不需要考虑数组中超出新长度后面的元素。</p>
-</blockquote>
-<p><strong>说明:</strong></p>
-<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
-<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
-<p>你可以想象内部操作如下:</p>
-<blockquote>
-<p>// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝<br>int len = removeDuplicates(nums);<br>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>for (int i = 0; i &lt; len; i++) {<br>    print(nums[i]);<br>}</p>
-</blockquote>
-<h2 id="Remove-Duplicates-from-Sorted-Array"><a href="#Remove-Duplicates-from-Sorted-Array" class="headerlink" title="Remove Duplicates from Sorted Array"></a>Remove Duplicates from Sorted Array</h2><p>Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.</p>
-<p>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
-<p>Example 1:</p>
-<blockquote>
-<p>Given nums = [1,1,2],<br>Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.<br>It doesn’t matter what you leave beyond the returned length.</p>
-</blockquote>
-<p>Example 2:</p>
-<blockquote>
-<p>Given nums = [0,0,1,1,1,2,2,3,3,4],<br>Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.<br>It doesn’t matter what values are set beyond the returned length.</p>
-</blockquote>
-<p><strong>Clarification:</strong></p>
-<p>Confused why the returned value is an integer but your answer is an array?</p>
-<p>Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.</p>
-<p>Internally you can think of this:</p>
-<blockquote>
-<p>// nums is passed in by reference. (i.e., without making a copy)<br>int len = removeDuplicates(nums);<br>// any modification to nums in your function would be known by the caller.<br>// using the length returned by your function, it prints the first len elements.<br>for (int i = 0; i &lt; len; i++) {<br>    print(nums[i]);<br>}</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>双指针法</strong></p>
-<p>设置两个指针，一个慢指针<code>i</code>，一个快指针<code>j</code>。只要 $nums[i]==nums[j]$， 就增加<code>j</code>。</p>
-<p>当$nums[i]!=nums[j]$时，说明重复项已经遍历过了，因此我们将$nums[j]$的值赋给$nums[i+1]$，递增<code>i</code>，然后重复上述过程。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.size() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.size(); j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != nums[j])&#123;</span><br><span class="line">                nums[++i] = nums[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-        <tag>双指针</tag>
-        <tag>Two Pointers</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-118. Pascal&#39;s Triangle（杨辉三角）</title>
-    <url>/2018/01/27/LeetCode-118-Pascal-s-Triangle%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h2><p>给定一个非负整数 <em>numRows</em>，生成杨辉三角的前 <em>numRows</em> 行。</p>
-<a id="more"></a>
-
-<p><img src="https://img-blog.csdnimg.cn/20190213182724160.gif" alt="在这里插入图片描述"><br>在杨辉三角中，每个数是它左上方和右上方的数的和。<br>示例:</p>
-<blockquote>
-<p>输入: 5<br>输出:<br>[<br>       [1],<br>     [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]</p>
-</blockquote>
-<h2 id="Pascal’s-Triangle"><a href="#Pascal’s-Triangle" class="headerlink" title="Pascal’s Triangle"></a>Pascal’s Triangle</h2><p>Given a non-negative integer numRows, generate the first numRows of Pascal’s triangle.<br><img src="https://img-blog.csdnimg.cn/20190213182902277.gif" alt="在这里插入图片描述"><br>In Pascal’s triangle, each number is the sum of the two numbers directly above it.</p>
-<p>Example:</p>
-<blockquote>
-<p>Input: 5<br>Output:<br>[<br>     [1],<br>    [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一</strong></p>
-<p>在小学二年级学习组合数的时候，我们就知道杨辉三角能够表示二项式的系数，且有以下性质：</p>
-<ol>
-<li>对称性：首项和末项都为1</li>
-<li>第 $n$ 行（从 $0$ 编号）有 $n+1$ 项，前 $n$ 行共有 $\frac{n(n+1)}{2}$ 个数。</li>
-<li>第 $n$ 行第 $m$ 个数可以用组合数 $C^m_n$ 表示，且 $c^m_n=\frac{n!}{m!(n-m)!}$</li>
-<li>每个数字等于其两肩上的数之和，这也是组合数的性质之一，即 $c_n^i=c_{n-1}^{i-1}+c_{n-1}^i$</li>
-<li>二项式 $(a+b)^n$ 的系数对应杨辉三角第 $n$ 行的每一个数。</li>
-</ol>
-<p>由性质4我们可有解法：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret(numRows);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; ++i) &#123;</span><br><span class="line">            ret[i].resize(i + <span class="number">1</span>);</span><br><span class="line">            ret[i][<span class="number">0</span>] = ret[i][i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; ++j) &#123;</span><br><span class="line">                ret[i][j] = ret[i - <span class="number">1</span>][j] + ret[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>方法二：打表（不讲武德法</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a = &#123;</span><br><span class="line">            &#123;<span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">6</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">15</span>, <span class="number">6</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">21</span>, <span class="number">35</span>, <span class="number">35</span>, <span class="number">21</span>, <span class="number">7</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">8</span>, <span class="number">28</span>, <span class="number">56</span>, <span class="number">70</span>, <span class="number">56</span>, <span class="number">28</span>, <span class="number">8</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">9</span>, <span class="number">36</span>, <span class="number">84</span>, <span class="number">126</span>, <span class="number">126</span>, <span class="number">84</span>, <span class="number">36</span>, <span class="number">9</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">10</span>, <span class="number">45</span>, <span class="number">120</span>, <span class="number">210</span>, <span class="number">252</span>, <span class="number">210</span>, <span class="number">120</span>, <span class="number">45</span>, <span class="number">10</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">11</span>, <span class="number">55</span>, <span class="number">165</span>, <span class="number">330</span>, <span class="number">462</span>, <span class="number">462</span>, <span class="number">330</span>, <span class="number">165</span>, <span class="number">55</span>, <span class="number">11</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">12</span>, <span class="number">66</span>, <span class="number">220</span>, <span class="number">495</span>, <span class="number">792</span>, <span class="number">924</span>, <span class="number">792</span>, <span class="number">495</span>, <span class="number">220</span>, <span class="number">66</span>, <span class="number">12</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">13</span>, <span class="number">78</span>, <span class="number">286</span>, <span class="number">715</span>, <span class="number">1287</span>, <span class="number">1716</span>, <span class="number">1716</span>, <span class="number">1287</span>, <span class="number">715</span>, <span class="number">286</span>, <span class="number">78</span>, <span class="number">13</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">14</span>, <span class="number">91</span>, <span class="number">364</span>, <span class="number">1001</span>, <span class="number">2002</span>, <span class="number">3003</span>, <span class="number">3432</span>, <span class="number">3003</span>, <span class="number">2002</span>, <span class="number">1001</span>, <span class="number">364</span>, <span class="number">91</span>, <span class="number">14</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">15</span>, <span class="number">105</span>, <span class="number">455</span>, <span class="number">1365</span>, <span class="number">3003</span>, <span class="number">5005</span>, <span class="number">6435</span>, <span class="number">6435</span>, <span class="number">5005</span>, <span class="number">3003</span>, <span class="number">1365</span>, <span class="number">455</span>, <span class="number">105</span>, <span class="number">15</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">16</span>, <span class="number">120</span>, <span class="number">560</span>, <span class="number">1820</span>, <span class="number">4368</span>, <span class="number">8008</span>, <span class="number">11440</span>, <span class="number">12870</span>, <span class="number">11440</span>, <span class="number">8008</span>, <span class="number">4368</span>, <span class="number">1820</span>, <span class="number">560</span>, <span class="number">120</span>, <span class="number">16</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">17</span>, <span class="number">136</span>, <span class="number">680</span>, <span class="number">2380</span>, <span class="number">6188</span>, <span class="number">12376</span>, <span class="number">19448</span>, <span class="number">24310</span>, <span class="number">24310</span>, <span class="number">19448</span>, <span class="number">12376</span>, <span class="number">6188</span>, <span class="number">2380</span>, <span class="number">680</span>, <span class="number">136</span>, <span class="number">17</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">18</span>, <span class="number">153</span>, <span class="number">816</span>, <span class="number">3060</span>, <span class="number">8568</span>, <span class="number">18564</span>, <span class="number">31824</span>, <span class="number">43758</span>, <span class="number">48620</span>, <span class="number">43758</span>, <span class="number">31824</span>, <span class="number">18564</span>, <span class="number">8568</span>, <span class="number">3060</span>, <span class="number">816</span>, <span class="number">153</span>, <span class="number">18</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">19</span>, <span class="number">171</span>, <span class="number">969</span>, <span class="number">3876</span>, <span class="number">11628</span>, <span class="number">27132</span>, <span class="number">50388</span>, <span class="number">75582</span>, <span class="number">92378</span>, <span class="number">92378</span>, <span class="number">75582</span>, <span class="number">50388</span>, <span class="number">27132</span>, <span class="number">11628</span>, <span class="number">3876</span>, <span class="number">969</span>, <span class="number">171</span>, <span class="number">19</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">20</span>, <span class="number">190</span>, <span class="number">1140</span>, <span class="number">4845</span>, <span class="number">15504</span>, <span class="number">38760</span>, <span class="number">77520</span>, <span class="number">125970</span>, <span class="number">167960</span>, <span class="number">184756</span>, <span class="number">167960</span>, <span class="number">125970</span>, <span class="number">77520</span>, <span class="number">38760</span>, <span class="number">15504</span>, <span class="number">4845</span>, <span class="number">1140</span>, <span class="number">190</span>, <span class="number">20</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">21</span>, <span class="number">210</span>, <span class="number">1330</span>, <span class="number">5985</span>, <span class="number">20349</span>, <span class="number">54264</span>, <span class="number">116280</span>, <span class="number">203490</span>, <span class="number">293930</span>, <span class="number">352716</span>, <span class="number">352716</span>, <span class="number">293930</span>, <span class="number">203490</span>, <span class="number">116280</span>, <span class="number">54264</span>, <span class="number">20349</span>, <span class="number">5985</span>, <span class="number">1330</span>, <span class="number">210</span>, <span class="number">21</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">22</span>, <span class="number">231</span>, <span class="number">1540</span>, <span class="number">7315</span>, <span class="number">26334</span>, <span class="number">74613</span>, <span class="number">170544</span>, <span class="number">319770</span>, <span class="number">497420</span>, <span class="number">646646</span>, <span class="number">705432</span>, <span class="number">646646</span>, <span class="number">497420</span>, <span class="number">319770</span>, <span class="number">170544</span>, <span class="number">74613</span>, <span class="number">26334</span>, <span class="number">7315</span>, <span class="number">1540</span>, <span class="number">231</span>, <span class="number">22</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">23</span>, <span class="number">253</span>, <span class="number">1771</span>, <span class="number">8855</span>, <span class="number">33649</span>, <span class="number">100947</span>, <span class="number">245157</span>, <span class="number">490314</span>, <span class="number">817190</span>, <span class="number">1144066</span>, <span class="number">1352078</span>, <span class="number">1352078</span>, <span class="number">1144066</span>, <span class="number">817190</span>, <span class="number">490314</span>, <span class="number">245157</span>, <span class="number">100947</span>, <span class="number">33649</span>, <span class="number">8855</span>, <span class="number">1771</span>, <span class="number">253</span>, <span class="number">23</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">24</span>, <span class="number">276</span>, <span class="number">2024</span>, <span class="number">10626</span>, <span class="number">42504</span>, <span class="number">134596</span>, <span class="number">346104</span>, <span class="number">735471</span>, <span class="number">1307504</span>, <span class="number">1961256</span>, <span class="number">2496144</span>, <span class="number">2704156</span>, <span class="number">2496144</span>, <span class="number">1961256</span>, <span class="number">1307504</span>, <span class="number">735471</span>, <span class="number">346104</span>, <span class="number">134596</span>, <span class="number">42504</span>, <span class="number">10626</span>, <span class="number">2024</span>, <span class="number">276</span>, <span class="number">24</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">25</span>, <span class="number">300</span>, <span class="number">2300</span>, <span class="number">12650</span>, <span class="number">53130</span>, <span class="number">177100</span>, <span class="number">480700</span>, <span class="number">1081575</span>, <span class="number">2042975</span>, <span class="number">3268760</span>, <span class="number">4457400</span>, <span class="number">5200300</span>, <span class="number">5200300</span>, <span class="number">4457400</span>, <span class="number">3268760</span>, <span class="number">2042975</span>, <span class="number">1081575</span>, <span class="number">480700</span>, <span class="number">177100</span>, <span class="number">53130</span>, <span class="number">12650</span>, <span class="number">2300</span>, <span class="number">300</span>, <span class="number">25</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">26</span>, <span class="number">325</span>, <span class="number">2600</span>, <span class="number">14950</span>, <span class="number">65780</span>, <span class="number">230230</span>, <span class="number">657800</span>, <span class="number">1562275</span>, <span class="number">3124550</span>, <span class="number">5311735</span>, <span class="number">7726160</span>, <span class="number">9657700</span>, <span class="number">10400600</span>, <span class="number">9657700</span>, <span class="number">7726160</span>, <span class="number">5311735</span>, <span class="number">3124550</span>, <span class="number">1562275</span>, <span class="number">657800</span>, <span class="number">230230</span>, <span class="number">65780</span>, <span class="number">14950</span>, <span class="number">2600</span>, <span class="number">325</span>, <span class="number">26</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">27</span>, <span class="number">351</span>, <span class="number">2925</span>, <span class="number">17550</span>, <span class="number">80730</span>, <span class="number">296010</span>, <span class="number">888030</span>, <span class="number">2220075</span>, <span class="number">4686825</span>, <span class="number">8436285</span>, <span class="number">13037895</span>, <span class="number">17383860</span>, <span class="number">20058300</span>, <span class="number">20058300</span>, <span class="number">17383860</span>, <span class="number">13037895</span>, <span class="number">8436285</span>, <span class="number">4686825</span>, <span class="number">2220075</span>, <span class="number">888030</span>, <span class="number">296010</span>, <span class="number">80730</span>, <span class="number">17550</span>, <span class="number">2925</span>, <span class="number">351</span>, <span class="number">27</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">28</span>, <span class="number">378</span>, <span class="number">3276</span>, <span class="number">20475</span>, <span class="number">98280</span>, <span class="number">376740</span>, <span class="number">1184040</span>, <span class="number">3108105</span>, <span class="number">6906900</span>, <span class="number">13123110</span>, <span class="number">21474180</span>, <span class="number">30421755</span>, <span class="number">37442160</span>, <span class="number">40116600</span>, <span class="number">37442160</span>, <span class="number">30421755</span>, <span class="number">21474180</span>, <span class="number">13123110</span>, <span class="number">6906900</span>, <span class="number">3108105</span>, <span class="number">1184040</span>, <span class="number">376740</span>, <span class="number">98280</span>, <span class="number">20475</span>, <span class="number">3276</span>, <span class="number">378</span>, <span class="number">28</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">29</span>, <span class="number">406</span>, <span class="number">3654</span>, <span class="number">23751</span>, <span class="number">118755</span>, <span class="number">475020</span>, <span class="number">1560780</span>, <span class="number">4292145</span>, <span class="number">10015005</span>, <span class="number">20030010</span>, <span class="number">34597290</span>, <span class="number">51895935</span>, <span class="number">67863915</span>, <span class="number">77558760</span>, <span class="number">77558760</span>, <span class="number">67863915</span>, <span class="number">51895935</span>, <span class="number">34597290</span>, <span class="number">20030010</span>, <span class="number">10015005</span>, <span class="number">4292145</span>, <span class="number">1560780</span>, <span class="number">475020</span>, <span class="number">118755</span>, <span class="number">23751</span>, <span class="number">3654</span>, <span class="number">406</span>, <span class="number">29</span>, <span class="number">1</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">            ret.push_back(a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>哈哈哈哈哈哈哈哈</p>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-27. Remove Element（移除元素）</title>
-    <url>/2018/01/12/LeetCode-27-Remove-Element%EF%BC%88%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h2><p>给定一个数组 <code>nums</code> 和一个值 <code>val</code>，你需要原地移除所有数值等于 <code>val</code> 的元素，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
-<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
-<a id="more"></a>
-
-<p>示例 1:</p>
-<blockquote>
-<p>给定 nums = [3,2,2,3], val = 3,<br>函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。<br>你不需要考虑数组中超出新长度后面的元素。</p>
-</blockquote>
-<p>示例 2:</p>
-<blockquote>
-<p>给定 nums = [0,1,2,2,3,0,4,2], val = 2,<br>函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。<br>注意这五个元素可为任意顺序。<br>你不需要考虑数组中超出新长度后面的元素。</p>
-</blockquote>
-<p><strong>说明:</strong></p>
-<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
-<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
-<p>你可以想象内部操作如下:</p>
-<blockquote>
-<p>// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>int len = removeElement(nums, val);<br>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>for (int i = 0; i &lt; len; i++) {<br>print(nums[i]);<br>}</p>
-</blockquote>
-<h2 id="Remove-Element"><a href="#Remove-Element" class="headerlink" title="Remove Element"></a>Remove Element</h2><p>Given an array nums and a value val, remove all instances of that value in-place and return the new length.</p>
-<p>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
-<p>The order of elements can be changed. It doesn’t matter what you leave beyond the new length.</p>
-<p>Example 1:</p>
-<blockquote>
-<p>Given nums = [3,2,2,3], val = 3,<br>Your function should return length = 2, with the first two elements of nums being 2.<br>It doesn’t matter what you leave beyond the returned length.</p>
-</blockquote>
-<p>Example 2:</p>
-<blockquote>
-<p>Given nums = [0,1,2,2,3,0,4,2], val = 2,<br>Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4.<br>Note that the order of those five elements can be arbitrary.<br>It doesn’t matter what values are set beyond the returned length.</p>
-</blockquote>
-<p><strong>Clarification:</strong></p>
-<p>Confused why the returned value is an integer but your answer is an array?</p>
-<p>Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.</p>
-<p>Internally you can think of this:</p>
-<blockquote>
-<p>// nums is passed in by reference. (i.e., without making a copy)<br>int len = removeElement(nums, val);<br>// any modification to nums in your function would be known by the caller.<br>// using the length returned by your function, it prints the first len elements.<br>for (int i = 0; i &lt; len; i++) {<br>print(nums[i]);<br>}</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>这道题其实和<a href="https://ichen2000.com/2018/01/12/LeetCode-26-Remove-Duplicates-from-Sorted-Array%EF%BC%88%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%89/" target="_blank">LeetCode26题删除重复元素</a>相同的道理。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; numsSize; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i] != val)&#123;</span><br><span class="line">            nums[count++] = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-        <tag>双指针</tag>
-        <tag>Two Pointers</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-35. Search Insert Position（搜索插入位置）</title>
-    <url>/2018/01/12/LeetCode-35-Search-Insert-Position%EF%BC%88%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="搜索插入位置"><a href="#搜索插入位置" class="headerlink" title="搜索插入位置"></a>搜索插入位置</h2><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
-<p>你可以假设数组中无重复元素。</p>
-<a id="more"></a>
-
-<p>示例 1:</p>
-<blockquote>
-<p>输入: [1,3,5,6], 5<br>输出: 2</p>
-</blockquote>
-<p>示例 2:</p>
-<blockquote>
-<p>输入: [1,3,5,6], 2<br>输出: 1</p>
-</blockquote>
-<p>示例 3:</p>
-<blockquote>
-<p>输入: [1,3,5,6], 7<br>输出: 4</p>
-</blockquote>
-<p>示例 4:</p>
-<blockquote>
-<p>输入: [1,3,5,6], 0<br>输出: 0</p>
-</blockquote>
-<h2 id="Search-Insert-Position"><a href="#Search-Insert-Position" class="headerlink" title="Search Insert Position"></a>Search Insert Position</h2><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
-<p>You may assume no duplicates in the array.</p>
-<p>Example 1:</p>
-<blockquote>
-<p>Input: [1,3,5,6], 5<br>Output: 2</p>
-</blockquote>
-<p>Example 2:</p>
-<blockquote>
-<p>Input: [1,3,5,6], 2<br>Output: 1</p>
-</blockquote>
-<p>Example 3:</p>
-<blockquote>
-<p>Input: [1,3,5,6], 7<br>Output: 4</p>
-</blockquote>
-<p>Example 4:</p>
-<blockquote>
-<p>Input: [1,3,5,6], 0<br>Output: 0</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>二分查找</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &lt; target)&#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>另外，我们还可以使用c++的STL</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lower_bound(nums.begin(),nums.end(),target) - nums.begin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><code>lower_bound()</code>也是用二分法实现的。</p>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-        <tag>二分查找</tag>
-        <tag>Binary Search</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-53. Maximum Subarray（最大子序和）</title>
-    <url>/2018/01/12/LeetCode-53-Maximum-Subarray%EF%BC%88%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="最大子序和"><a href="#最大子序和" class="headerlink" title="最大子序和"></a>最大子序和</h2><p>给定一个整数数组 <code>nums</code> ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
-<a id="more"></a>
-
-<p>示例:</p>
-<blockquote>
-<p>输入: [-2,1,-3,4,-1,2,1,-5,4],<br>输出: 6<br>解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</p>
-</blockquote>
-<p><strong>进阶:</strong></p>
-<p>如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的<strong>分治法</strong>求解。</p>
-<h2 id="Maximum-Subarray"><a href="#Maximum-Subarray" class="headerlink" title="Maximum Subarray"></a>Maximum Subarray</h2><p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
-<p>Example:</p>
-<blockquote>
-<p>Input: [-2,1,-3,4,-1,2,1,-5,4],<br>Output: 6<br>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
-</blockquote>
-<p><strong>Follow up:</strong></p>
-<p>If you have figured out the O(n) solution, try coding another solution using <strong>the divide and conquer approach</strong>, which is more subtle.</p>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一(动态规划)</strong><br>设数组<code>nums</code>的长度为$n$。</p>
-<p>设$f(i)$为以<code>nums[i]</code>结尾的连续子数组的最大和，我们要求的就是：</p>
-<p>$$\max \limits_{0\leq i\leq n-1}{f(i)}$$</p>
-<p>因此我们只需要求出每个$f(i)$，然后取其最大值即可。在求$f(i)$的时候，我们要注意$f(i-1)$的值，如果它为负值，那么我们可以直接将其舍弃掉，因为一个数加上一个负数后会变小。由此，我们有状态转移方程：</p>
-<p>$$f(i)=\max {f(i-1)+nums[i], nums[i]}$$</p>
-<p>我们可以将空间复杂度优化到$O(1)$。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> sum = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; numsSize;i++)&#123;</span><br><span class="line">        sum = (sum + nums[i]) &gt; nums[i] ? (sum + nums[i]) : nums[i];</span><br><span class="line">        max = sum &gt; max ? sum : max;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>方法二（分治法）</strong><br>分成子问题解决。结构体中<code>l</code>表示数组中以最左侧数字起的连续最大值，<code>max</code>表示数组中的连续最大值，<code>r</code>表示数组中以最右侧数字为终点的连续最大值，<code>sum</code>表示数组之和。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">val</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> l;</span><br><span class="line">    <span class="keyword">int</span> max;</span><br><span class="line">    <span class="keyword">int</span> r;</span><br><span class="line">    <span class="keyword">int</span> sum;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max(a, b) (a &gt; b ? a : b)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> min(a, b) (a &gt; b ? b : a)</span></span><br><span class="line"><span class="function">struct val <span class="title">maxSub</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">t</span> =</span> &#123;nums[<span class="number">0</span>], nums[<span class="number">0</span>], nums[<span class="number">0</span>], nums[<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v1</span> =</span> maxSub(nums, n / <span class="number">2</span>);</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v2</span> =</span> maxSub(nums + n / <span class="number">2</span>, n - n / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">int</span> l = max(v1.l, v1.sum + v2. l);</span><br><span class="line">    <span class="keyword">int</span> max = max(max(v1.max, v2.max), v1.r + v2.l);</span><br><span class="line">    <span class="keyword">int</span> r = max(v2.r, v1.r + v2.sum);</span><br><span class="line">    <span class="keyword">int</span> sum = v1.sum + v2.sum;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">t</span> =</span> &#123;l, max, r, sum&#125;;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v</span> =</span> maxSub(nums, numsSize);</span><br><span class="line">    <span class="keyword">return</span> v.max;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//转 载</span></span><br></pre></td></tr></table></figure>
-<p><strong>方法三（贪心算法）</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, sum = <span class="number">0</span>, min = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; numsSize; i++) &#123;</span><br><span class="line">        sum += nums[i];</span><br><span class="line">        <span class="keyword">if</span>(sum - min &gt; max)</span><br><span class="line">            max = sum - min;</span><br><span class="line">        <span class="keyword">if</span>(sum &lt; min)</span><br><span class="line">            min = sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-        <tag>分治算法</tag>
-        <tag>动态规划</tag>
-        <tag>Divide and Conquer</tag>
-        <tag>Dynamic Programming</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-66. Plus One（加一）</title>
-    <url>/2018/01/20/LeetCode-66-Plus-One%EF%BC%88%E5%8A%A0%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="加一"><a href="#加一" class="headerlink" title="加一"></a>加一</h2><p>给定一个由<strong>整数</strong>组成的<strong>非空</strong>数组所表示的非负整数，在该数的基础上加一。</p>
-<p>最高位数字存放在数组的首位， 数组中每个元素只存储一个数字。</p>
-<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
-<a id="more"></a>
-
-<p>示例 1:</p>
-<blockquote>
-<p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。</p>
-</blockquote>
-<p>示例 2:</p>
-<blockquote>
-<p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
-</blockquote>
-<h2 id="Plus-One"><a href="#Plus-One" class="headerlink" title="Plus One"></a>Plus One</h2><p>Given a <strong>non-empty</strong> array of digits representing a <strong>non-negative</strong> integer, plus one to the integer.</p>
-<p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</p>
-<p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
-<p>Example 1:</p>
-<blockquote>
-<p>Input: [1,2,3]<br>Output: [1,2,4]<br>Explanation: The array represents the integer 123.</p>
-</blockquote>
-<p>Example 2:</p>
-<blockquote>
-<p>Input: [4,3,2,1]<br>Output: [4,3,2,2]<br>Explanation: The array represents the integer 4321.</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>根据题意，我们无需考虑负数的情况。（当然负数的做法也是类似）</p>
-<p>非负数加法可以分为两类：</p>
-<ol>
-<li>非9的数字加一</li>
-<li>9加一</li>
-</ol>
-<p>第一种情况，我们只需将原数字加一返回即可。</p>
-<p>第二种情况，有进位。</p>
-<p>因此我们可以将加一后的数字对10取余，如果不为0，则是第一种情况；如果为0，则有进位，遍历前一个元素，重复上述操作。</p>
-<p>如果遍历循环能够全部执行完毕，则需要在数组的第一位增加一位1。例如<code>[9, 9]</code>需要变成<code>[1, 0, 0]</code>。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">plusOne</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = digits.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            digits[i] = (++digits[i]) % <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span> (digits[i] != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        digits.insert(digits.begin(), <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-778.Swim in Rising Water（水位上升的泳池中游泳）</title>
-    <url>/2021/01/30/LeetCode-778-Swim-in-Rising-Water%EF%BC%88%E6%B0%B4%E4%BD%8D%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B3%B3%E6%B1%A0%E4%B8%AD%E6%B8%B8%E6%B3%B3%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="水位上升的泳池中游泳"><a href="#水位上升的泳池中游泳" class="headerlink" title="水位上升的泳池中游泳"></a>水位上升的泳池中游泳</h2><p><strong>每日一题</strong></p>
-<p>在一个 N x N 的坐标方格 <code>grid</code> 中，每一个方格的值 <code>grid[i][j]</code> 表示在位置 <code>(i,j)</code> 的平台高度。</p>
-<p>现在开始下雨了。当时间为 <code>t</code> 时，此时雨水导致水池中任意位置的水位为 <code>t</code> 。你可以从一个平台游向四周相邻的任意一个平台，但是前提是此时水位必须同时淹没这两个平台。假定你可以瞬间移动无限距离，也就是默认在方格内部游动是不耗时的。当然，在你游泳的时候你必须待在坐标方格里面。</p>
-<p>你从坐标方格的左上平台 <code>(0，0)</code> 出发。最少耗时多久你才能到达坐标方格的右下平台 <code>(N-1, N-1)</code>？</p>
-<a id="more"></a>
-
-<p><strong>示例1</strong></p>
-<blockquote>
-<p><strong>输入</strong>: [[0,2],[1,3]]<br><strong>输出</strong>: 3<br><strong>解释</strong>:<br>时间为0时，你位于坐标方格的位置为 (0, 0)。<br>此时你不能游向任意方向，因为四个相邻方向平台的高度都大于当前时间为 0 时的水位。<br>等时间到达 3 时，你才可以游向平台 (1, 1). 因为此时的水位是 3，坐标方格中的平台没有比水位 3 更高的，所以你可以游向坐标方格中的任意位置</p>
-</blockquote>
-<p><strong>示例2</strong></p>
-<blockquote>
-<p><strong>输入</strong>: [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]<br><strong>输出</strong>: 16<br><strong>解释</strong>:<br>0  1  2  3  4<br>24 23 22 21  5<br>12 13 14 15 16<br>11 17 18 19 20<br>10  9  8  7  6<br>最终的路线用加粗进行了标记。<br>我们必须等到时间为 16，此时才能保证平台 (0, 0) 和 (4, 4) 是连通的</p>
-</blockquote>
-<p><strong>提示</strong></p>
-<ol>
-<li><code>2 &lt;= N &lt;= 50</code></li>
-<li><code>grid[i][j]</code> 是 <code>[0, ..., N*N - 1]</code> 的排列</li>
-</ol>
-<h2 id="Swim-in-Rising-Water"><a href="#Swim-in-Rising-Water" class="headerlink" title="Swim in Rising Water"></a>Swim in Rising Water</h2><p>On an <code>N x N</code> grid, each square <code>grid[i][j]</code> represents the elevation at that point <code>(i,j)</code>.</p>
-<p>Now rain starts to fall. At time t, the depth of the water everywhere is t. You can swim from a square to another 4-directionally adjacent square if and only if the elevation of both squares individually are at most t. You can swim infinite distance in zero time. Of course, you must stay within the boundaries of the grid during your swim.</p>
-<p>You start at the top left square <code>(0, 0)</code>. What is the least time until you can reach the bottom right square <code>(N-1, N-1)</code>?</p>
-<p><strong>Example 1:</strong></p>
-<blockquote>
-<p><strong>Input</strong>: [[0,2],[1,3]]<br><strong>Output</strong>: 3<br><strong>Explanation</strong>:<br>At time 0, you are in grid location (0, 0).<br>You cannot go anywhere else because 4-directionally adjacent neighbors have a higher elevation than t = 0.<br>You cannot reach point (1, 1) until time 3.<br>When the depth of water is 3, we can swim anywhere inside the grid.</p>
-</blockquote>
-<p><strong>Example 2:</strong></p>
-<blockquote>
-<p><strong>Input</strong>: [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]<br><strong>Output</strong>: 16<br><strong>Explanation</strong>:<br>0  1  2  3  4<br>24 23 22 21  5<br>12 13 14 15 16<br>11 17 18 19 20<br>10  9  8  7  6<br>The final route is marked in bold.<br>We need to wait until time 16 so that (0, 0) and (4, 4) are connected.</p>
-</blockquote>
-<p><strong>Note:</strong></p>
-<ol>
-<li><code>2 &lt;= N &lt;= 50</code></li>
-<li><code>grid[i][j]</code> is a permutation of <code>[0, ..., N*N - 1]</code>.</li>
-</ol>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：并查集</strong><br>这个方法应该是比较容易想到和实现的了。<br>我们模拟下雨的过程，在时刻<code>t</code>，对于高度为<code>t</code>单元格，我们检查当前时刻是否能够游到相邻的单元格内（即高度小于等于当前单元格的高度），然后将能够到达的单元格合并。当终点和起点连通时，就是我们要求的时间。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">swimInWater</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> directions[<span class="number">4</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, <span class="number">-1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">0</span>&#125;&#125;;</span><br><span class="line">        n = grid.size();</span><br><span class="line">        <span class="keyword">int</span> len = n * n;</span><br><span class="line">		<span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">index</span><span class="params">(len)</span></span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;++j)&#123;</span><br><span class="line">				index[grid[i][j]] = getIndex(i,j);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function">UnionFind <span class="title">unionFind</span><span class="params">(len)</span></span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;++i)&#123;</span><br><span class="line">			<span class="keyword">int</span> x = index[i]/n;</span><br><span class="line">			<span class="keyword">int</span> y = index[i]%n;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">auto</span> direction:directions)&#123;</span><br><span class="line">				<span class="keyword">int</span> newX = x + direction[<span class="number">0</span>];</span><br><span class="line">				<span class="keyword">int</span> newY = y + direction[<span class="number">1</span>];</span><br><span class="line">				<span class="keyword">if</span>(isIn(newX,newY) &amp;&amp; grid[newX][newY] &lt;= i)&#123;</span><br><span class="line">					unionFind.connect(index[i], getIndex(newX,newY));</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(unionFind.isConnected(<span class="number">0</span>,len<span class="number">-1</span>))&#123;</span><br><span class="line">					<span class="keyword">return</span> i;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getIndex</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; <span class="keyword">return</span> x * n + y; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isIn</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; <span class="keyword">return</span> x &gt;= <span class="number">0</span> &amp;&amp; x &lt; n &amp;&amp; y &gt;= <span class="number">0</span> &amp;&amp; y &lt; n; &#125;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span> &#123;</span></span><br><span class="line">       <span class="keyword">private</span>:</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; parent;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">public</span>:</span><br><span class="line">        UnionFind(<span class="keyword">int</span> n) : parent(n) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">                parent[i] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">root</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">while</span> (x != parent[x]) &#123;</span><br><span class="line">                parent[x] = parent[parent[x]];</span><br><span class="line">                x = parent[x];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">bool</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; <span class="keyword">return</span> root(x) == root(y); &#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (isConnected(p, q)) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            parent[root(p)] = root(q);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>另外本题还有搜索算法和Dijkstra算法等方法，之后更新…</p>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>困难</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>二分查找</tag>
-        <tag>Binary Search</tag>
-        <tag>Heap</tag>
-        <tag>Depth-first Search</tag>
-        <tag>Union Find</tag>
-        <tag>堆</tag>
-        <tag>深度优先搜索</tag>
-        <tag>并查集</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-839. Similar String Groups（相似字符串组）</title>
-    <url>/2021/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="相似字符串组"><a href="#相似字符串组" class="headerlink" title="相似字符串组"></a>相似字符串组</h2><p><strong>每日一题</strong></p>
-<p>如果交换字符串 <code>X</code> 中的两个不同位置的字母，使得它和字符串 <code>Y</code> 相等，那么称 <code>X</code> 和 <code>Y</code> 两个字符串相似。如果这两个字符串本身是相等的，那它们也是相似的。</p>
-<a id="more"></a>
-
-<p>例如，<code>&quot;tars&quot;</code> 和 <code>&quot;rats&quot;</code> 是相似的 (交换 <code>0</code> 与 <code>2</code> 的位置)； <code>&quot;rats&quot;</code> 和 <code>&quot;arts&quot;</code> 也是相似的，但是 <code>&quot;star&quot;</code> 不与 <code>&quot;tars&quot;</code>，<code>&quot;rats&quot;</code>，或 <code>&quot;arts&quot;</code> 相似。</p>
-<p>总之，它们通过相似性形成了两个关联组：<code>&#123;&quot;tars&quot;, &quot;rats&quot;, &quot;arts&quot;&#125;</code> 和 <code>&#123;&quot;star&quot;&#125;</code>。注意，<code>&quot;tars&quot;</code> 和 <code>&quot;arts&quot;</code> 是在同一组中，即使它们并不相似。形式上，对每个组而言，要确定一个单词在组中，只需要这个词和该组中至少一个单词相似。</p>
-<p>给你一个字符串列表 <code>strs</code>。列表中的每个字符串都是 <code>strs</code> 中其它所有字符串的一个字母异位词。请问 <code>strs</code> 中有多少个相似字符串组？</p>
-<p><strong>示例 1：</strong></p>
-<blockquote>
-<p><strong>输入</strong>：strs = [“tars”,”rats”,”arts”,”star”]<br><strong>输出</strong>：2</p>
-</blockquote>
-<p><strong>示例 2：</strong></p>
-<blockquote>
-<p><strong>输入</strong>：strs = [“omv”,”ovm”]<br><strong>输出</strong>：1</p>
-</blockquote>
-<p><strong>提示：</strong></p>
-<ol>
-<li><code>1 &lt;= strs.length &lt;= 100</code></li>
-<li><code>1 &lt;= strs[i].length &lt;= 1000</code></li>
-<li><code>sum(strs[i].length) &lt;= 2 * 104</code></li>
-<li><code>strs[i]</code> 只包含小写字母。</li>
-<li><code>strs</code> 中的所有单词都具有相同的长度，且是彼此的字母异位词。</li>
-</ol>
-<p><strong>备注：</strong><br>字母异位词（anagram），一种把某个字符串的字母的位置（顺序）加以改换所形成的新词。</p>
-<h2 id="Similar-String-Groups"><a href="#Similar-String-Groups" class="headerlink" title="Similar String Groups"></a>Similar String Groups</h2><p>Two strings <code>X</code> and <code>Y</code> are similar if we can swap two letters (in different positions) of <code>X</code>, so that it equals <code>Y</code>. Also two strings <code>X</code> and <code>Y</code> are similar if they are equal.</p>
-<p>For example, <code>&quot;tars&quot;</code> and <code>&quot;rats&quot;</code> are similar (swapping at positions <code>0</code> and <code>2</code>), and <code>&quot;rats&quot;</code> and <code>&quot;arts&quot;</code> are similar, but <code>&quot;star&quot;</code> is not similar to <code>&quot;tars&quot;</code>, <code>&quot;rats&quot;</code>, or <code>&quot;arts&quot;</code>.</p>
-<p>Together, these form two connected groups by similarity: <code>&#123;&quot;tars&quot;, &quot;rats&quot;, &quot;arts&quot;&#125;</code> and <code>&#123;&quot;star&quot;&#125;</code>.  Notice that <code>&quot;tars&quot;</code> and <code>&quot;arts&quot;</code> are in the same group even though they are not similar.  Formally, each group is such that a word is in the group if and only if it is similar to at least one other word in the group.</p>
-<p>We are given a list strs of strings where every string in strs is an anagram of every other string in strs. How many groups are there?<br><strong>Example 1:</strong></p>
-<blockquote>
-<p><strong>Input</strong>: strs = [“tars”,”rats”,”arts”,”star”]<br><strong>Output</strong>: 2</p>
-</blockquote>
-<p><strong>Example 2:</strong></p>
-<blockquote>
-<p><strong>Input</strong>: strs = [“omv”,”ovm”]<br><strong>Output</strong>: 1</p>
-</blockquote>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code>1 &lt;= strs.length &lt;= 100</code></li>
-<li><code>1 &lt;= strs[i].length &lt;= 1000</code></li>
-<li><code>sum(strs[i].length) &lt;= 2 * 104</code></li>
-<li><code>strs[i]</code> consists of lowercase letters only.</li>
-<li>All words in <code>strs</code> have the same length and are anagrams of each other.</li>
-</ul>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>并查集</strong><br>相似字符串的意思是：通过交换字符串<code>str1</code>某两个字母的位置，使得<code>str1</code>与<code>str2</code>相同。注意，这里<strong>只能交换两个字母的位置</strong>。<br><strong>具体做法是，将每个字符串当做图的一个节点，当两个字符串相似时，就将两个结点之间画一条边，如此，相似的字符串组就形成了一个连通图，连通区域的个数就是我们想要的答案。</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numSimilarGroups</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">        n = strs.size();</span><br><span class="line">        <span class="function">UnionFind <span class="title">unionFind</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (isSimilar(strs[i], strs[j])) &#123;</span><br><span class="line">                    unionFind.connect(i, j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> unionFind.getRegions();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isSimilar</span><span class="params">(<span class="built_in">string</span> str1, <span class="built_in">string</span> str2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str1.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (str1[i] != str2[i]) &#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count == <span class="number">2</span> || count == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span> &#123;</span></span><br><span class="line">       <span class="keyword">private</span>:</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; parent;</span><br><span class="line">        <span class="keyword">int</span> regions;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">public</span>:</span><br><span class="line">        UnionFind(<span class="keyword">int</span> n) : parent(n), regions(n) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">                parent[i] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">root</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">while</span> (x != parent[x]) &#123;</span><br><span class="line">                parent[x] = parent[parent[x]];</span><br><span class="line">                x = parent[x];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">bool</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; <span class="keyword">return</span> root(x) == root(y); &#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (isConnected(p, q)) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            parent[root(p)] = root(q);</span><br><span class="line">            regions--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">getRegions</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> regions; &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>困难</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>Depth-first Search</tag>
-        <tag>Union Find</tag>
-        <tag>深度优先搜索</tag>
-        <tag>并查集</tag>
-        <tag>图</tag>
-        <tag>Graph</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-88. Merge Sorted Array（合并两个有序数组）</title>
-    <url>/2018/01/20/LeetCode-88-Merge-Sorted-Array%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="合并两个有序数组"><a href="#合并两个有序数组" class="headerlink" title="合并两个有序数组"></a>合并两个有序数组</h2><p>给定两个有序整数数组 <code>nums1</code> 和 <code>nums2</code>，将 <code>nums2</code> 合并到 <code>nums1</code> 中，使得 <code>num1</code> 成为一个有序数组。</p>
-<a id="more"></a>
-
-<p><strong>说明:</strong></p>
-<ul>
-<li>初始化 nums1 和 nums2 的元素数量分别为 m 和 n。 </li>
-<li>你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。</li>
-</ul>
-<p>示例:</p>
-<blockquote>
-<p>输入:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3<br>输出: [1,2,2,3,5,6]</p>
-</blockquote>
-<h2 id="Merge-Sorted-Array"><a href="#Merge-Sorted-Array" class="headerlink" title="Merge Sorted Array"></a>Merge Sorted Array</h2><p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p>
-<p><strong>Note:</strong></p>
-<ul>
-<li>The number of elements initialized in nums1 and nums2 are m and n respectively.</li>
-<li>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2.</li>
-</ul>
-<p>Example:</p>
-<blockquote>
-<p>Input:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3<br>Output: [1,2,2,3,5,6]</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：暴力法</strong></p>
-<p>最朴素的方法就是合并数组，然后再排序。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != n; ++i) &#123;</span><br><span class="line">            nums1[m + i] = nums2[i];</span><br><span class="line">        &#125;</span><br><span class="line">        sort(nums1.begin(), nums1.end());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>方法二：正向双指针</strong></p>
-<p>申请一个临时数组，设置两个头部指针，每次比较两个数组的头部，将较小的放入临时数组中，最后再将临时数组赋值给<code>nums1</code>。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p1 = <span class="number">0</span>, p2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sorted[m + n];</span><br><span class="line">        <span class="keyword">int</span> cur;</span><br><span class="line">        <span class="keyword">while</span> (p1 &lt; m || p2 &lt; n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1 == m) &#123;</span><br><span class="line">                cur = nums2[p2++];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p2 == n) &#123;</span><br><span class="line">                cur = nums1[p1++];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[p1] &lt; nums2[p2]) &#123;</span><br><span class="line">                cur = nums1[p1++];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur = nums2[p2++];</span><br><span class="line">            &#125;</span><br><span class="line">            sorted[p1 + p2 - <span class="number">1</span>] = cur;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != m + n; ++i) &#123;</span><br><span class="line">            nums1[i] = sorted[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>方法三：逆向双指针</strong></p>
-<p>我们注意到，在方法二中需要使用一个临时数组来防止<code>nums1</code>的元素被覆盖，如果我们逆向使用双指针则可以实现原地修改，证明如下：</p>
-<p>设 $p1$ 和 $p2$ 是两个数组的尾部指针，即 $p1 = m-1$ ，$p2=n-1$，在遍历的某一时刻，<code>nums1</code>有$m-p1-1$个元素被放入<code>nums1</code>的后半部，<code>nums2</code>有$n-p2-1$个元素被放入<code>nums2</code>的后半部，而在 $p1$ 的后面有$m+n-p1-1$个位置。由于：</p>
-<p>$$m+n-p1-1\geq m-p1-1+n-p2-1$$</p>
-<p>等价于</p>
-<p>$$p2\geq -1$$</p>
-<p>永远成立，因此<code>nums1</code>后面有足够的位置容纳被插入的元素，可以实现原地修改。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p1 = m - <span class="number">1</span>, p2 = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> tail = m + n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> cur;</span><br><span class="line">        <span class="keyword">while</span> (p1 &gt;= <span class="number">0</span> || p2 &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1 == <span class="number">-1</span>) &#123;</span><br><span class="line">                cur = nums2[p2--];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p2 == <span class="number">-1</span>) &#123;</span><br><span class="line">                cur = nums1[p1--];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[p1] &gt; nums2[p2]) &#123;</span><br><span class="line">                cur = nums1[p1--];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur = nums2[p2--];</span><br><span class="line">            &#125;</span><br><span class="line">            nums1[tail--] = cur;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-        <tag>双指针</tag>
-        <tag>Two Pointers</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode-888.Fair Candy Swap（公平的糖果棒交换）</title>
     <url>/2021/02/01/LeetCode-888-Fair-Candy-Swap%EF%BC%88%E5%85%AC%E5%B9%B3%E7%9A%84%E7%B3%96%E6%9E%9C%E6%A3%92%E4%BA%A4%E6%8D%A2%EF%BC%89/</url>
     <content><![CDATA[<h2 id="公平的糖果棒交换"><a href="#公平的糖果棒交换" class="headerlink" title="公平的糖果棒交换"></a>公平的糖果棒交换</h2><p><strong>每日一题</strong></p>
@@ -669,6 +82,164 @@
       </tags>
   </entry>
   <entry>
+    <title>LeetCode-839. Similar String Groups（相似字符串组）</title>
+    <url>/2021/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="相似字符串组"><a href="#相似字符串组" class="headerlink" title="相似字符串组"></a>相似字符串组</h2><p><strong>每日一题</strong></p>
+<p>如果交换字符串 <code>X</code> 中的两个不同位置的字母，使得它和字符串 <code>Y</code> 相等，那么称 <code>X</code> 和 <code>Y</code> 两个字符串相似。如果这两个字符串本身是相等的，那它们也是相似的。</p>
+<a id="more"></a>
+
+<p>例如，<code>&quot;tars&quot;</code> 和 <code>&quot;rats&quot;</code> 是相似的 (交换 <code>0</code> 与 <code>2</code> 的位置)； <code>&quot;rats&quot;</code> 和 <code>&quot;arts&quot;</code> 也是相似的，但是 <code>&quot;star&quot;</code> 不与 <code>&quot;tars&quot;</code>，<code>&quot;rats&quot;</code>，或 <code>&quot;arts&quot;</code> 相似。</p>
+<p>总之，它们通过相似性形成了两个关联组：<code>&#123;&quot;tars&quot;, &quot;rats&quot;, &quot;arts&quot;&#125;</code> 和 <code>&#123;&quot;star&quot;&#125;</code>。注意，<code>&quot;tars&quot;</code> 和 <code>&quot;arts&quot;</code> 是在同一组中，即使它们并不相似。形式上，对每个组而言，要确定一个单词在组中，只需要这个词和该组中至少一个单词相似。</p>
+<p>给你一个字符串列表 <code>strs</code>。列表中的每个字符串都是 <code>strs</code> 中其它所有字符串的一个字母异位词。请问 <code>strs</code> 中有多少个相似字符串组？</p>
+<p><strong>示例 1：</strong></p>
+<blockquote>
+<p><strong>输入</strong>：strs = [“tars”,”rats”,”arts”,”star”]<br><strong>输出</strong>：2</p>
+</blockquote>
+<p><strong>示例 2：</strong></p>
+<blockquote>
+<p><strong>输入</strong>：strs = [“omv”,”ovm”]<br><strong>输出</strong>：1</p>
+</blockquote>
+<p><strong>提示：</strong></p>
+<ol>
+<li><code>1 &lt;= strs.length &lt;= 100</code></li>
+<li><code>1 &lt;= strs[i].length &lt;= 1000</code></li>
+<li><code>sum(strs[i].length) &lt;= 2 * 104</code></li>
+<li><code>strs[i]</code> 只包含小写字母。</li>
+<li><code>strs</code> 中的所有单词都具有相同的长度，且是彼此的字母异位词。</li>
+</ol>
+<p><strong>备注：</strong><br>字母异位词（anagram），一种把某个字符串的字母的位置（顺序）加以改换所形成的新词。</p>
+<h2 id="Similar-String-Groups"><a href="#Similar-String-Groups" class="headerlink" title="Similar String Groups"></a>Similar String Groups</h2><p>Two strings <code>X</code> and <code>Y</code> are similar if we can swap two letters (in different positions) of <code>X</code>, so that it equals <code>Y</code>. Also two strings <code>X</code> and <code>Y</code> are similar if they are equal.</p>
+<p>For example, <code>&quot;tars&quot;</code> and <code>&quot;rats&quot;</code> are similar (swapping at positions <code>0</code> and <code>2</code>), and <code>&quot;rats&quot;</code> and <code>&quot;arts&quot;</code> are similar, but <code>&quot;star&quot;</code> is not similar to <code>&quot;tars&quot;</code>, <code>&quot;rats&quot;</code>, or <code>&quot;arts&quot;</code>.</p>
+<p>Together, these form two connected groups by similarity: <code>&#123;&quot;tars&quot;, &quot;rats&quot;, &quot;arts&quot;&#125;</code> and <code>&#123;&quot;star&quot;&#125;</code>.  Notice that <code>&quot;tars&quot;</code> and <code>&quot;arts&quot;</code> are in the same group even though they are not similar.  Formally, each group is such that a word is in the group if and only if it is similar to at least one other word in the group.</p>
+<p>We are given a list strs of strings where every string in strs is an anagram of every other string in strs. How many groups are there?<br><strong>Example 1:</strong></p>
+<blockquote>
+<p><strong>Input</strong>: strs = [“tars”,”rats”,”arts”,”star”]<br><strong>Output</strong>: 2</p>
+</blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<p><strong>Input</strong>: strs = [“omv”,”ovm”]<br><strong>Output</strong>: 1</p>
+</blockquote>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= strs.length &lt;= 100</code></li>
+<li><code>1 &lt;= strs[i].length &lt;= 1000</code></li>
+<li><code>sum(strs[i].length) &lt;= 2 * 104</code></li>
+<li><code>strs[i]</code> consists of lowercase letters only.</li>
+<li>All words in <code>strs</code> have the same length and are anagrams of each other.</li>
+</ul>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>并查集</strong><br>相似字符串的意思是：通过交换字符串<code>str1</code>某两个字母的位置，使得<code>str1</code>与<code>str2</code>相同。注意，这里<strong>只能交换两个字母的位置</strong>。<br><strong>具体做法是，将每个字符串当做图的一个节点，当两个字符串相似时，就将两个结点之间画一条边，如此，相似的字符串组就形成了一个连通图，连通区域的个数就是我们想要的答案。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numSimilarGroups</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">        n = strs.size();</span><br><span class="line">        <span class="function">UnionFind <span class="title">unionFind</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (isSimilar(strs[i], strs[j])) &#123;</span><br><span class="line">                    unionFind.connect(i, j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> unionFind.getRegions();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isSimilar</span><span class="params">(<span class="built_in">string</span> str1, <span class="built_in">string</span> str2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str1.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (str1[i] != str2[i]) &#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count == <span class="number">2</span> || count == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span> &#123;</span></span><br><span class="line">       <span class="keyword">private</span>:</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; parent;</span><br><span class="line">        <span class="keyword">int</span> regions;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">public</span>:</span><br><span class="line">        UnionFind(<span class="keyword">int</span> n) : parent(n), regions(n) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">                parent[i] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">root</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">while</span> (x != parent[x]) &#123;</span><br><span class="line">                parent[x] = parent[parent[x]];</span><br><span class="line">                x = parent[x];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">bool</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; <span class="keyword">return</span> root(x) == root(y); &#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (isConnected(p, q)) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            parent[root(p)] = root(q);</span><br><span class="line">            regions--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">getRegions</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> regions; &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>困难</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>Depth-first Search</tag>
+        <tag>Union Find</tag>
+        <tag>深度优先搜索</tag>
+        <tag>并查集</tag>
+        <tag>图</tag>
+        <tag>Graph</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-778.Swim in Rising Water（水位上升的泳池中游泳）</title>
+    <url>/2021/01/30/LeetCode-778-Swim-in-Rising-Water%EF%BC%88%E6%B0%B4%E4%BD%8D%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B3%B3%E6%B1%A0%E4%B8%AD%E6%B8%B8%E6%B3%B3%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="水位上升的泳池中游泳"><a href="#水位上升的泳池中游泳" class="headerlink" title="水位上升的泳池中游泳"></a>水位上升的泳池中游泳</h2><p><strong>每日一题</strong></p>
+<p>在一个 N x N 的坐标方格 <code>grid</code> 中，每一个方格的值 <code>grid[i][j]</code> 表示在位置 <code>(i,j)</code> 的平台高度。</p>
+<p>现在开始下雨了。当时间为 <code>t</code> 时，此时雨水导致水池中任意位置的水位为 <code>t</code> 。你可以从一个平台游向四周相邻的任意一个平台，但是前提是此时水位必须同时淹没这两个平台。假定你可以瞬间移动无限距离，也就是默认在方格内部游动是不耗时的。当然，在你游泳的时候你必须待在坐标方格里面。</p>
+<p>你从坐标方格的左上平台 <code>(0，0)</code> 出发。最少耗时多久你才能到达坐标方格的右下平台 <code>(N-1, N-1)</code>？</p>
+<a id="more"></a>
+
+<p><strong>示例1</strong></p>
+<blockquote>
+<p><strong>输入</strong>: [[0,2],[1,3]]<br><strong>输出</strong>: 3<br><strong>解释</strong>:<br>时间为0时，你位于坐标方格的位置为 (0, 0)。<br>此时你不能游向任意方向，因为四个相邻方向平台的高度都大于当前时间为 0 时的水位。<br>等时间到达 3 时，你才可以游向平台 (1, 1). 因为此时的水位是 3，坐标方格中的平台没有比水位 3 更高的，所以你可以游向坐标方格中的任意位置</p>
+</blockquote>
+<p><strong>示例2</strong></p>
+<blockquote>
+<p><strong>输入</strong>: [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]<br><strong>输出</strong>: 16<br><strong>解释</strong>:<br>0  1  2  3  4<br>24 23 22 21  5<br>12 13 14 15 16<br>11 17 18 19 20<br>10  9  8  7  6<br>最终的路线用加粗进行了标记。<br>我们必须等到时间为 16，此时才能保证平台 (0, 0) 和 (4, 4) 是连通的</p>
+</blockquote>
+<p><strong>提示</strong></p>
+<ol>
+<li><code>2 &lt;= N &lt;= 50</code></li>
+<li><code>grid[i][j]</code> 是 <code>[0, ..., N*N - 1]</code> 的排列</li>
+</ol>
+<h2 id="Swim-in-Rising-Water"><a href="#Swim-in-Rising-Water" class="headerlink" title="Swim in Rising Water"></a>Swim in Rising Water</h2><p>On an <code>N x N</code> grid, each square <code>grid[i][j]</code> represents the elevation at that point <code>(i,j)</code>.</p>
+<p>Now rain starts to fall. At time t, the depth of the water everywhere is t. You can swim from a square to another 4-directionally adjacent square if and only if the elevation of both squares individually are at most t. You can swim infinite distance in zero time. Of course, you must stay within the boundaries of the grid during your swim.</p>
+<p>You start at the top left square <code>(0, 0)</code>. What is the least time until you can reach the bottom right square <code>(N-1, N-1)</code>?</p>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<p><strong>Input</strong>: [[0,2],[1,3]]<br><strong>Output</strong>: 3<br><strong>Explanation</strong>:<br>At time 0, you are in grid location (0, 0).<br>You cannot go anywhere else because 4-directionally adjacent neighbors have a higher elevation than t = 0.<br>You cannot reach point (1, 1) until time 3.<br>When the depth of water is 3, we can swim anywhere inside the grid.</p>
+</blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<p><strong>Input</strong>: [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]<br><strong>Output</strong>: 16<br><strong>Explanation</strong>:<br>0  1  2  3  4<br>24 23 22 21  5<br>12 13 14 15 16<br>11 17 18 19 20<br>10  9  8  7  6<br>The final route is marked in bold.<br>We need to wait until time 16 so that (0, 0) and (4, 4) are connected.</p>
+</blockquote>
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>2 &lt;= N &lt;= 50</code></li>
+<li><code>grid[i][j]</code> is a permutation of <code>[0, ..., N*N - 1]</code>.</li>
+</ol>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：并查集</strong><br>这个方法应该是比较容易想到和实现的了。<br>我们模拟下雨的过程，在时刻<code>t</code>，对于高度为<code>t</code>单元格，我们检查当前时刻是否能够游到相邻的单元格内（即高度小于等于当前单元格的高度），然后将能够到达的单元格合并。当终点和起点连通时，就是我们要求的时间。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">swimInWater</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> directions[<span class="number">4</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, <span class="number">-1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">0</span>&#125;&#125;;</span><br><span class="line">        n = grid.size();</span><br><span class="line">        <span class="keyword">int</span> len = n * n;</span><br><span class="line">		<span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">index</span><span class="params">(len)</span></span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;++j)&#123;</span><br><span class="line">				index[grid[i][j]] = getIndex(i,j);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function">UnionFind <span class="title">unionFind</span><span class="params">(len)</span></span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;++i)&#123;</span><br><span class="line">			<span class="keyword">int</span> x = index[i]/n;</span><br><span class="line">			<span class="keyword">int</span> y = index[i]%n;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">auto</span> direction:directions)&#123;</span><br><span class="line">				<span class="keyword">int</span> newX = x + direction[<span class="number">0</span>];</span><br><span class="line">				<span class="keyword">int</span> newY = y + direction[<span class="number">1</span>];</span><br><span class="line">				<span class="keyword">if</span>(isIn(newX,newY) &amp;&amp; grid[newX][newY] &lt;= i)&#123;</span><br><span class="line">					unionFind.connect(index[i], getIndex(newX,newY));</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(unionFind.isConnected(<span class="number">0</span>,len<span class="number">-1</span>))&#123;</span><br><span class="line">					<span class="keyword">return</span> i;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getIndex</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; <span class="keyword">return</span> x * n + y; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isIn</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; <span class="keyword">return</span> x &gt;= <span class="number">0</span> &amp;&amp; x &lt; n &amp;&amp; y &gt;= <span class="number">0</span> &amp;&amp; y &lt; n; &#125;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span> &#123;</span></span><br><span class="line">       <span class="keyword">private</span>:</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; parent;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">public</span>:</span><br><span class="line">        UnionFind(<span class="keyword">int</span> n) : parent(n) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">                parent[i] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">root</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">while</span> (x != parent[x]) &#123;</span><br><span class="line">                parent[x] = parent[parent[x]];</span><br><span class="line">                x = parent[x];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">bool</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; <span class="keyword">return</span> root(x) == root(y); &#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (isConnected(p, q)) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            parent[root(p)] = root(q);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>另外本题还有搜索算法和Dijkstra算法等方法，之后更新…</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>困难</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>二分查找</tag>
+        <tag>Binary Search</tag>
+        <tag>Heap</tag>
+        <tag>Depth-first Search</tag>
+        <tag>Union Find</tag>
+        <tag>堆</tag>
+        <tag>深度优先搜索</tag>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《崩坏3》动画短片「渡尘」</title>
+    <url>/2021/01/29/%E3%80%8A%E5%B4%A9%E5%9D%8F3%E3%80%8B%E5%8A%A8%E7%94%BB%E7%9F%AD%E7%89%87%E3%80%8C%E6%B8%A1%E5%B0%98%E3%80%8D/</url>
+    <content><![CDATA[<h2 id="《崩坏3》动画短片「渡尘」"><a href="#《崩坏3》动画短片「渡尘」" class="headerlink" title="《崩坏3》动画短片「渡尘」"></a>《崩坏3》动画短片「渡尘」</h2><p><strong>世间之纷扰，早已麻木</strong><br><strong>珍重之羁绊，尽皆离散</strong><br><strong>千年之坚守，只为拯救苍生</strong></p>
+<a id="more"></a>
+
+<p>是糖是糖！</p>
+<p>一路走来，符华真的太不容易了，希望这次是阿符的新生。</p>
+<div class="bilibili">
+    <iframe src="//player.bilibili.com/player.html?aid=501440303&bvid=BV1jN411o7zS&cid=289175447&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
+
+<p>4:47的上仙绝美！</p>
+<p>5:32开始真的要哭出来了</p>
+<p><strong>日月沉浮 ，沧海桑田</strong></p>
+<p><strong>历尽了离别，习惯了绝望</strong></p>
+<p><strong>不知时间为何物</strong></p>
+<p><strong>亡命于无尽的轮回</strong></p>
+<p><strong>只为——</strong></p>
+<p><strong>使命！</strong></p>
+<p><strong>欢迎回家，班长！</strong></p>
+<p>也恭喜短片登顶！</p>
+<p>另外这次「Rubia」——《崩坏3》印象曲（演唱者：周深）也超赞，</p>
+<div class="bilibili">
+    <iframe src="//player.bilibili.com/player.html?aid=543949325&bvid=BV1Yv4y1o7dw&cid=289220053&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
+
+]]></content>
+      <categories>
+        <category>个人动态</category>
+        <category>游戏</category>
+        <category>崩坏三</category>
+      </categories>
+      <tags>
+        <tag>日常谈</tag>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>《明日方舟》SideStory「画中人」活动宣传PV</title>
     <url>/2021/01/28/%E3%80%8A%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F%E3%80%8BSideStory%E3%80%8C%E7%94%BB%E4%B8%AD%E4%BA%BA%E3%80%8D%E6%B4%BB%E5%8A%A8%E5%AE%A3%E4%BC%A0PV/</url>
     <content><![CDATA[<h2 id="《明日方舟》SideStory「画中人」活动宣传PV"><a href="#《明日方舟》SideStory「画中人」活动宣传PV" class="headerlink" title="《明日方舟》SideStory「画中人」活动宣传PV"></a>《明日方舟》SideStory「画中人」活动宣传PV</h2><p>鹰角终于发饼啦！</p>
@@ -724,41 +295,470 @@
       </tags>
   </entry>
   <entry>
-    <title>《崩坏3》动画短片「渡尘」</title>
-    <url>/2021/01/29/%E3%80%8A%E5%B4%A9%E5%9D%8F3%E3%80%8B%E5%8A%A8%E7%94%BB%E7%9F%AD%E7%89%87%E3%80%8C%E6%B8%A1%E5%B0%98%E3%80%8D/</url>
-    <content><![CDATA[<h2 id="《崩坏3》动画短片「渡尘」"><a href="#《崩坏3》动画短片「渡尘」" class="headerlink" title="《崩坏3》动画短片「渡尘」"></a>《崩坏3》动画短片「渡尘」</h2><p><strong>世间之纷扰，早已麻木</strong><br><strong>珍重之羁绊，尽皆离散</strong><br><strong>千年之坚守，只为拯救苍生</strong></p>
+    <title>LeetCode-119. Pascal&#39;s Triangle II（杨辉三角 II）</title>
+    <url>/2018/01/28/LeetCode-119-Pascal-s-Triangle-II%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92-II%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="杨辉三角-II"><a href="#杨辉三角-II" class="headerlink" title="杨辉三角 II"></a>杨辉三角 II</h2><p>给定一个非负索引 <em>k</em>，其中 <em>k ≤ 33</em>，返回杨辉三角的第 <em>k</em> 行。</p>
 <a id="more"></a>
 
-<p>是糖是糖！</p>
-<p>一路走来，符华真的太不容易了，希望这次是阿符的新生。</p>
-<div class="bilibili">
-    <iframe src="//player.bilibili.com/player.html?aid=501440303&bvid=BV1jN411o7zS&cid=289175447&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-</div>
+<p><img src="https://img-blog.csdnimg.cn/2019021318314726.gif" alt="在这里插入图片描述"><br>在杨辉三角中，每个数是它左上方和右上方的数的和。</p>
+<p>示例:</p>
+<blockquote>
+<p>输入: 3<br>输出: [1,3,3,1]</p>
+</blockquote>
+<p><strong>进阶：</strong></p>
+<p>你可以优化你的算法到 O(k) 空间复杂度吗？</p>
+<h2 id="Pascal’s-Triangle-II"><a href="#Pascal’s-Triangle-II" class="headerlink" title="Pascal’s Triangle II"></a>Pascal’s Triangle II</h2><p>Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal’s triangle.</p>
+<p>Note that the row index starts from 0.<br><img src="https://img-blog.csdnimg.cn/20190213183722217.gif" alt="在这里插入图片描述"><br>In Pascal’s triangle, each number is the sum of the two numbers directly above it.</p>
+<p>Example:</p>
+<blockquote>
+<p>Input: 3<br>Output: [1,3,3,1]</p>
+</blockquote>
+<p><strong>Follow up:</strong></p>
+<p>Could you optimize your algorithm to use only O(k) extra space?</p>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>由<a href="https://ichen2000.com/2018/01/27/LeetCode-118-Pascal-s-Triangle%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%EF%BC%89/"  target="_blank">第118题的题解</a>中的性质5：二项式 $(a+b)^n$ 的系数对应杨辉三角第 $n$ 行的每一个数。</p>
+<p>同时我们知道<br>$$<br>\begin{align}<br>c^i_n&amp;=\frac{n!}{i!(n-i)!} \newline<br>c^{i+1}_n&amp;=\frac{n!}{(i+1)!(n-i-1)!}<br>\end{align}<br>$$<br>由(1)(2)得</p>
+<p>$$c^{i+1}_n=\frac{n-i}{i+1}c^i_n$$</p>
+<p>然后们就有如下解法</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">getRow</span><span class="params">(<span class="keyword">int</span> rowIndex)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">res</span><span class="params">(rowIndex + <span class="number">1</span>)</span></span>;</span><br><span class="line">        res[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= rowIndex; ++ i)</span><br><span class="line">            res[i] = (<span class="keyword">long</span> <span class="keyword">long</span>)res[i - <span class="number">1</span>] * (rowIndex - i + <span class="number">1</span>) / i;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-118. Pascal&#39;s Triangle（杨辉三角）</title>
+    <url>/2018/01/27/LeetCode-118-Pascal-s-Triangle%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h2><p>给定一个非负整数 <em>numRows</em>，生成杨辉三角的前 <em>numRows</em> 行。</p>
+<a id="more"></a>
 
-<p>4:47的上仙绝美！</p>
-<p>5:32开始真的要哭出来了</p>
-<p><strong>日月沉浮 ，沧海桑田</strong></p>
-<p><strong>历尽了离别，习惯了绝望</strong></p>
-<p><strong>不知时间为何物</strong></p>
-<p><strong>亡命于无尽的轮回</strong></p>
-<p><strong>只为——</strong></p>
-<p><strong>使命！</strong></p>
-<p><strong>欢迎回家，班长！</strong></p>
-<p>也恭喜短片登顶！</p>
-<p>另外这次「Rubia」——《崩坏3》印象曲（演唱者：周深）也超赞，</p>
-<div class="bilibili">
-    <iframe src="//player.bilibili.com/player.html?aid=543949325&bvid=BV1Yv4y1o7dw&cid=289220053&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-</div>
+<p><img src="https://img-blog.csdnimg.cn/20190213182724160.gif" alt="在这里插入图片描述"><br>在杨辉三角中，每个数是它左上方和右上方的数的和。<br>示例:</p>
+<blockquote>
+<p>输入: 5<br>输出:<br>[<br>       [1],<br>     [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]</p>
+</blockquote>
+<h2 id="Pascal’s-Triangle"><a href="#Pascal’s-Triangle" class="headerlink" title="Pascal’s Triangle"></a>Pascal’s Triangle</h2><p>Given a non-negative integer numRows, generate the first numRows of Pascal’s triangle.<br><img src="https://img-blog.csdnimg.cn/20190213182902277.gif" alt="在这里插入图片描述"><br>In Pascal’s triangle, each number is the sum of the two numbers directly above it.</p>
+<p>Example:</p>
+<blockquote>
+<p>Input: 5<br>Output:<br>[<br>     [1],<br>    [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一</strong></p>
+<p>在小学二年级学习组合数的时候，我们就知道杨辉三角能够表示二项式的系数，且有以下性质：</p>
+<ol>
+<li>对称性：首项和末项都为1</li>
+<li>第 $n$ 行（从 $0$ 编号）有 $n+1$ 项，前 $n$ 行共有 $\frac{n(n+1)}{2}$ 个数。</li>
+<li>第 $n$ 行第 $m$ 个数可以用组合数 $C^m_n$ 表示，且 $c^m_n=\frac{n!}{m!(n-m)!}$</li>
+<li>每个数字等于其两肩上的数之和，这也是组合数的性质之一，即 $c_n^i=c_{n-1}^{i-1}+c_{n-1}^i$</li>
+<li>二项式 $(a+b)^n$ 的系数对应杨辉三角第 $n$ 行的每一个数。</li>
+</ol>
+<p>由性质4我们可有解法：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret(numRows);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; ++i) &#123;</span><br><span class="line">            ret[i].resize(i + <span class="number">1</span>);</span><br><span class="line">            ret[i][<span class="number">0</span>] = ret[i][i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; ++j) &#123;</span><br><span class="line">                ret[i][j] = ret[i - <span class="number">1</span>][j] + ret[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二：打表（不讲武德法</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a = &#123;</span><br><span class="line">            &#123;<span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">6</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">15</span>, <span class="number">6</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">21</span>, <span class="number">35</span>, <span class="number">35</span>, <span class="number">21</span>, <span class="number">7</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">8</span>, <span class="number">28</span>, <span class="number">56</span>, <span class="number">70</span>, <span class="number">56</span>, <span class="number">28</span>, <span class="number">8</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">9</span>, <span class="number">36</span>, <span class="number">84</span>, <span class="number">126</span>, <span class="number">126</span>, <span class="number">84</span>, <span class="number">36</span>, <span class="number">9</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">10</span>, <span class="number">45</span>, <span class="number">120</span>, <span class="number">210</span>, <span class="number">252</span>, <span class="number">210</span>, <span class="number">120</span>, <span class="number">45</span>, <span class="number">10</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">11</span>, <span class="number">55</span>, <span class="number">165</span>, <span class="number">330</span>, <span class="number">462</span>, <span class="number">462</span>, <span class="number">330</span>, <span class="number">165</span>, <span class="number">55</span>, <span class="number">11</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">12</span>, <span class="number">66</span>, <span class="number">220</span>, <span class="number">495</span>, <span class="number">792</span>, <span class="number">924</span>, <span class="number">792</span>, <span class="number">495</span>, <span class="number">220</span>, <span class="number">66</span>, <span class="number">12</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">13</span>, <span class="number">78</span>, <span class="number">286</span>, <span class="number">715</span>, <span class="number">1287</span>, <span class="number">1716</span>, <span class="number">1716</span>, <span class="number">1287</span>, <span class="number">715</span>, <span class="number">286</span>, <span class="number">78</span>, <span class="number">13</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">14</span>, <span class="number">91</span>, <span class="number">364</span>, <span class="number">1001</span>, <span class="number">2002</span>, <span class="number">3003</span>, <span class="number">3432</span>, <span class="number">3003</span>, <span class="number">2002</span>, <span class="number">1001</span>, <span class="number">364</span>, <span class="number">91</span>, <span class="number">14</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">15</span>, <span class="number">105</span>, <span class="number">455</span>, <span class="number">1365</span>, <span class="number">3003</span>, <span class="number">5005</span>, <span class="number">6435</span>, <span class="number">6435</span>, <span class="number">5005</span>, <span class="number">3003</span>, <span class="number">1365</span>, <span class="number">455</span>, <span class="number">105</span>, <span class="number">15</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">16</span>, <span class="number">120</span>, <span class="number">560</span>, <span class="number">1820</span>, <span class="number">4368</span>, <span class="number">8008</span>, <span class="number">11440</span>, <span class="number">12870</span>, <span class="number">11440</span>, <span class="number">8008</span>, <span class="number">4368</span>, <span class="number">1820</span>, <span class="number">560</span>, <span class="number">120</span>, <span class="number">16</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">17</span>, <span class="number">136</span>, <span class="number">680</span>, <span class="number">2380</span>, <span class="number">6188</span>, <span class="number">12376</span>, <span class="number">19448</span>, <span class="number">24310</span>, <span class="number">24310</span>, <span class="number">19448</span>, <span class="number">12376</span>, <span class="number">6188</span>, <span class="number">2380</span>, <span class="number">680</span>, <span class="number">136</span>, <span class="number">17</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">18</span>, <span class="number">153</span>, <span class="number">816</span>, <span class="number">3060</span>, <span class="number">8568</span>, <span class="number">18564</span>, <span class="number">31824</span>, <span class="number">43758</span>, <span class="number">48620</span>, <span class="number">43758</span>, <span class="number">31824</span>, <span class="number">18564</span>, <span class="number">8568</span>, <span class="number">3060</span>, <span class="number">816</span>, <span class="number">153</span>, <span class="number">18</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">19</span>, <span class="number">171</span>, <span class="number">969</span>, <span class="number">3876</span>, <span class="number">11628</span>, <span class="number">27132</span>, <span class="number">50388</span>, <span class="number">75582</span>, <span class="number">92378</span>, <span class="number">92378</span>, <span class="number">75582</span>, <span class="number">50388</span>, <span class="number">27132</span>, <span class="number">11628</span>, <span class="number">3876</span>, <span class="number">969</span>, <span class="number">171</span>, <span class="number">19</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">20</span>, <span class="number">190</span>, <span class="number">1140</span>, <span class="number">4845</span>, <span class="number">15504</span>, <span class="number">38760</span>, <span class="number">77520</span>, <span class="number">125970</span>, <span class="number">167960</span>, <span class="number">184756</span>, <span class="number">167960</span>, <span class="number">125970</span>, <span class="number">77520</span>, <span class="number">38760</span>, <span class="number">15504</span>, <span class="number">4845</span>, <span class="number">1140</span>, <span class="number">190</span>, <span class="number">20</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">21</span>, <span class="number">210</span>, <span class="number">1330</span>, <span class="number">5985</span>, <span class="number">20349</span>, <span class="number">54264</span>, <span class="number">116280</span>, <span class="number">203490</span>, <span class="number">293930</span>, <span class="number">352716</span>, <span class="number">352716</span>, <span class="number">293930</span>, <span class="number">203490</span>, <span class="number">116280</span>, <span class="number">54264</span>, <span class="number">20349</span>, <span class="number">5985</span>, <span class="number">1330</span>, <span class="number">210</span>, <span class="number">21</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">22</span>, <span class="number">231</span>, <span class="number">1540</span>, <span class="number">7315</span>, <span class="number">26334</span>, <span class="number">74613</span>, <span class="number">170544</span>, <span class="number">319770</span>, <span class="number">497420</span>, <span class="number">646646</span>, <span class="number">705432</span>, <span class="number">646646</span>, <span class="number">497420</span>, <span class="number">319770</span>, <span class="number">170544</span>, <span class="number">74613</span>, <span class="number">26334</span>, <span class="number">7315</span>, <span class="number">1540</span>, <span class="number">231</span>, <span class="number">22</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">23</span>, <span class="number">253</span>, <span class="number">1771</span>, <span class="number">8855</span>, <span class="number">33649</span>, <span class="number">100947</span>, <span class="number">245157</span>, <span class="number">490314</span>, <span class="number">817190</span>, <span class="number">1144066</span>, <span class="number">1352078</span>, <span class="number">1352078</span>, <span class="number">1144066</span>, <span class="number">817190</span>, <span class="number">490314</span>, <span class="number">245157</span>, <span class="number">100947</span>, <span class="number">33649</span>, <span class="number">8855</span>, <span class="number">1771</span>, <span class="number">253</span>, <span class="number">23</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">24</span>, <span class="number">276</span>, <span class="number">2024</span>, <span class="number">10626</span>, <span class="number">42504</span>, <span class="number">134596</span>, <span class="number">346104</span>, <span class="number">735471</span>, <span class="number">1307504</span>, <span class="number">1961256</span>, <span class="number">2496144</span>, <span class="number">2704156</span>, <span class="number">2496144</span>, <span class="number">1961256</span>, <span class="number">1307504</span>, <span class="number">735471</span>, <span class="number">346104</span>, <span class="number">134596</span>, <span class="number">42504</span>, <span class="number">10626</span>, <span class="number">2024</span>, <span class="number">276</span>, <span class="number">24</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">25</span>, <span class="number">300</span>, <span class="number">2300</span>, <span class="number">12650</span>, <span class="number">53130</span>, <span class="number">177100</span>, <span class="number">480700</span>, <span class="number">1081575</span>, <span class="number">2042975</span>, <span class="number">3268760</span>, <span class="number">4457400</span>, <span class="number">5200300</span>, <span class="number">5200300</span>, <span class="number">4457400</span>, <span class="number">3268760</span>, <span class="number">2042975</span>, <span class="number">1081575</span>, <span class="number">480700</span>, <span class="number">177100</span>, <span class="number">53130</span>, <span class="number">12650</span>, <span class="number">2300</span>, <span class="number">300</span>, <span class="number">25</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">26</span>, <span class="number">325</span>, <span class="number">2600</span>, <span class="number">14950</span>, <span class="number">65780</span>, <span class="number">230230</span>, <span class="number">657800</span>, <span class="number">1562275</span>, <span class="number">3124550</span>, <span class="number">5311735</span>, <span class="number">7726160</span>, <span class="number">9657700</span>, <span class="number">10400600</span>, <span class="number">9657700</span>, <span class="number">7726160</span>, <span class="number">5311735</span>, <span class="number">3124550</span>, <span class="number">1562275</span>, <span class="number">657800</span>, <span class="number">230230</span>, <span class="number">65780</span>, <span class="number">14950</span>, <span class="number">2600</span>, <span class="number">325</span>, <span class="number">26</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">27</span>, <span class="number">351</span>, <span class="number">2925</span>, <span class="number">17550</span>, <span class="number">80730</span>, <span class="number">296010</span>, <span class="number">888030</span>, <span class="number">2220075</span>, <span class="number">4686825</span>, <span class="number">8436285</span>, <span class="number">13037895</span>, <span class="number">17383860</span>, <span class="number">20058300</span>, <span class="number">20058300</span>, <span class="number">17383860</span>, <span class="number">13037895</span>, <span class="number">8436285</span>, <span class="number">4686825</span>, <span class="number">2220075</span>, <span class="number">888030</span>, <span class="number">296010</span>, <span class="number">80730</span>, <span class="number">17550</span>, <span class="number">2925</span>, <span class="number">351</span>, <span class="number">27</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">28</span>, <span class="number">378</span>, <span class="number">3276</span>, <span class="number">20475</span>, <span class="number">98280</span>, <span class="number">376740</span>, <span class="number">1184040</span>, <span class="number">3108105</span>, <span class="number">6906900</span>, <span class="number">13123110</span>, <span class="number">21474180</span>, <span class="number">30421755</span>, <span class="number">37442160</span>, <span class="number">40116600</span>, <span class="number">37442160</span>, <span class="number">30421755</span>, <span class="number">21474180</span>, <span class="number">13123110</span>, <span class="number">6906900</span>, <span class="number">3108105</span>, <span class="number">1184040</span>, <span class="number">376740</span>, <span class="number">98280</span>, <span class="number">20475</span>, <span class="number">3276</span>, <span class="number">378</span>, <span class="number">28</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">29</span>, <span class="number">406</span>, <span class="number">3654</span>, <span class="number">23751</span>, <span class="number">118755</span>, <span class="number">475020</span>, <span class="number">1560780</span>, <span class="number">4292145</span>, <span class="number">10015005</span>, <span class="number">20030010</span>, <span class="number">34597290</span>, <span class="number">51895935</span>, <span class="number">67863915</span>, <span class="number">77558760</span>, <span class="number">77558760</span>, <span class="number">67863915</span>, <span class="number">51895935</span>, <span class="number">34597290</span>, <span class="number">20030010</span>, <span class="number">10015005</span>, <span class="number">4292145</span>, <span class="number">1560780</span>, <span class="number">475020</span>, <span class="number">118755</span>, <span class="number">23751</span>, <span class="number">3654</span>, <span class="number">406</span>, <span class="number">29</span>, <span class="number">1</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">            ret.push_back(a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>哈哈哈哈哈哈哈哈</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-88. Merge Sorted Array（合并两个有序数组）</title>
+    <url>/2018/01/20/LeetCode-88-Merge-Sorted-Array%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="合并两个有序数组"><a href="#合并两个有序数组" class="headerlink" title="合并两个有序数组"></a>合并两个有序数组</h2><p>给定两个有序整数数组 <code>nums1</code> 和 <code>nums2</code>，将 <code>nums2</code> 合并到 <code>nums1</code> 中，使得 <code>num1</code> 成为一个有序数组。</p>
+<a id="more"></a>
+
+<p><strong>说明:</strong></p>
+<ul>
+<li>初始化 nums1 和 nums2 的元素数量分别为 m 和 n。 </li>
+<li>你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。</li>
+</ul>
+<p>示例:</p>
+<blockquote>
+<p>输入:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3<br>输出: [1,2,2,3,5,6]</p>
+</blockquote>
+<h2 id="Merge-Sorted-Array"><a href="#Merge-Sorted-Array" class="headerlink" title="Merge Sorted Array"></a>Merge Sorted Array</h2><p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>The number of elements initialized in nums1 and nums2 are m and n respectively.</li>
+<li>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2.</li>
+</ul>
+<p>Example:</p>
+<blockquote>
+<p>Input:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3<br>Output: [1,2,2,3,5,6]</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：暴力法</strong></p>
+<p>最朴素的方法就是合并数组，然后再排序。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != n; ++i) &#123;</span><br><span class="line">            nums1[m + i] = nums2[i];</span><br><span class="line">        &#125;</span><br><span class="line">        sort(nums1.begin(), nums1.end());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二：正向双指针</strong></p>
+<p>申请一个临时数组，设置两个头部指针，每次比较两个数组的头部，将较小的放入临时数组中，最后再将临时数组赋值给<code>nums1</code>。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p1 = <span class="number">0</span>, p2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sorted[m + n];</span><br><span class="line">        <span class="keyword">int</span> cur;</span><br><span class="line">        <span class="keyword">while</span> (p1 &lt; m || p2 &lt; n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1 == m) &#123;</span><br><span class="line">                cur = nums2[p2++];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p2 == n) &#123;</span><br><span class="line">                cur = nums1[p1++];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[p1] &lt; nums2[p2]) &#123;</span><br><span class="line">                cur = nums1[p1++];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur = nums2[p2++];</span><br><span class="line">            &#125;</span><br><span class="line">            sorted[p1 + p2 - <span class="number">1</span>] = cur;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != m + n; ++i) &#123;</span><br><span class="line">            nums1[i] = sorted[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>方法三：逆向双指针</strong></p>
+<p>我们注意到，在方法二中需要使用一个临时数组来防止<code>nums1</code>的元素被覆盖，如果我们逆向使用双指针则可以实现原地修改，证明如下：</p>
+<p>设 $p1$ 和 $p2$ 是两个数组的尾部指针，即 $p1 = m-1$ ，$p2=n-1$，在遍历的某一时刻，<code>nums1</code>有$m-p1-1$个元素被放入<code>nums1</code>的后半部，<code>nums2</code>有$n-p2-1$个元素被放入<code>nums2</code>的后半部，而在 $p1$ 的后面有$m+n-p1-1$个位置。由于：</p>
+<p>$$m+n-p1-1\geq m-p1-1+n-p2-1$$</p>
+<p>等价于</p>
+<p>$$p2\geq -1$$</p>
+<p>永远成立，因此<code>nums1</code>后面有足够的位置容纳被插入的元素，可以实现原地修改。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p1 = m - <span class="number">1</span>, p2 = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> tail = m + n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> cur;</span><br><span class="line">        <span class="keyword">while</span> (p1 &gt;= <span class="number">0</span> || p2 &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1 == <span class="number">-1</span>) &#123;</span><br><span class="line">                cur = nums2[p2--];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p2 == <span class="number">-1</span>) &#123;</span><br><span class="line">                cur = nums1[p1--];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[p1] &gt; nums2[p2]) &#123;</span><br><span class="line">                cur = nums1[p1--];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur = nums2[p2--];</span><br><span class="line">            &#125;</span><br><span class="line">            nums1[tail--] = cur;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 
 ]]></content>
       <categories>
-        <category>个人动态</category>
-        <category>游戏</category>
-        <category>崩坏三</category>
+        <category>LeetCode</category>
+        <category>简单</category>
       </categories>
       <tags>
-        <tag>日常谈</tag>
-        <tag>游戏</tag>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+        <tag>双指针</tag>
+        <tag>Two Pointers</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-66. Plus One（加一）</title>
+    <url>/2018/01/20/LeetCode-66-Plus-One%EF%BC%88%E5%8A%A0%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="加一"><a href="#加一" class="headerlink" title="加一"></a>加一</h2><p>给定一个由<strong>整数</strong>组成的<strong>非空</strong>数组所表示的非负整数，在该数的基础上加一。</p>
+<p>最高位数字存放在数组的首位， 数组中每个元素只存储一个数字。</p>
+<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
+<a id="more"></a>
+
+<p>示例 1:</p>
+<blockquote>
+<p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。</p>
+</blockquote>
+<p>示例 2:</p>
+<blockquote>
+<p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
+</blockquote>
+<h2 id="Plus-One"><a href="#Plus-One" class="headerlink" title="Plus One"></a>Plus One</h2><p>Given a <strong>non-empty</strong> array of digits representing a <strong>non-negative</strong> integer, plus one to the integer.</p>
+<p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</p>
+<p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
+<p>Example 1:</p>
+<blockquote>
+<p>Input: [1,2,3]<br>Output: [1,2,4]<br>Explanation: The array represents the integer 123.</p>
+</blockquote>
+<p>Example 2:</p>
+<blockquote>
+<p>Input: [4,3,2,1]<br>Output: [4,3,2,2]<br>Explanation: The array represents the integer 4321.</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>根据题意，我们无需考虑负数的情况。（当然负数的做法也是类似）</p>
+<p>非负数加法可以分为两类：</p>
+<ol>
+<li>非9的数字加一</li>
+<li>9加一</li>
+</ol>
+<p>第一种情况，我们只需将原数字加一返回即可。</p>
+<p>第二种情况，有进位。</p>
+<p>因此我们可以将加一后的数字对10取余，如果不为0，则是第一种情况；如果为0，则有进位，遍历前一个元素，重复上述操作。</p>
+<p>如果遍历循环能够全部执行完毕，则需要在数组的第一位增加一位1。例如<code>[9, 9]</code>需要变成<code>[1, 0, 0]</code>。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">plusOne</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = digits.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            digits[i] = (++digits[i]) % <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span> (digits[i] != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        digits.insert(digits.begin(), <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-53. Maximum Subarray（最大子序和）</title>
+    <url>/2018/01/12/LeetCode-53-Maximum-Subarray%EF%BC%88%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="最大子序和"><a href="#最大子序和" class="headerlink" title="最大子序和"></a>最大子序和</h2><p>给定一个整数数组 <code>nums</code> ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+<a id="more"></a>
+
+<p>示例:</p>
+<blockquote>
+<p>输入: [-2,1,-3,4,-1,2,1,-5,4],<br>输出: 6<br>解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</p>
+</blockquote>
+<p><strong>进阶:</strong></p>
+<p>如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的<strong>分治法</strong>求解。</p>
+<h2 id="Maximum-Subarray"><a href="#Maximum-Subarray" class="headerlink" title="Maximum Subarray"></a>Maximum Subarray</h2><p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
+<p>Example:</p>
+<blockquote>
+<p>Input: [-2,1,-3,4,-1,2,1,-5,4],<br>Output: 6<br>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
+</blockquote>
+<p><strong>Follow up:</strong></p>
+<p>If you have figured out the O(n) solution, try coding another solution using <strong>the divide and conquer approach</strong>, which is more subtle.</p>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一(动态规划)</strong><br>设数组<code>nums</code>的长度为$n$。</p>
+<p>设$f(i)$为以<code>nums[i]</code>结尾的连续子数组的最大和，我们要求的就是：</p>
+<p>$$\max \limits_{0\leq i\leq n-1}{f(i)}$$</p>
+<p>因此我们只需要求出每个$f(i)$，然后取其最大值即可。在求$f(i)$的时候，我们要注意$f(i-1)$的值，如果它为负值，那么我们可以直接将其舍弃掉，因为一个数加上一个负数后会变小。由此，我们有状态转移方程：</p>
+<p>$$f(i)=\max {f(i-1)+nums[i], nums[i]}$$</p>
+<p>我们可以将空间复杂度优化到$O(1)$。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> sum = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; numsSize;i++)&#123;</span><br><span class="line">        sum = (sum + nums[i]) &gt; nums[i] ? (sum + nums[i]) : nums[i];</span><br><span class="line">        max = sum &gt; max ? sum : max;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二（分治法）</strong><br>分成子问题解决。结构体中<code>l</code>表示数组中以最左侧数字起的连续最大值，<code>max</code>表示数组中的连续最大值，<code>r</code>表示数组中以最右侧数字为终点的连续最大值，<code>sum</code>表示数组之和。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">val</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> l;</span><br><span class="line">    <span class="keyword">int</span> max;</span><br><span class="line">    <span class="keyword">int</span> r;</span><br><span class="line">    <span class="keyword">int</span> sum;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max(a, b) (a &gt; b ? a : b)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> min(a, b) (a &gt; b ? b : a)</span></span><br><span class="line"><span class="function">struct val <span class="title">maxSub</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">t</span> =</span> &#123;nums[<span class="number">0</span>], nums[<span class="number">0</span>], nums[<span class="number">0</span>], nums[<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v1</span> =</span> maxSub(nums, n / <span class="number">2</span>);</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v2</span> =</span> maxSub(nums + n / <span class="number">2</span>, n - n / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">int</span> l = max(v1.l, v1.sum + v2. l);</span><br><span class="line">    <span class="keyword">int</span> max = max(max(v1.max, v2.max), v1.r + v2.l);</span><br><span class="line">    <span class="keyword">int</span> r = max(v2.r, v1.r + v2.sum);</span><br><span class="line">    <span class="keyword">int</span> sum = v1.sum + v2.sum;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">t</span> =</span> &#123;l, max, r, sum&#125;;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">val</span> <span class="title">v</span> =</span> maxSub(nums, numsSize);</span><br><span class="line">    <span class="keyword">return</span> v.max;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//转 载</span></span><br></pre></td></tr></table></figure>
+<p><strong>方法三（贪心算法）</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, sum = <span class="number">0</span>, min = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; numsSize; i++) &#123;</span><br><span class="line">        sum += nums[i];</span><br><span class="line">        <span class="keyword">if</span>(sum - min &gt; max)</span><br><span class="line">            max = sum - min;</span><br><span class="line">        <span class="keyword">if</span>(sum &lt; min)</span><br><span class="line">            min = sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+        <tag>分治算法</tag>
+        <tag>动态规划</tag>
+        <tag>Divide and Conquer</tag>
+        <tag>Dynamic Programming</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-35. Search Insert Position（搜索插入位置）</title>
+    <url>/2018/01/12/LeetCode-35-Search-Insert-Position%EF%BC%88%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="搜索插入位置"><a href="#搜索插入位置" class="headerlink" title="搜索插入位置"></a>搜索插入位置</h2><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>你可以假设数组中无重复元素。</p>
+<a id="more"></a>
+
+<p>示例 1:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 5<br>输出: 2</p>
+</blockquote>
+<p>示例 2:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 2<br>输出: 1</p>
+</blockquote>
+<p>示例 3:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 7<br>输出: 4</p>
+</blockquote>
+<p>示例 4:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 0<br>输出: 0</p>
+</blockquote>
+<h2 id="Search-Insert-Position"><a href="#Search-Insert-Position" class="headerlink" title="Search Insert Position"></a>Search Insert Position</h2><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p>You may assume no duplicates in the array.</p>
+<p>Example 1:</p>
+<blockquote>
+<p>Input: [1,3,5,6], 5<br>Output: 2</p>
+</blockquote>
+<p>Example 2:</p>
+<blockquote>
+<p>Input: [1,3,5,6], 2<br>Output: 1</p>
+</blockquote>
+<p>Example 3:</p>
+<blockquote>
+<p>Input: [1,3,5,6], 7<br>Output: 4</p>
+</blockquote>
+<p>Example 4:</p>
+<blockquote>
+<p>Input: [1,3,5,6], 0<br>Output: 0</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>二分查找</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &lt; target)&#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>另外，我们还可以使用c++的STL</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lower_bound(nums.begin(),nums.end(),target) - nums.begin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>lower_bound()</code>也是用二分法实现的。</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+        <tag>二分查找</tag>
+        <tag>Binary Search</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-27. Remove Element（移除元素）</title>
+    <url>/2018/01/12/LeetCode-27-Remove-Element%EF%BC%88%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h2><p>给定一个数组 <code>nums</code> 和一个值 <code>val</code>，你需要原地移除所有数值等于 <code>val</code> 的元素，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+<a id="more"></a>
+
+<p>示例 1:</p>
+<blockquote>
+<p>给定 nums = [3,2,2,3], val = 3,<br>函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。<br>你不需要考虑数组中超出新长度后面的元素。</p>
+</blockquote>
+<p>示例 2:</p>
+<blockquote>
+<p>给定 nums = [0,1,2,2,3,0,4,2], val = 2,<br>函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。<br>注意这五个元素可为任意顺序。<br>你不需要考虑数组中超出新长度后面的元素。</p>
+</blockquote>
+<p><strong>说明:</strong></p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<p>你可以想象内部操作如下:</p>
+<blockquote>
+<p>// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>int len = removeElement(nums, val);<br>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>for (int i = 0; i &lt; len; i++) {<br>print(nums[i]);<br>}</p>
+</blockquote>
+<h2 id="Remove-Element"><a href="#Remove-Element" class="headerlink" title="Remove Element"></a>Remove Element</h2><p>Given an array nums and a value val, remove all instances of that value in-place and return the new length.</p>
+<p>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
+<p>The order of elements can be changed. It doesn’t matter what you leave beyond the new length.</p>
+<p>Example 1:</p>
+<blockquote>
+<p>Given nums = [3,2,2,3], val = 3,<br>Your function should return length = 2, with the first two elements of nums being 2.<br>It doesn’t matter what you leave beyond the returned length.</p>
+</blockquote>
+<p>Example 2:</p>
+<blockquote>
+<p>Given nums = [0,1,2,2,3,0,4,2], val = 2,<br>Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4.<br>Note that the order of those five elements can be arbitrary.<br>It doesn’t matter what values are set beyond the returned length.</p>
+</blockquote>
+<p><strong>Clarification:</strong></p>
+<p>Confused why the returned value is an integer but your answer is an array?</p>
+<p>Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.</p>
+<p>Internally you can think of this:</p>
+<blockquote>
+<p>// nums is passed in by reference. (i.e., without making a copy)<br>int len = removeElement(nums, val);<br>// any modification to nums in your function would be known by the caller.<br>// using the length returned by your function, it prints the first len elements.<br>for (int i = 0; i &lt; len; i++) {<br>print(nums[i]);<br>}</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>这道题其实和<a href="https://ichen2000.com/2018/01/12/LeetCode-26-Remove-Duplicates-from-Sorted-Array%EF%BC%88%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%89/" target="_blank">LeetCode26题删除重复元素</a>相同的道理。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; numsSize; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i] != val)&#123;</span><br><span class="line">            nums[count++] = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+        <tag>双指针</tag>
+        <tag>Two Pointers</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-26. Remove Duplicates from Sorted Array（删除排序数组中的重复项）</title>
+    <url>/2018/01/12/LeetCode-26-Remove-Duplicates-from-Sorted-Array%EF%BC%88%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="删除排序数组中的重复项"><a href="#删除排序数组中的重复项" class="headerlink" title="删除排序数组中的重复项"></a>删除排序数组中的重复项</h2><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<a id="more"></a>
+
+<p>示例 1:</p>
+<blockquote>
+<p>给定数组 nums = [1,1,2],<br>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。<br>你不需要考虑数组中超出新长度后面的元素。</p>
+</blockquote>
+<p>示例 2:</p>
+<blockquote>
+<p>给定 nums = [0,0,1,1,1,2,2,3,3,4],<br>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。<br>你不需要考虑数组中超出新长度后面的元素。</p>
+</blockquote>
+<p><strong>说明:</strong></p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<p>你可以想象内部操作如下:</p>
+<blockquote>
+<p>// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝<br>int len = removeDuplicates(nums);<br>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>for (int i = 0; i &lt; len; i++) {<br>    print(nums[i]);<br>}</p>
+</blockquote>
+<h2 id="Remove-Duplicates-from-Sorted-Array"><a href="#Remove-Duplicates-from-Sorted-Array" class="headerlink" title="Remove Duplicates from Sorted Array"></a>Remove Duplicates from Sorted Array</h2><p>Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.</p>
+<p>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
+<p>Example 1:</p>
+<blockquote>
+<p>Given nums = [1,1,2],<br>Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.<br>It doesn’t matter what you leave beyond the returned length.</p>
+</blockquote>
+<p>Example 2:</p>
+<blockquote>
+<p>Given nums = [0,0,1,1,1,2,2,3,3,4],<br>Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.<br>It doesn’t matter what values are set beyond the returned length.</p>
+</blockquote>
+<p><strong>Clarification:</strong></p>
+<p>Confused why the returned value is an integer but your answer is an array?</p>
+<p>Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.</p>
+<p>Internally you can think of this:</p>
+<blockquote>
+<p>// nums is passed in by reference. (i.e., without making a copy)<br>int len = removeDuplicates(nums);<br>// any modification to nums in your function would be known by the caller.<br>// using the length returned by your function, it prints the first len elements.<br>for (int i = 0; i &lt; len; i++) {<br>    print(nums[i]);<br>}</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>双指针法</strong></p>
+<p>设置两个指针，一个慢指针<code>i</code>，一个快指针<code>j</code>。只要 $nums[i]==nums[j]$， 就增加<code>j</code>。</p>
+<p>当$nums[i]!=nums[j]$时，说明重复项已经遍历过了，因此我们将$nums[j]$的值赋给$nums[i+1]$，递增<code>i</code>，然后重复上述过程。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.size() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.size(); j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != nums[j])&#123;</span><br><span class="line">                nums[++i] = nums[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+        <tag>双指针</tag>
+        <tag>Two Pointers</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-21. Merge Two Sorted Lists（合并两个有序链表）</title>
+    <url>/2018/01/12/LeetCode-21-Merge-Two-Sorted-Lists%EF%BC%88%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="合并两个有序链表"><a href="#合并两个有序链表" class="headerlink" title="合并两个有序链表"></a>合并两个有序链表</h2><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
+<p>示例：</p>
+<blockquote>
+<p>输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="Merge-Two-Sorted-Lists"><a href="#Merge-Two-Sorted-Lists" class="headerlink" title="Merge Two Sorted Lists"></a>Merge Two Sorted Lists</h2><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+<p>Example:</p>
+<blockquote>
+<p>Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一：递归</strong></p>
+<p>递归结束条件为：任意一个链表为空。</p>
+<p>每次返回两个链表中较小的一个。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l1 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二：迭代</strong></p>
+<p>在两个链表中分别设置一个结点<code>prev</code>，然后比较这两个结点，将较小的那个插入新链表中，并将该结点后移，如此下去，直到某一个链表为空。由上述的步骤可知，剩下的链表的所有元素一定比新链表中的大，因此直接插入到新链表尾部即可。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* preHead = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode* prev = preHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                prev-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>注：题解为官方题解。链接：<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/">https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/</a></p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>递归</tag>
+        <tag>链表</tag>
+        <tag>Recursion</tag>
+        <tag>Linked List</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-1. Two Sum（两数之和）</title>
+    <url>/2018/01/12/LeetCode-1-Two-Sum%EF%BC%88%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
+<a id="more"></a>
+
+<p> 示例:</p>
+<blockquote>
+<p>给定 nums = [2, 7, 11, 15], target = 9<br>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
+</blockquote>
+<h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h2><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>Example:</p>
+<blockquote>
+<p>Given nums = [2, 7, 11, 15], target = 9,<br>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>梦开始的地方（</p>
+<p>使用哈希表对于每一个<code>x</code>，我们首先查询哈希表中是否存在<code>target - x</code>，然后将<code>x</code>插入到哈希表中，即可保证不会让<code>x</code>和自己匹配。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; hashtable;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = hashtable.find(target - nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (it != hashtable.end()) &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;it-&gt;second, i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashtable[nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>下面这个是初学时用的暴力搜索</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">twoSum</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j,flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> a[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; numsSize; i++ )&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; numsSize; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] + nums[j] == target)&#123;</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">break</span>;           </span><br><span class="line">    &#125;</span><br><span class="line">    a[<span class="number">0</span>] = i;</span><br><span class="line">    a[<span class="number">1</span>] = j;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>哈希表</tag>
+        <tag>Array</tag>
+        <tag>Hash Table</tag>
       </tags>
   </entry>
 </search>
