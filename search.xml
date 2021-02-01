@@ -36,46 +36,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-118. Pascal&#39;s Triangle（杨辉三角）</title>
-    <url>/2018/01/27/LeetCode-118-Pascal-s-Triangle%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h2><p>给定一个非负整数 <em>numRows</em>，生成杨辉三角的前 <em>numRows</em> 行。</p>
-<a id="more"></a>
-
-<p><img src="https://img-blog.csdnimg.cn/20190213182724160.gif" alt="在这里插入图片描述"><br>在杨辉三角中，每个数是它左上方和右上方的数的和。<br>示例:</p>
-<blockquote>
-<p>输入: 5<br>输出:<br>[<br>       [1],<br>     [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]</p>
-</blockquote>
-<h2 id="Pascal’s-Triangle"><a href="#Pascal’s-Triangle" class="headerlink" title="Pascal’s Triangle"></a>Pascal’s Triangle</h2><p>Given a non-negative integer numRows, generate the first numRows of Pascal’s triangle.<br><img src="https://img-blog.csdnimg.cn/20190213182902277.gif" alt="在这里插入图片描述"><br>In Pascal’s triangle, each number is the sum of the two numbers directly above it.</p>
-<p>Example:</p>
-<blockquote>
-<p>Input: 5<br>Output:<br>[<br>     [1],<br>    [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一</strong></p>
-<p>在小学二年级学习组合数的时候，我们就知道杨辉三角能够表示二项式的系数，且有以下性质：</p>
-<ol>
-<li>对称性：首项和末项都为1</li>
-<li>第 $n$ 行（从 $0$ 编号）有 $n+1$ 项，前 $n$ 行共有 $\frac{n(n+1)}{2}$ 个数。</li>
-<li>第 $n$ 行第 $m$ 个数可以用组合数 $C^m_n$ 表示，且 $c^m_n=\frac{n!}{m!(n-m)!}$</li>
-<li>每个数字等于其两肩上的数之和，这也是组合数的性质之一，即 $c_n^i=c_{n-1}^{i-1}+c_{n-1}^i$</li>
-<li>二项式 $(a+b)^n$ 的系数对应杨辉三角第 $n$ 行的每一个数。</li>
-</ol>
-<p>由性质4我们可有解法：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret(numRows);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; ++i) &#123;</span><br><span class="line">            ret[i].resize(i + <span class="number">1</span>);</span><br><span class="line">            ret[i][<span class="number">0</span>] = ret[i][i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; ++j) &#123;</span><br><span class="line">                ret[i][j] = ret[i - <span class="number">1</span>][j] + ret[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>方法二：打表（不讲武德法</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a = &#123;</span><br><span class="line">            &#123;<span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">6</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">15</span>, <span class="number">6</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">21</span>, <span class="number">35</span>, <span class="number">35</span>, <span class="number">21</span>, <span class="number">7</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">8</span>, <span class="number">28</span>, <span class="number">56</span>, <span class="number">70</span>, <span class="number">56</span>, <span class="number">28</span>, <span class="number">8</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">9</span>, <span class="number">36</span>, <span class="number">84</span>, <span class="number">126</span>, <span class="number">126</span>, <span class="number">84</span>, <span class="number">36</span>, <span class="number">9</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">10</span>, <span class="number">45</span>, <span class="number">120</span>, <span class="number">210</span>, <span class="number">252</span>, <span class="number">210</span>, <span class="number">120</span>, <span class="number">45</span>, <span class="number">10</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">11</span>, <span class="number">55</span>, <span class="number">165</span>, <span class="number">330</span>, <span class="number">462</span>, <span class="number">462</span>, <span class="number">330</span>, <span class="number">165</span>, <span class="number">55</span>, <span class="number">11</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">12</span>, <span class="number">66</span>, <span class="number">220</span>, <span class="number">495</span>, <span class="number">792</span>, <span class="number">924</span>, <span class="number">792</span>, <span class="number">495</span>, <span class="number">220</span>, <span class="number">66</span>, <span class="number">12</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">13</span>, <span class="number">78</span>, <span class="number">286</span>, <span class="number">715</span>, <span class="number">1287</span>, <span class="number">1716</span>, <span class="number">1716</span>, <span class="number">1287</span>, <span class="number">715</span>, <span class="number">286</span>, <span class="number">78</span>, <span class="number">13</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">14</span>, <span class="number">91</span>, <span class="number">364</span>, <span class="number">1001</span>, <span class="number">2002</span>, <span class="number">3003</span>, <span class="number">3432</span>, <span class="number">3003</span>, <span class="number">2002</span>, <span class="number">1001</span>, <span class="number">364</span>, <span class="number">91</span>, <span class="number">14</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">15</span>, <span class="number">105</span>, <span class="number">455</span>, <span class="number">1365</span>, <span class="number">3003</span>, <span class="number">5005</span>, <span class="number">6435</span>, <span class="number">6435</span>, <span class="number">5005</span>, <span class="number">3003</span>, <span class="number">1365</span>, <span class="number">455</span>, <span class="number">105</span>, <span class="number">15</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">16</span>, <span class="number">120</span>, <span class="number">560</span>, <span class="number">1820</span>, <span class="number">4368</span>, <span class="number">8008</span>, <span class="number">11440</span>, <span class="number">12870</span>, <span class="number">11440</span>, <span class="number">8008</span>, <span class="number">4368</span>, <span class="number">1820</span>, <span class="number">560</span>, <span class="number">120</span>, <span class="number">16</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">17</span>, <span class="number">136</span>, <span class="number">680</span>, <span class="number">2380</span>, <span class="number">6188</span>, <span class="number">12376</span>, <span class="number">19448</span>, <span class="number">24310</span>, <span class="number">24310</span>, <span class="number">19448</span>, <span class="number">12376</span>, <span class="number">6188</span>, <span class="number">2380</span>, <span class="number">680</span>, <span class="number">136</span>, <span class="number">17</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">18</span>, <span class="number">153</span>, <span class="number">816</span>, <span class="number">3060</span>, <span class="number">8568</span>, <span class="number">18564</span>, <span class="number">31824</span>, <span class="number">43758</span>, <span class="number">48620</span>, <span class="number">43758</span>, <span class="number">31824</span>, <span class="number">18564</span>, <span class="number">8568</span>, <span class="number">3060</span>, <span class="number">816</span>, <span class="number">153</span>, <span class="number">18</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">19</span>, <span class="number">171</span>, <span class="number">969</span>, <span class="number">3876</span>, <span class="number">11628</span>, <span class="number">27132</span>, <span class="number">50388</span>, <span class="number">75582</span>, <span class="number">92378</span>, <span class="number">92378</span>, <span class="number">75582</span>, <span class="number">50388</span>, <span class="number">27132</span>, <span class="number">11628</span>, <span class="number">3876</span>, <span class="number">969</span>, <span class="number">171</span>, <span class="number">19</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">20</span>, <span class="number">190</span>, <span class="number">1140</span>, <span class="number">4845</span>, <span class="number">15504</span>, <span class="number">38760</span>, <span class="number">77520</span>, <span class="number">125970</span>, <span class="number">167960</span>, <span class="number">184756</span>, <span class="number">167960</span>, <span class="number">125970</span>, <span class="number">77520</span>, <span class="number">38760</span>, <span class="number">15504</span>, <span class="number">4845</span>, <span class="number">1140</span>, <span class="number">190</span>, <span class="number">20</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">21</span>, <span class="number">210</span>, <span class="number">1330</span>, <span class="number">5985</span>, <span class="number">20349</span>, <span class="number">54264</span>, <span class="number">116280</span>, <span class="number">203490</span>, <span class="number">293930</span>, <span class="number">352716</span>, <span class="number">352716</span>, <span class="number">293930</span>, <span class="number">203490</span>, <span class="number">116280</span>, <span class="number">54264</span>, <span class="number">20349</span>, <span class="number">5985</span>, <span class="number">1330</span>, <span class="number">210</span>, <span class="number">21</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">22</span>, <span class="number">231</span>, <span class="number">1540</span>, <span class="number">7315</span>, <span class="number">26334</span>, <span class="number">74613</span>, <span class="number">170544</span>, <span class="number">319770</span>, <span class="number">497420</span>, <span class="number">646646</span>, <span class="number">705432</span>, <span class="number">646646</span>, <span class="number">497420</span>, <span class="number">319770</span>, <span class="number">170544</span>, <span class="number">74613</span>, <span class="number">26334</span>, <span class="number">7315</span>, <span class="number">1540</span>, <span class="number">231</span>, <span class="number">22</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">23</span>, <span class="number">253</span>, <span class="number">1771</span>, <span class="number">8855</span>, <span class="number">33649</span>, <span class="number">100947</span>, <span class="number">245157</span>, <span class="number">490314</span>, <span class="number">817190</span>, <span class="number">1144066</span>, <span class="number">1352078</span>, <span class="number">1352078</span>, <span class="number">1144066</span>, <span class="number">817190</span>, <span class="number">490314</span>, <span class="number">245157</span>, <span class="number">100947</span>, <span class="number">33649</span>, <span class="number">8855</span>, <span class="number">1771</span>, <span class="number">253</span>, <span class="number">23</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">24</span>, <span class="number">276</span>, <span class="number">2024</span>, <span class="number">10626</span>, <span class="number">42504</span>, <span class="number">134596</span>, <span class="number">346104</span>, <span class="number">735471</span>, <span class="number">1307504</span>, <span class="number">1961256</span>, <span class="number">2496144</span>, <span class="number">2704156</span>, <span class="number">2496144</span>, <span class="number">1961256</span>, <span class="number">1307504</span>, <span class="number">735471</span>, <span class="number">346104</span>, <span class="number">134596</span>, <span class="number">42504</span>, <span class="number">10626</span>, <span class="number">2024</span>, <span class="number">276</span>, <span class="number">24</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">25</span>, <span class="number">300</span>, <span class="number">2300</span>, <span class="number">12650</span>, <span class="number">53130</span>, <span class="number">177100</span>, <span class="number">480700</span>, <span class="number">1081575</span>, <span class="number">2042975</span>, <span class="number">3268760</span>, <span class="number">4457400</span>, <span class="number">5200300</span>, <span class="number">5200300</span>, <span class="number">4457400</span>, <span class="number">3268760</span>, <span class="number">2042975</span>, <span class="number">1081575</span>, <span class="number">480700</span>, <span class="number">177100</span>, <span class="number">53130</span>, <span class="number">12650</span>, <span class="number">2300</span>, <span class="number">300</span>, <span class="number">25</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">26</span>, <span class="number">325</span>, <span class="number">2600</span>, <span class="number">14950</span>, <span class="number">65780</span>, <span class="number">230230</span>, <span class="number">657800</span>, <span class="number">1562275</span>, <span class="number">3124550</span>, <span class="number">5311735</span>, <span class="number">7726160</span>, <span class="number">9657700</span>, <span class="number">10400600</span>, <span class="number">9657700</span>, <span class="number">7726160</span>, <span class="number">5311735</span>, <span class="number">3124550</span>, <span class="number">1562275</span>, <span class="number">657800</span>, <span class="number">230230</span>, <span class="number">65780</span>, <span class="number">14950</span>, <span class="number">2600</span>, <span class="number">325</span>, <span class="number">26</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">27</span>, <span class="number">351</span>, <span class="number">2925</span>, <span class="number">17550</span>, <span class="number">80730</span>, <span class="number">296010</span>, <span class="number">888030</span>, <span class="number">2220075</span>, <span class="number">4686825</span>, <span class="number">8436285</span>, <span class="number">13037895</span>, <span class="number">17383860</span>, <span class="number">20058300</span>, <span class="number">20058300</span>, <span class="number">17383860</span>, <span class="number">13037895</span>, <span class="number">8436285</span>, <span class="number">4686825</span>, <span class="number">2220075</span>, <span class="number">888030</span>, <span class="number">296010</span>, <span class="number">80730</span>, <span class="number">17550</span>, <span class="number">2925</span>, <span class="number">351</span>, <span class="number">27</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">28</span>, <span class="number">378</span>, <span class="number">3276</span>, <span class="number">20475</span>, <span class="number">98280</span>, <span class="number">376740</span>, <span class="number">1184040</span>, <span class="number">3108105</span>, <span class="number">6906900</span>, <span class="number">13123110</span>, <span class="number">21474180</span>, <span class="number">30421755</span>, <span class="number">37442160</span>, <span class="number">40116600</span>, <span class="number">37442160</span>, <span class="number">30421755</span>, <span class="number">21474180</span>, <span class="number">13123110</span>, <span class="number">6906900</span>, <span class="number">3108105</span>, <span class="number">1184040</span>, <span class="number">376740</span>, <span class="number">98280</span>, <span class="number">20475</span>, <span class="number">3276</span>, <span class="number">378</span>, <span class="number">28</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">29</span>, <span class="number">406</span>, <span class="number">3654</span>, <span class="number">23751</span>, <span class="number">118755</span>, <span class="number">475020</span>, <span class="number">1560780</span>, <span class="number">4292145</span>, <span class="number">10015005</span>, <span class="number">20030010</span>, <span class="number">34597290</span>, <span class="number">51895935</span>, <span class="number">67863915</span>, <span class="number">77558760</span>, <span class="number">77558760</span>, <span class="number">67863915</span>, <span class="number">51895935</span>, <span class="number">34597290</span>, <span class="number">20030010</span>, <span class="number">10015005</span>, <span class="number">4292145</span>, <span class="number">1560780</span>, <span class="number">475020</span>, <span class="number">118755</span>, <span class="number">23751</span>, <span class="number">3654</span>, <span class="number">406</span>, <span class="number">29</span>, <span class="number">1</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">            ret.push_back(a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>哈哈哈哈哈哈哈哈</p>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode-119. Pascal&#39;s Triangle II（杨辉三角 II）</title>
     <url>/2018/01/28/LeetCode-119-Pascal-s-Triangle-II%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92-II%EF%BC%89/</url>
     <content><![CDATA[<h2 id="杨辉三角-II"><a href="#杨辉三角-II" class="headerlink" title="杨辉三角 II"></a>杨辉三角 II</h2><p>给定一个非负索引 <em>k</em>，其中 <em>k ≤ 33</em>，返回杨辉三角的第 <em>k</em> 行。</p>
@@ -204,6 +164,46 @@
         <tag>Array</tag>
         <tag>双指针</tag>
         <tag>Two Pointers</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-118. Pascal&#39;s Triangle（杨辉三角）</title>
+    <url>/2018/01/27/LeetCode-118-Pascal-s-Triangle%EF%BC%88%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h2><p>给定一个非负整数 <em>numRows</em>，生成杨辉三角的前 <em>numRows</em> 行。</p>
+<a id="more"></a>
+
+<p><img src="https://img-blog.csdnimg.cn/20190213182724160.gif" alt="在这里插入图片描述"><br>在杨辉三角中，每个数是它左上方和右上方的数的和。<br>示例:</p>
+<blockquote>
+<p>输入: 5<br>输出:<br>[<br>       [1],<br>     [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]</p>
+</blockquote>
+<h2 id="Pascal’s-Triangle"><a href="#Pascal’s-Triangle" class="headerlink" title="Pascal’s Triangle"></a>Pascal’s Triangle</h2><p>Given a non-negative integer numRows, generate the first numRows of Pascal’s triangle.<br><img src="https://img-blog.csdnimg.cn/20190213182902277.gif" alt="在这里插入图片描述"><br>In Pascal’s triangle, each number is the sum of the two numbers directly above it.</p>
+<p>Example:</p>
+<blockquote>
+<p>Input: 5<br>Output:<br>[<br>     [1],<br>    [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p><strong>方法一</strong></p>
+<p>在小学二年级学习组合数的时候，我们就知道杨辉三角能够表示二项式的系数，且有以下性质：</p>
+<ol>
+<li>对称性：首项和末项都为1</li>
+<li>第 $n$ 行（从 $0$ 编号）有 $n+1$ 项，前 $n$ 行共有 $\frac{n(n+1)}{2}$ 个数。</li>
+<li>第 $n$ 行第 $m$ 个数可以用组合数 $C^m_n$ 表示，且 $c^m_n=\frac{n!}{m!(n-m)!}$</li>
+<li>每个数字等于其两肩上的数之和，这也是组合数的性质之一，即 $c_n^i=c_{n-1}^{i-1}+c_{n-1}^i$</li>
+<li>二项式 $(a+b)^n$ 的系数对应杨辉三角第 $n$ 行的每一个数。</li>
+</ol>
+<p>由性质4我们可有解法：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret(numRows);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; ++i) &#123;</span><br><span class="line">            ret[i].resize(i + <span class="number">1</span>);</span><br><span class="line">            ret[i][<span class="number">0</span>] = ret[i][i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; ++j) &#123;</span><br><span class="line">                ret[i][j] = ret[i - <span class="number">1</span>][j] + ret[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二：打表（不讲武德法</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a = &#123;</span><br><span class="line">            &#123;<span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">6</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">15</span>, <span class="number">6</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">21</span>, <span class="number">35</span>, <span class="number">35</span>, <span class="number">21</span>, <span class="number">7</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">8</span>, <span class="number">28</span>, <span class="number">56</span>, <span class="number">70</span>, <span class="number">56</span>, <span class="number">28</span>, <span class="number">8</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">9</span>, <span class="number">36</span>, <span class="number">84</span>, <span class="number">126</span>, <span class="number">126</span>, <span class="number">84</span>, <span class="number">36</span>, <span class="number">9</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">10</span>, <span class="number">45</span>, <span class="number">120</span>, <span class="number">210</span>, <span class="number">252</span>, <span class="number">210</span>, <span class="number">120</span>, <span class="number">45</span>, <span class="number">10</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">11</span>, <span class="number">55</span>, <span class="number">165</span>, <span class="number">330</span>, <span class="number">462</span>, <span class="number">462</span>, <span class="number">330</span>, <span class="number">165</span>, <span class="number">55</span>, <span class="number">11</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">12</span>, <span class="number">66</span>, <span class="number">220</span>, <span class="number">495</span>, <span class="number">792</span>, <span class="number">924</span>, <span class="number">792</span>, <span class="number">495</span>, <span class="number">220</span>, <span class="number">66</span>, <span class="number">12</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">13</span>, <span class="number">78</span>, <span class="number">286</span>, <span class="number">715</span>, <span class="number">1287</span>, <span class="number">1716</span>, <span class="number">1716</span>, <span class="number">1287</span>, <span class="number">715</span>, <span class="number">286</span>, <span class="number">78</span>, <span class="number">13</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">14</span>, <span class="number">91</span>, <span class="number">364</span>, <span class="number">1001</span>, <span class="number">2002</span>, <span class="number">3003</span>, <span class="number">3432</span>, <span class="number">3003</span>, <span class="number">2002</span>, <span class="number">1001</span>, <span class="number">364</span>, <span class="number">91</span>, <span class="number">14</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">15</span>, <span class="number">105</span>, <span class="number">455</span>, <span class="number">1365</span>, <span class="number">3003</span>, <span class="number">5005</span>, <span class="number">6435</span>, <span class="number">6435</span>, <span class="number">5005</span>, <span class="number">3003</span>, <span class="number">1365</span>, <span class="number">455</span>, <span class="number">105</span>, <span class="number">15</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">16</span>, <span class="number">120</span>, <span class="number">560</span>, <span class="number">1820</span>, <span class="number">4368</span>, <span class="number">8008</span>, <span class="number">11440</span>, <span class="number">12870</span>, <span class="number">11440</span>, <span class="number">8008</span>, <span class="number">4368</span>, <span class="number">1820</span>, <span class="number">560</span>, <span class="number">120</span>, <span class="number">16</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">17</span>, <span class="number">136</span>, <span class="number">680</span>, <span class="number">2380</span>, <span class="number">6188</span>, <span class="number">12376</span>, <span class="number">19448</span>, <span class="number">24310</span>, <span class="number">24310</span>, <span class="number">19448</span>, <span class="number">12376</span>, <span class="number">6188</span>, <span class="number">2380</span>, <span class="number">680</span>, <span class="number">136</span>, <span class="number">17</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">18</span>, <span class="number">153</span>, <span class="number">816</span>, <span class="number">3060</span>, <span class="number">8568</span>, <span class="number">18564</span>, <span class="number">31824</span>, <span class="number">43758</span>, <span class="number">48620</span>, <span class="number">43758</span>, <span class="number">31824</span>, <span class="number">18564</span>, <span class="number">8568</span>, <span class="number">3060</span>, <span class="number">816</span>, <span class="number">153</span>, <span class="number">18</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">19</span>, <span class="number">171</span>, <span class="number">969</span>, <span class="number">3876</span>, <span class="number">11628</span>, <span class="number">27132</span>, <span class="number">50388</span>, <span class="number">75582</span>, <span class="number">92378</span>, <span class="number">92378</span>, <span class="number">75582</span>, <span class="number">50388</span>, <span class="number">27132</span>, <span class="number">11628</span>, <span class="number">3876</span>, <span class="number">969</span>, <span class="number">171</span>, <span class="number">19</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">20</span>, <span class="number">190</span>, <span class="number">1140</span>, <span class="number">4845</span>, <span class="number">15504</span>, <span class="number">38760</span>, <span class="number">77520</span>, <span class="number">125970</span>, <span class="number">167960</span>, <span class="number">184756</span>, <span class="number">167960</span>, <span class="number">125970</span>, <span class="number">77520</span>, <span class="number">38760</span>, <span class="number">15504</span>, <span class="number">4845</span>, <span class="number">1140</span>, <span class="number">190</span>, <span class="number">20</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">21</span>, <span class="number">210</span>, <span class="number">1330</span>, <span class="number">5985</span>, <span class="number">20349</span>, <span class="number">54264</span>, <span class="number">116280</span>, <span class="number">203490</span>, <span class="number">293930</span>, <span class="number">352716</span>, <span class="number">352716</span>, <span class="number">293930</span>, <span class="number">203490</span>, <span class="number">116280</span>, <span class="number">54264</span>, <span class="number">20349</span>, <span class="number">5985</span>, <span class="number">1330</span>, <span class="number">210</span>, <span class="number">21</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">22</span>, <span class="number">231</span>, <span class="number">1540</span>, <span class="number">7315</span>, <span class="number">26334</span>, <span class="number">74613</span>, <span class="number">170544</span>, <span class="number">319770</span>, <span class="number">497420</span>, <span class="number">646646</span>, <span class="number">705432</span>, <span class="number">646646</span>, <span class="number">497420</span>, <span class="number">319770</span>, <span class="number">170544</span>, <span class="number">74613</span>, <span class="number">26334</span>, <span class="number">7315</span>, <span class="number">1540</span>, <span class="number">231</span>, <span class="number">22</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">23</span>, <span class="number">253</span>, <span class="number">1771</span>, <span class="number">8855</span>, <span class="number">33649</span>, <span class="number">100947</span>, <span class="number">245157</span>, <span class="number">490314</span>, <span class="number">817190</span>, <span class="number">1144066</span>, <span class="number">1352078</span>, <span class="number">1352078</span>, <span class="number">1144066</span>, <span class="number">817190</span>, <span class="number">490314</span>, <span class="number">245157</span>, <span class="number">100947</span>, <span class="number">33649</span>, <span class="number">8855</span>, <span class="number">1771</span>, <span class="number">253</span>, <span class="number">23</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">24</span>, <span class="number">276</span>, <span class="number">2024</span>, <span class="number">10626</span>, <span class="number">42504</span>, <span class="number">134596</span>, <span class="number">346104</span>, <span class="number">735471</span>, <span class="number">1307504</span>, <span class="number">1961256</span>, <span class="number">2496144</span>, <span class="number">2704156</span>, <span class="number">2496144</span>, <span class="number">1961256</span>, <span class="number">1307504</span>, <span class="number">735471</span>, <span class="number">346104</span>, <span class="number">134596</span>, <span class="number">42504</span>, <span class="number">10626</span>, <span class="number">2024</span>, <span class="number">276</span>, <span class="number">24</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">25</span>, <span class="number">300</span>, <span class="number">2300</span>, <span class="number">12650</span>, <span class="number">53130</span>, <span class="number">177100</span>, <span class="number">480700</span>, <span class="number">1081575</span>, <span class="number">2042975</span>, <span class="number">3268760</span>, <span class="number">4457400</span>, <span class="number">5200300</span>, <span class="number">5200300</span>, <span class="number">4457400</span>, <span class="number">3268760</span>, <span class="number">2042975</span>, <span class="number">1081575</span>, <span class="number">480700</span>, <span class="number">177100</span>, <span class="number">53130</span>, <span class="number">12650</span>, <span class="number">2300</span>, <span class="number">300</span>, <span class="number">25</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">26</span>, <span class="number">325</span>, <span class="number">2600</span>, <span class="number">14950</span>, <span class="number">65780</span>, <span class="number">230230</span>, <span class="number">657800</span>, <span class="number">1562275</span>, <span class="number">3124550</span>, <span class="number">5311735</span>, <span class="number">7726160</span>, <span class="number">9657700</span>, <span class="number">10400600</span>, <span class="number">9657700</span>, <span class="number">7726160</span>, <span class="number">5311735</span>, <span class="number">3124550</span>, <span class="number">1562275</span>, <span class="number">657800</span>, <span class="number">230230</span>, <span class="number">65780</span>, <span class="number">14950</span>, <span class="number">2600</span>, <span class="number">325</span>, <span class="number">26</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">27</span>, <span class="number">351</span>, <span class="number">2925</span>, <span class="number">17550</span>, <span class="number">80730</span>, <span class="number">296010</span>, <span class="number">888030</span>, <span class="number">2220075</span>, <span class="number">4686825</span>, <span class="number">8436285</span>, <span class="number">13037895</span>, <span class="number">17383860</span>, <span class="number">20058300</span>, <span class="number">20058300</span>, <span class="number">17383860</span>, <span class="number">13037895</span>, <span class="number">8436285</span>, <span class="number">4686825</span>, <span class="number">2220075</span>, <span class="number">888030</span>, <span class="number">296010</span>, <span class="number">80730</span>, <span class="number">17550</span>, <span class="number">2925</span>, <span class="number">351</span>, <span class="number">27</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">28</span>, <span class="number">378</span>, <span class="number">3276</span>, <span class="number">20475</span>, <span class="number">98280</span>, <span class="number">376740</span>, <span class="number">1184040</span>, <span class="number">3108105</span>, <span class="number">6906900</span>, <span class="number">13123110</span>, <span class="number">21474180</span>, <span class="number">30421755</span>, <span class="number">37442160</span>, <span class="number">40116600</span>, <span class="number">37442160</span>, <span class="number">30421755</span>, <span class="number">21474180</span>, <span class="number">13123110</span>, <span class="number">6906900</span>, <span class="number">3108105</span>, <span class="number">1184040</span>, <span class="number">376740</span>, <span class="number">98280</span>, <span class="number">20475</span>, <span class="number">3276</span>, <span class="number">378</span>, <span class="number">28</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">29</span>, <span class="number">406</span>, <span class="number">3654</span>, <span class="number">23751</span>, <span class="number">118755</span>, <span class="number">475020</span>, <span class="number">1560780</span>, <span class="number">4292145</span>, <span class="number">10015005</span>, <span class="number">20030010</span>, <span class="number">34597290</span>, <span class="number">51895935</span>, <span class="number">67863915</span>, <span class="number">77558760</span>, <span class="number">77558760</span>, <span class="number">67863915</span>, <span class="number">51895935</span>, <span class="number">34597290</span>, <span class="number">20030010</span>, <span class="number">10015005</span>, <span class="number">4292145</span>, <span class="number">1560780</span>, <span class="number">475020</span>, <span class="number">118755</span>, <span class="number">23751</span>, <span class="number">3654</span>, <span class="number">406</span>, <span class="number">29</span>, <span class="number">1</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">            ret.push_back(a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>哈哈哈哈哈哈哈哈</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
       </tags>
   </entry>
   <entry>
@@ -365,6 +365,55 @@
       </tags>
   </entry>
   <entry>
+    <title>LeetCode-66. Plus One（加一）</title>
+    <url>/2018/01/20/LeetCode-66-Plus-One%EF%BC%88%E5%8A%A0%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="加一"><a href="#加一" class="headerlink" title="加一"></a>加一</h2><p>给定一个由<strong>整数</strong>组成的<strong>非空</strong>数组所表示的非负整数，在该数的基础上加一。</p>
+<p>最高位数字存放在数组的首位， 数组中每个元素只存储一个数字。</p>
+<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
+<a id="more"></a>
+
+<p>示例 1:</p>
+<blockquote>
+<p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。</p>
+</blockquote>
+<p>示例 2:</p>
+<blockquote>
+<p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
+</blockquote>
+<h2 id="Plus-One"><a href="#Plus-One" class="headerlink" title="Plus One"></a>Plus One</h2><p>Given a <strong>non-empty</strong> array of digits representing a <strong>non-negative</strong> integer, plus one to the integer.</p>
+<p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</p>
+<p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
+<p>Example 1:</p>
+<blockquote>
+<p>Input: [1,2,3]<br>Output: [1,2,4]<br>Explanation: The array represents the integer 123.</p>
+</blockquote>
+<p>Example 2:</p>
+<blockquote>
+<p>Input: [4,3,2,1]<br>Output: [4,3,2,2]<br>Explanation: The array represents the integer 4321.</p>
+</blockquote>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>根据题意，我们无需考虑负数的情况。（当然负数的做法也是类似）</p>
+<p>非负数加法可以分为两类：</p>
+<ol>
+<li>非9的数字加一</li>
+<li>9加一</li>
+</ol>
+<p>第一种情况，我们只需将原数字加一返回即可。</p>
+<p>第二种情况，有进位。</p>
+<p>因此我们可以将加一后的数字对10取余，如果不为0，则是第一种情况；如果为0，则有进位，遍历前一个元素，重复上述操作。</p>
+<p>如果遍历循环能够全部执行完毕，则需要在数组的第一位增加一位1。例如<code>[9, 9]</code>需要变成<code>[1, 0, 0]</code>。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">plusOne</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = digits.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            digits[i] = (++digits[i]) % <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span> (digits[i] != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        digits.insert(digits.begin(), <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode-778.Swim in Rising Water（水位上升的泳池中游泳）</title>
     <url>/2021/01/30/LeetCode-778-Swim-in-Rising-Water%EF%BC%88%E6%B0%B4%E4%BD%8D%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B3%B3%E6%B1%A0%E4%B8%AD%E6%B8%B8%E6%B3%B3%EF%BC%89/</url>
     <content><![CDATA[<h2 id="水位上升的泳池中游泳"><a href="#水位上升的泳池中游泳" class="headerlink" title="水位上升的泳池中游泳"></a>水位上升的泳池中游泳</h2><p><strong>每日一题</strong></p>
@@ -420,55 +469,6 @@
         <tag>堆</tag>
         <tag>深度优先搜索</tag>
         <tag>并查集</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-66. Plus One（加一）</title>
-    <url>/2018/01/20/LeetCode-66-Plus-One%EF%BC%88%E5%8A%A0%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="加一"><a href="#加一" class="headerlink" title="加一"></a>加一</h2><p>给定一个由<strong>整数</strong>组成的<strong>非空</strong>数组所表示的非负整数，在该数的基础上加一。</p>
-<p>最高位数字存放在数组的首位， 数组中每个元素只存储一个数字。</p>
-<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
-<a id="more"></a>
-
-<p>示例 1:</p>
-<blockquote>
-<p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。</p>
-</blockquote>
-<p>示例 2:</p>
-<blockquote>
-<p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
-</blockquote>
-<h2 id="Plus-One"><a href="#Plus-One" class="headerlink" title="Plus One"></a>Plus One</h2><p>Given a <strong>non-empty</strong> array of digits representing a <strong>non-negative</strong> integer, plus one to the integer.</p>
-<p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</p>
-<p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
-<p>Example 1:</p>
-<blockquote>
-<p>Input: [1,2,3]<br>Output: [1,2,4]<br>Explanation: The array represents the integer 123.</p>
-</blockquote>
-<p>Example 2:</p>
-<blockquote>
-<p>Input: [4,3,2,1]<br>Output: [4,3,2,2]<br>Explanation: The array represents the integer 4321.</p>
-</blockquote>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>根据题意，我们无需考虑负数的情况。（当然负数的做法也是类似）</p>
-<p>非负数加法可以分为两类：</p>
-<ol>
-<li>非9的数字加一</li>
-<li>9加一</li>
-</ol>
-<p>第一种情况，我们只需将原数字加一返回即可。</p>
-<p>第二种情况，有进位。</p>
-<p>因此我们可以将加一后的数字对10取余，如果不为0，则是第一种情况；如果为0，则有进位，遍历前一个元素，重复上述操作。</p>
-<p>如果遍历循环能够全部执行完毕，则需要在数组的第一位增加一位1。例如<code>[9, 9]</code>需要变成<code>[1, 0, 0]</code>。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">plusOne</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = digits.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            digits[i] = (++digits[i]) % <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span> (digits[i] != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        digits.insert(digits.begin(), <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>简单</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>Array</tag>
       </tags>
   </entry>
   <entry>
@@ -669,44 +669,6 @@
       </tags>
   </entry>
   <entry>
-    <title>《崩坏3》动画短片「渡尘」</title>
-    <url>/2021/01/29/%E3%80%8A%E5%B4%A9%E5%9D%8F3%E3%80%8B%E5%8A%A8%E7%94%BB%E7%9F%AD%E7%89%87%E3%80%8C%E6%B8%A1%E5%B0%98%E3%80%8D/</url>
-    <content><![CDATA[<h2 id="《崩坏3》动画短片「渡尘」"><a href="#《崩坏3》动画短片「渡尘」" class="headerlink" title="《崩坏3》动画短片「渡尘」"></a>《崩坏3》动画短片「渡尘」</h2><p><strong>世间之纷扰，早已麻木</strong><br><strong>珍重之羁绊，尽皆离散</strong><br><strong>千年之坚守，只为拯救苍生</strong></p>
-<a id="more"></a>
-
-<p>是糖是糖！</p>
-<p>一路走来，符华真的太不容易了，希望这次是阿符的新生。</p>
-<div class="bilibili">
-    <iframe src="//player.bilibili.com/player.html?aid=501440303&bvid=BV1jN411o7zS&cid=289175447&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-</div>
-
-<p>4:47的上仙绝美！</p>
-<p>5:32开始真的要哭出来了</p>
-<p><strong>日月沉浮 ，沧海桑田</strong></p>
-<p><strong>历尽了离别，习惯了绝望</strong></p>
-<p><strong>不知时间为何物</strong></p>
-<p><strong>亡命于无尽的轮回</strong></p>
-<p><strong>只为——</strong></p>
-<p><strong>使命！</strong></p>
-<p><strong>欢迎回家，班长！</strong></p>
-<p>也恭喜短片登顶！</p>
-<p>另外这次「Rubia」——《崩坏3》印象曲（演唱者：周深）也超赞，</p>
-<div class="bilibili">
-    <iframe src="//player.bilibili.com/player.html?aid=543949325&bvid=BV1Yv4y1o7dw&cid=289220053&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-</div>
-
-]]></content>
-      <categories>
-        <category>个人动态</category>
-        <category>游戏</category>
-        <category>崩坏三</category>
-      </categories>
-      <tags>
-        <tag>日常谈</tag>
-        <tag>游戏</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>《明日方舟》SideStory「画中人」活动宣传PV</title>
     <url>/2021/01/28/%E3%80%8A%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F%E3%80%8BSideStory%E3%80%8C%E7%94%BB%E4%B8%AD%E4%BA%BA%E3%80%8D%E6%B4%BB%E5%8A%A8%E5%AE%A3%E4%BC%A0PV/</url>
     <content><![CDATA[<h2 id="《明日方舟》SideStory「画中人」活动宣传PV"><a href="#《明日方舟》SideStory「画中人」活动宣传PV" class="headerlink" title="《明日方舟》SideStory「画中人」活动宣传PV"></a>《明日方舟》SideStory「画中人」活动宣传PV</h2><p>鹰角终于发饼啦！</p>
@@ -755,6 +717,44 @@
         <category>个人动态</category>
         <category>游戏</category>
         <category>明日方舟</category>
+      </categories>
+      <tags>
+        <tag>日常谈</tag>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《崩坏3》动画短片「渡尘」</title>
+    <url>/2021/01/29/%E3%80%8A%E5%B4%A9%E5%9D%8F3%E3%80%8B%E5%8A%A8%E7%94%BB%E7%9F%AD%E7%89%87%E3%80%8C%E6%B8%A1%E5%B0%98%E3%80%8D/</url>
+    <content><![CDATA[<h2 id="《崩坏3》动画短片「渡尘」"><a href="#《崩坏3》动画短片「渡尘」" class="headerlink" title="《崩坏3》动画短片「渡尘」"></a>《崩坏3》动画短片「渡尘」</h2><p><strong>世间之纷扰，早已麻木</strong><br><strong>珍重之羁绊，尽皆离散</strong><br><strong>千年之坚守，只为拯救苍生</strong></p>
+<a id="more"></a>
+
+<p>是糖是糖！</p>
+<p>一路走来，符华真的太不容易了，希望这次是阿符的新生。</p>
+<div class="bilibili">
+    <iframe src="//player.bilibili.com/player.html?aid=501440303&bvid=BV1jN411o7zS&cid=289175447&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
+
+<p>4:47的上仙绝美！</p>
+<p>5:32开始真的要哭出来了</p>
+<p><strong>日月沉浮 ，沧海桑田</strong></p>
+<p><strong>历尽了离别，习惯了绝望</strong></p>
+<p><strong>不知时间为何物</strong></p>
+<p><strong>亡命于无尽的轮回</strong></p>
+<p><strong>只为——</strong></p>
+<p><strong>使命！</strong></p>
+<p><strong>欢迎回家，班长！</strong></p>
+<p>也恭喜短片登顶！</p>
+<p>另外这次「Rubia」——《崩坏3》印象曲（演唱者：周深）也超赞，</p>
+<div class="bilibili">
+    <iframe src="//player.bilibili.com/player.html?aid=543949325&bvid=BV1Yv4y1o7dw&cid=289220053&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
+
+]]></content>
+      <categories>
+        <category>个人动态</category>
+        <category>游戏</category>
+        <category>崩坏三</category>
       </categories>
       <tags>
         <tag>日常谈</tag>
