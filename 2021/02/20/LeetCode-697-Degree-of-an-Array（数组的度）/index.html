@@ -22,15 +22,22 @@
     var CONFIG = {"hostname":"www.shuocloud.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Roki">
-<meta property="og:url" content="https://www.shuocloud.top/categories/%E4%B8%AA%E4%BA%BA%E5%8A%A8%E6%80%81/index.html">
+  <meta name="description" content="数组的度给定一个非空且只包含非负数的整数数组 nums，数组的度的定义是指数组里任一元素出现频数的最大值。你的任务是在 nums 中找到与 nums 拥有相同大小的度的最短连续子数组，返回其长度。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode-697. Degree of an Array（数组的度）">
+<meta property="og:url" content="https://www.shuocloud.top/2021/02/20/LeetCode-697-Degree-of-an-Array%EF%BC%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6%EF%BC%89/index.html">
 <meta property="og:site_name" content="Roki">
+<meta property="og:description" content="数组的度给定一个非空且只包含非负数的整数数组 nums，数组的度的定义是指数组里任一元素出现频数的最大值。你的任务是在 nums 中找到与 nums 拥有相同大小的度的最短连续子数组，返回其长度。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-20T06:07:02.000Z">
+<meta property="article:modified_time" content="2021-02-20T06:10:56.177Z">
 <meta property="article:author" content="ChenShuo">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="Array">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://www.shuocloud.top/categories/%E4%B8%AA%E4%BA%BA%E5%8A%A8%E6%80%81/">
+<link rel="canonical" href="https://www.shuocloud.top/2021/02/20/LeetCode-697-Degree-of-an-Array%EF%BC%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -38,12 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分类: 个人动态 | Roki</title>
+  <title>LeetCode-697. Degree of an Array（数组的度） | Roki</title>
   
 
 
@@ -197,117 +204,197 @@
         <div class="content-wrap">
           
 
-          <div class="content category">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.shuocloud.top/2021/02/20/LeetCode-697-Degree-of-an-Array%EF%BC%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cs-picture.oss-cn-qingdao.aliyuncs.com/futaba.png">
+      <meta itemprop="name" content="ChenShuo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Roki">
+    </span>
+      <header class="post-header">
+		
+
+
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode-697. Degree of an Array（数组的度）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-02-20 14:07:02 / 修改时间：14:10:56" itemprop="dateCreated datePublished" datetime="2021-02-20T14:07:02+08:00">2021-02-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/%E7%AE%80%E5%8D%95/" itemprop="url" rel="index"><span itemprop="name">简单</span></a>
+                </span>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">个人动态
-          <small>分类</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/02/20/LeetCode-697-Degree-of-an-Array%EF%BC%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6%EF%BC%89/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/02/20/LeetCode-697-Degree-of-an-Array%EF%BC%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6%EF%BC%89/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <h2 id="数组的度"><a href="#数组的度" class="headerlink" title="数组的度"></a>数组的度</h2><p>给定一个非空且只包含非负数的整数数组 <code>nums</code>，数组的度的定义是指数组里任一元素出现频数的最大值。<br>你的任务是在 <code>nums</code> 中找到与 <code>nums</code> 拥有相同大小的度的最短连续子数组，返回其长度。</p>
+<a id="more"></a>
+
+<p><strong>示例 1：</strong></p>
+<blockquote>
+<p><strong>输入</strong>：[1, 2, 2, 3, 1]<br><strong>输出</strong>：2<br><strong>解释</strong>：<br>输入数组的度是2，因为元素1和2的出现频数最大，均为2.<br>连续子数组里面拥有相同度的有如下所示:<br>[1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]<br>最短连续子数组[2, 2]的长度为2，所以返回2.</p>
+</blockquote>
+<p><strong>示例 2：</strong></p>
+<blockquote>
+<p><strong>输入</strong>：[1,2,2,3,1,4,2]<br><strong>输出</strong>：6</p>
+</blockquote>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>nums.length </code>在<code>1</code>到 <code>50,000</code> 区间范围内。</li>
+<li><code>nums[i]</code> 是一个在 <code>0</code> 到 <code>49,999</code> 范围内的整数。</li>
+</ul>
+<h2 id="Degree-of-an-Array"><a href="#Degree-of-an-Array" class="headerlink" title="Degree of an Array"></a>Degree of an Array</h2><p>Given a non-empty array of non-negative integers <code>nums</code>, the degree of this array is defined as the maximum frequency of any one of its elements.<br>Your task is to find the smallest possible length of a (contiguous) subarray of <code>nums</code>, that has the same degree as <code>nums</code>.<br><strong>Example 1:</strong></p>
+<blockquote>
+<p><strong>Input</strong>: nums = [1,2,2,3,1]<br><strong>Output</strong>: 2<br><strong>Explanation</strong>:<br>The input array has a degree of 2 because both elements 1 and 2 appear twice.<br>Of the subarrays that have the same degree:<br>[1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]<br>The shortest length is 2. So return 2.</p>
+</blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<p><strong>Input</strong>: nums = [1,2,2,3,1,4,2]<br><strong>Output</strong>: 6<br><strong>Explanation</strong>:<br>The degree is 3 because the element 2 is repeated 3 times.<br>So [2,2,3,1,4,2] is the shortest subarray, therefore returning 6.</p>
+</blockquote>
+<p><strong>Constraints</strong>:</p>
+<ul>
+<li><code>nums.length</code> will be between <code>1</code> and <code>50,000</code>.</li>
+<li><code>nums[i]</code> will be an integer between <code>0</code> and <code>49,999</code>.<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2></li>
+</ul>
+<p><strong>方法一：哈希表</strong><br>假设出现次数最多的元素为$x$，那么所求的数组必然包含所有$x$，最短的情况就是以$x$开始，以$x$结束。若出现次数有多个，选取其中最短的一个数组即可。<br>采用哈希表便于查找，事实上，当测试数据较少的时候，直接使用数组计数的时间开销要小。<br>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findShortestSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, Info&gt; hash;</span><br><span class="line">        <span class="keyword">int</span> maxDegree = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> minLen = nums.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="number">0</span> == hash.count(nums[i])) &#123;</span><br><span class="line">                Info info = &#123;<span class="number">1</span>, i, i + <span class="number">1</span>&#125;;</span><br><span class="line">                hash[nums[i]] = info;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                hash[nums[i]].count += <span class="number">1</span>;</span><br><span class="line">                hash[nums[i]].last = i + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">int</span> degree = hash[nums[i]].count;</span><br><span class="line">			<span class="keyword">int</span> len = hash[nums[i]].last-hash[nums[i]].first;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span>(maxDegree &lt; degree)&#123;</span><br><span class="line">				maxDegree = degree;</span><br><span class="line">				minLen = len;</span><br><span class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(maxDegree == degree &amp;&amp; minLen &gt; len)&#123;</span><br><span class="line">				minLen = len;</span><br><span class="line">			&#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> minLen;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span>:</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Info</span> &#123;</span></span><br><span class="line">        <span class="keyword">int</span> count;</span><br><span class="line">        <span class="keyword">int</span> first;</span><br><span class="line">        <span class="keyword">int</span> last;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 可以改用向量</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-07T19:12:20+08:00"
-              content="2021-02-07">
-          02-07
-        </time>
+	<div>
+		
+			<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="https://cdn.jsdelivr.net/gh/ChanSure/BlogSource@1.1/images/wechatpay.png" alt="ChenShuo 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="https://cdn.jsdelivr.net/gh/ChanSure/BlogSource@1.1/images/alipay.jpg" alt="ChenShuo 支付宝">
+        <p>支付宝</p>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/07/2021%E5%B9%B4%E5%8E%9F%E7%A5%9E%E6%8B%9C%E5%B9%B4%E7%BA%AA/" itemprop="url">
-            <span itemprop="name">2021年原神拜年纪</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-02T20:56:28+08:00"
-              content="2021-02-02">
-          02-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/02/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F%E6%8B%9C%E5%B9%B4%E7%BA%AA2021%E3%80%90%E7%9A%8E%E6%98%9F%E7%A4%BA%E5%B2%81%E3%80%91/" itemprop="url">
-            <span itemprop="name">明日方舟拜年纪2021【皎星示岁】</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-29T14:42:48+08:00"
-              content="2021-01-29">
-          01-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/29/%E3%80%8A%E5%B4%A9%E5%9D%8F3%E3%80%8B%E5%8A%A8%E7%94%BB%E7%9F%AD%E7%89%87%E3%80%8C%E6%B8%A1%E5%B0%98%E3%80%8D/" itemprop="url">
-            <span itemprop="name">《崩坏3》动画短片「渡尘」</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-28T11:20:54+08:00"
-              content="2021-01-28">
-          01-28
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/28/%E3%80%8A%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F%E3%80%8BSideStory%E3%80%8C%E7%94%BB%E4%B8%AD%E4%BA%BA%E3%80%8D%E6%B4%BB%E5%8A%A8%E5%AE%A3%E4%BC%A0PV/" itemprop="url">
-            <span itemprop="name">《明日方舟》SideStory「画中人」活动宣传PV</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-    </div>
   </div>
-  
-  
-  
+</div>
 
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ChenShuo
+  </li>
+  <li>キミが笑うだけで 全回復だもん！</li>
+  <li>只要能看到你的笑容 就能完全恢复！</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://www.shuocloud.top/2021/02/20/LeetCode-697-Degree-of-an-Array%EF%BC%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6%EF%BC%89/" title="LeetCode-697. Degree of an Array（数组的度）">https://www.shuocloud.top/2021/02/20/LeetCode-697-Degree-of-an-Array（数组的度）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
+              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"><i class="fa fa-tag"></i> 数组</a>
+              <a href="/tags/Array/" rel="tag"><i class="fa fa-tag"></i> Array</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/18/LeetCode-995-K%E8%BF%9E%E7%BB%AD%E4%BD%8D%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BF%BB%E8%BD%AC%E6%AC%A1%E6%95%B0-Minimum-Number-of-K-Consecutive-Bit-Flips/" rel="prev" title="LeetCode-995. K连续位的最小翻转次数(Minimum Number of K Consecutive Bit Flips)">
+      <i class="fa fa-chevron-left"></i> LeetCode-995. K连续位的最小翻转次数(Minimum Number of K Consecutive Bit Flips)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -355,6 +442,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">数组的度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Degree-of-an-Array"><span class="nav-number">2.</span> <span class="nav-text">Degree of an Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">解</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
