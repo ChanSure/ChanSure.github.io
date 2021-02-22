@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>LeetCode-766. Toeplitz Matrix（托普利茨矩阵）</title>
+    <url>/2021/02/22/LeetCode-766-Toeplitz-Matrix%EF%BC%88%E6%89%98%E6%99%AE%E5%88%A9%E8%8C%A8%E7%9F%A9%E9%98%B5%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="托普利茨矩阵"><a href="#托普利茨矩阵" class="headerlink" title="托普利茨矩阵"></a>托普利茨矩阵</h2><p>给你一个 <code>m x n</code> 的矩阵 <code>matrix</code> 。如果这个矩阵是托普利茨矩阵，返回 <code>true</code> ；否则，返回 <code>false</code> 。<br>如果矩阵上每一条由左上到右下的对角线上的元素都相同，那么这个矩阵是<strong>托普利茨矩阵</strong> 。</p>
+<a id="more"></a>
+
+<p><strong>示例1</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/485f6426a7af4d21bfb3d1222ae0a9f3.png"></p>
+<blockquote>
+<p><strong>输入</strong>：matrix = [[1,2,3,4],[5,1,2,3],[9,5,1,2]]<br><strong>输出</strong>：true<br><strong>解释</strong>：<br>在上述矩阵中, 其对角线为:<br>“[9]”, “[5, 5]”, “[1, 1, 1]”, “[2, 2, 2]”, “[3, 3]”, “[4]”。<br>各条对角线上的所有元素均相同, 因此答案是 True </p>
+</blockquote>
+<p><strong>示例2</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/f895738837ee47c80f73baab11f4d580.png"></p>
+<blockquote>
+<p><strong>输入</strong>：matrix = [[1,2],[2,2]]<br><strong>输出</strong>：false<br><strong>解释</strong>：<br>对角线 “[1, 2]” 上的元素不同</p>
+</blockquote>
+<p><strong>提示</strong>：</p>
+<ul>
+<li><code>m == matrix.length</code></li>
+<li><code>n == matrix[i].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 20</code></li>
+<li><code>0 &lt;= matrix[i][j] &lt;= 99</code></li>
+</ul>
+<p> <strong>进阶：</strong></p>
+<ol>
+<li>如果矩阵存储在磁盘上，并且内存有限，以至于一次最多只能将矩阵的一行加载到内存中，该怎么办？</li>
+<li>如果矩阵太大，以至于一次只能将不完整的一行加载到内存中，该怎么办？</li>
+</ol>
+<h2 id="Toeplitz-Matrix"><a href="#Toeplitz-Matrix" class="headerlink" title="Toeplitz Matrix"></a>Toeplitz Matrix</h2><p>Given an <code>m x n</code> matrix, return <code>true</code> if the matrix is Toeplitz. Otherwise, return <code>false</code>.<br>A matrix is <strong>Toeplitz</strong> if every diagonal from top-left to bottom-right has the same elements.<br><strong>Example 1:</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/485f6426a7af4d21bfb3d1222ae0a9f3.png"></p>
+<blockquote>
+<p><strong>Input</strong>: matrix = [[1,2,3,4],[5,1,2,3],[9,5,1,2]]<br><strong>Output</strong>: true<br><strong>Explanation</strong>:<br>In the above grid, the diagonals are:<br>“[9]”, “[5, 5]”, “[1, 1, 1]”, “[2, 2, 2]”, “[3, 3]”, “[4]”.<br>In each diagonal all elements are the same, so the answer is True.</p>
+</blockquote>
+<p><strong>example 2</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/f895738837ee47c80f73baab11f4d580.png"></p>
+<blockquote>
+<p><strong>Input</strong>: matrix = [[1,2],[2,2]]<br><strong>Output</strong>: false<br><strong>Explanation</strong>:<br>The diagonal “[1, 2]” has different elements.</p>
+</blockquote>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>m == matrix.length</code></li>
+<li><code>n == matrix[i].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 20</code></li>
+<li><code>0 &lt;= matrix[i][j] &lt;= 99</code></li>
+</ul>
+<p><strong>Follow up:</strong></p>
+<ol>
+<li>What if the matrix is stored on disk, and the memory is limited such that you can only load at most one row of the matrix into the memory at once?</li>
+<li>What if the matrix is so large that you can only load up a partial row into the memory at once?<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2>我们只需要遍历矩阵时，把当前元素与其左上角的元素比较即可。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isToeplitzMatrix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.size();</span><br><span class="line">        <span class="keyword">int</span> n = matrix[<span class="number">0</span>].size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (matrix[i][j] != matrix[i - <span class="number">1</span>][j - <span class="number">1</span>]) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>进阶1</strong><br>一次最多只能将矩阵的一行加载到内存中，我们将每一行复制到一个连续数组中，随后在读取下一行第一个元素时，把内存中用不到最后一位调出内存即可，新调入的就与内存中此前保存的数组进行比较。<br><strong>进阶2</strong><br>一次只能将不完整的一行加载到内存中，我们将整个矩阵竖直切分成若干子矩阵，并保证两个相邻的矩阵至少有一列或一行是重合的，然后判断每个子矩阵是否符合要求。</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>Array</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode-697. Degree of an Array（数组的度）</title>
     <url>/2021/02/20/LeetCode-697-Degree-of-an-Array%EF%BC%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6%EF%BC%89/</url>
     <content><![CDATA[<h2 id="数组的度"><a href="#数组的度" class="headerlink" title="数组的度"></a>数组的度</h2><p>给定一个非空且只包含非负数的整数数组 <code>nums</code>，数组的度的定义是指数组里任一元素出现频数的最大值。<br>你的任务是在 <code>nums</code> 中找到与 <code>nums</code> 拥有相同大小的度的最短连续子数组，返回其长度。</p>
@@ -357,8 +416,8 @@
       <tags>
         <tag>LeetCode</tag>
         <tag>数组</tag>
-        <tag>哈希表</tag>
         <tag>Array</tag>
+        <tag>哈希表</tag>
         <tag>双指针</tag>
         <tag>Two Pointers</tag>
         <tag>Hash</tag>
@@ -1039,8 +1098,8 @@
       <tags>
         <tag>LeetCode</tag>
         <tag>数组</tag>
-        <tag>哈希表</tag>
         <tag>Array</tag>
+        <tag>哈希表</tag>
         <tag>Hash Table</tag>
       </tags>
   </entry>

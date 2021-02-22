@@ -22,15 +22,27 @@
     var CONFIG = {"hostname":"www.shuocloud.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Roki">
-<meta property="og:url" content="https://www.shuocloud.top/tags/Difference-array/index.html">
+  <meta name="description" content="托普利茨矩阵给你一个 m x n 的矩阵 matrix 。如果这个矩阵是托普利茨矩阵，返回 true ；否则，返回 false 。如果矩阵上每一条由左上到右下的对角线上的元素都相同，那么这个矩阵是托普利茨矩阵 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode-766. Toeplitz Matrix（托普利茨矩阵）">
+<meta property="og:url" content="https://www.shuocloud.top/2021/02/22/LeetCode-766-Toeplitz-Matrix%EF%BC%88%E6%89%98%E6%99%AE%E5%88%A9%E8%8C%A8%E7%9F%A9%E9%98%B5%EF%BC%89/index.html">
 <meta property="og:site_name" content="Roki">
+<meta property="og:description" content="托普利茨矩阵给你一个 m x n 的矩阵 matrix 。如果这个矩阵是托普利茨矩阵，返回 true ；否则，返回 false 。如果矩阵上每一条由左上到右下的对角线上的元素都相同，那么这个矩阵是托普利茨矩阵 。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/485f6426a7af4d21bfb3d1222ae0a9f3.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/f895738837ee47c80f73baab11f4d580.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/485f6426a7af4d21bfb3d1222ae0a9f3.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/f895738837ee47c80f73baab11f4d580.png">
+<meta property="article:published_time" content="2021-02-22T04:15:20.000Z">
+<meta property="article:modified_time" content="2021-02-22T04:16:45.213Z">
 <meta property="article:author" content="ChenShuo">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="Array">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/485f6426a7af4d21bfb3d1222ae0a9f3.png">
 
-<link rel="canonical" href="https://www.shuocloud.top/tags/Difference-array/">
+<link rel="canonical" href="https://www.shuocloud.top/2021/02/22/LeetCode-766-Toeplitz-Matrix%EF%BC%88%E6%89%98%E6%99%AE%E5%88%A9%E8%8C%A8%E7%9F%A9%E9%98%B5%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -38,12 +50,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: Difference array | Roki</title>
+  <title>LeetCode-766. Toeplitz Matrix（托普利茨矩阵） | Roki</title>
   
 
 
@@ -197,57 +209,212 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.shuocloud.top/2021/02/22/LeetCode-766-Toeplitz-Matrix%EF%BC%88%E6%89%98%E6%99%AE%E5%88%A9%E8%8C%A8%E7%9F%A9%E9%98%B5%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cs-picture.oss-cn-qingdao.aliyuncs.com/futaba.png">
+      <meta itemprop="name" content="ChenShuo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Roki">
+    </span>
+      <header class="post-header">
+		
+
+
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode-766. Toeplitz Matrix（托普利茨矩阵）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-02-22 12:15:20 / 修改时间：12:16:45" itemprop="dateCreated datePublished" datetime="2021-02-22T12:15:20+08:00">2021-02-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/%E7%AE%80%E5%8D%95/" itemprop="url" rel="index"><span itemprop="name">简单</span></a>
+                </span>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Difference array
-          <small>标签</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/02/22/LeetCode-766-Toeplitz-Matrix%EF%BC%88%E6%89%98%E6%99%AE%E5%88%A9%E8%8C%A8%E7%9F%A9%E9%98%B5%EF%BC%89/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/02/22/LeetCode-766-Toeplitz-Matrix%EF%BC%88%E6%89%98%E6%99%AE%E5%88%A9%E8%8C%A8%E7%9F%A9%E9%98%B5%EF%BC%89/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <h2 id="托普利茨矩阵"><a href="#托普利茨矩阵" class="headerlink" title="托普利茨矩阵"></a>托普利茨矩阵</h2><p>给你一个 <code>m x n</code> 的矩阵 <code>matrix</code> 。如果这个矩阵是托普利茨矩阵，返回 <code>true</code> ；否则，返回 <code>false</code> 。<br>如果矩阵上每一条由左上到右下的对角线上的元素都相同，那么这个矩阵是<strong>托普利茨矩阵</strong> 。</p>
+<a id="more"></a>
+
+<p><strong>示例1</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/485f6426a7af4d21bfb3d1222ae0a9f3.png"></p>
+<blockquote>
+<p><strong>输入</strong>：matrix = [[1,2,3,4],[5,1,2,3],[9,5,1,2]]<br><strong>输出</strong>：true<br><strong>解释</strong>：<br>在上述矩阵中, 其对角线为:<br>“[9]”, “[5, 5]”, “[1, 1, 1]”, “[2, 2, 2]”, “[3, 3]”, “[4]”。<br>各条对角线上的所有元素均相同, 因此答案是 True </p>
+</blockquote>
+<p><strong>示例2</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/f895738837ee47c80f73baab11f4d580.png"></p>
+<blockquote>
+<p><strong>输入</strong>：matrix = [[1,2],[2,2]]<br><strong>输出</strong>：false<br><strong>解释</strong>：<br>对角线 “[1, 2]” 上的元素不同</p>
+</blockquote>
+<p><strong>提示</strong>：</p>
+<ul>
+<li><code>m == matrix.length</code></li>
+<li><code>n == matrix[i].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 20</code></li>
+<li><code>0 &lt;= matrix[i][j] &lt;= 99</code></li>
+</ul>
+<p> <strong>进阶：</strong></p>
+<ol>
+<li>如果矩阵存储在磁盘上，并且内存有限，以至于一次最多只能将矩阵的一行加载到内存中，该怎么办？</li>
+<li>如果矩阵太大，以至于一次只能将不完整的一行加载到内存中，该怎么办？</li>
+</ol>
+<h2 id="Toeplitz-Matrix"><a href="#Toeplitz-Matrix" class="headerlink" title="Toeplitz Matrix"></a>Toeplitz Matrix</h2><p>Given an <code>m x n</code> matrix, return <code>true</code> if the matrix is Toeplitz. Otherwise, return <code>false</code>.<br>A matrix is <strong>Toeplitz</strong> if every diagonal from top-left to bottom-right has the same elements.<br><strong>Example 1:</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/485f6426a7af4d21bfb3d1222ae0a9f3.png"></p>
+<blockquote>
+<p><strong>Input</strong>: matrix = [[1,2,3,4],[5,1,2,3],[9,5,1,2]]<br><strong>Output</strong>: true<br><strong>Explanation</strong>:<br>In the above grid, the diagonals are:<br>“[9]”, “[5, 5]”, “[1, 1, 1]”, “[2, 2, 2]”, “[3, 3]”, “[4]”.<br>In each diagonal all elements are the same, so the answer is True.</p>
+</blockquote>
+<p><strong>example 2</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/f895738837ee47c80f73baab11f4d580.png"></p>
+<blockquote>
+<p><strong>Input</strong>: matrix = [[1,2],[2,2]]<br><strong>Output</strong>: false<br><strong>Explanation</strong>:<br>The diagonal “[1, 2]” has different elements.</p>
+</blockquote>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>m == matrix.length</code></li>
+<li><code>n == matrix[i].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 20</code></li>
+<li><code>0 &lt;= matrix[i][j] &lt;= 99</code></li>
+</ul>
+<p><strong>Follow up:</strong></p>
+<ol>
+<li>What if the matrix is stored on disk, and the memory is limited such that you can only load at most one row of the matrix into the memory at once?</li>
+<li>What if the matrix is so large that you can only load up a partial row into the memory at once?<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2>我们只需要遍历矩阵时，把当前元素与其左上角的元素比较即可。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isToeplitzMatrix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.size();</span><br><span class="line">        <span class="keyword">int</span> n = matrix[<span class="number">0</span>].size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (matrix[i][j] != matrix[i - <span class="number">1</span>][j - <span class="number">1</span>]) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>进阶1</strong><br>一次最多只能将矩阵的一行加载到内存中，我们将每一行复制到一个连续数组中，随后在读取下一行第一个元素时，把内存中用不到最后一位调出内存即可，新调入的就与内存中此前保存的数组进行比较。<br><strong>进阶2</strong><br>一次只能将不完整的一行加载到内存中，我们将整个矩阵竖直切分成若干子矩阵，并保证两个相邻的矩阵至少有一列或一行是重合的，然后判断每个子矩阵是否符合要求。</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-18T13:52:06+08:00"
-              content="2021-02-18">
-          02-18
-        </time>
+	<div>
+		
+			<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="https://cdn.jsdelivr.net/gh/ChanSure/BlogSource@1.1/images/wechatpay.png" alt="ChenShuo 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="https://cdn.jsdelivr.net/gh/ChanSure/BlogSource@1.1/images/alipay.jpg" alt="ChenShuo 支付宝">
+        <p>支付宝</p>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/18/LeetCode-995-K%E8%BF%9E%E7%BB%AD%E4%BD%8D%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BF%BB%E8%BD%AC%E6%AC%A1%E6%95%B0-Minimum-Number-of-K-Consecutive-Bit-Flips/" itemprop="url">
-            <span itemprop="name">LeetCode-995. K连续位的最小翻转次数(Minimum Number of K Consecutive Bit Flips)</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-    </div>
   </div>
-  
-  
-  
+</div>
 
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ChenShuo
+  </li>
+  <li>キミが笑うだけで 全回復だもん！</li>
+  <li>只要能看到你的笑容 就能完全恢复！</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://www.shuocloud.top/2021/02/22/LeetCode-766-Toeplitz-Matrix%EF%BC%88%E6%89%98%E6%99%AE%E5%88%A9%E8%8C%A8%E7%9F%A9%E9%98%B5%EF%BC%89/" title="LeetCode-766. Toeplitz Matrix（托普利茨矩阵）">https://www.shuocloud.top/2021/02/22/LeetCode-766-Toeplitz-Matrix（托普利茨矩阵）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
+              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"><i class="fa fa-tag"></i> 数组</a>
+              <a href="/tags/Array/" rel="tag"><i class="fa fa-tag"></i> Array</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/20/LeetCode-697-Degree-of-an-Array%EF%BC%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6%EF%BC%89/" rel="prev" title="LeetCode-697. Degree of an Array（数组的度）">
+      <i class="fa fa-chevron-left"></i> LeetCode-697. Degree of an Array（数组的度）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -295,6 +462,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%98%E6%99%AE%E5%88%A9%E8%8C%A8%E7%9F%A9%E9%98%B5"><span class="nav-number">1.</span> <span class="nav-text">托普利茨矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Toeplitz-Matrix"><span class="nav-number">2.</span> <span class="nav-text">Toeplitz Matrix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">解</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -540,6 +708,59 @@ document.querySelectorAll('.pdfobject-container').forEach(element => {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
