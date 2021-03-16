@@ -4,6 +4,8 @@
     <title>LeetCode-1791. 找出星型图的中心节点</title>
     <url>/2021/03/16/LeetCode-1791-%E6%89%BE%E5%87%BA%E6%98%9F%E5%9E%8B%E5%9B%BE%E7%9A%84%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/</url>
     <content><![CDATA[<h2 id="找出星型图的中心节点"><a href="#找出星型图的中心节点" class="headerlink" title="找出星型图的中心节点"></a>找出星型图的中心节点</h2><p>有一个无向的 <strong>星型</strong> 图，由 <code>n</code> 个编号从 <code>1</code> 到 <code>n</code> 的节点组成。星型图有一个 <strong>中心</strong> 节点，并且恰有 <code>n - 1</code> 条边将中心节点与其他每个节点连接起来。<br>给你一个二维整数数组 <code>edges</code> ，其中 <code>edges[i] = [ui, vi]</code> 表示在节点 <code>ui</code> 和 <code>vi</code> 之间存在一条边。请你找出并返回 <code>edges</code> 所表示星型图的中心节点。</p>
+<a id="more"></a>
+
 <p>示例 1：<br><img src="https://img-blog.csdnimg.cn/img_convert/549e7505e2f39a598939d9812569d4ac.png"></p>
 <blockquote>
 <p>输入：edges = [[1,2],[2,3],[4,2]]<br>输出：2<br>解释：如上图所示，节点 2 与其他每个节点都相连，所以节点 2 是中心节点。</p>
