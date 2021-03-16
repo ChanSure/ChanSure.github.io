@@ -131,17 +131,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">34</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">37</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">23</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">26</span></a>
 
   </li>
         <li class="menu-item menu-item-书籍">
@@ -199,6 +199,310 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.shuocloud.top/2021/03/16/LeetCode-1791-%E6%89%BE%E5%87%BA%E6%98%9F%E5%9E%8B%E5%9B%BE%E7%9A%84%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/ChanSure/picgo/futaba.png">
+      <meta itemprop="name" content="ChenShuo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Roki">
+    </span>
+      <header class="post-header">
+		
+
+
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/16/LeetCode-1791-%E6%89%BE%E5%87%BA%E6%98%9F%E5%9E%8B%E5%9B%BE%E7%9A%84%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/" class="post-title-link" itemprop="url">LeetCode-1791. 找出星型图的中心节点</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-16 18:55:22 / 修改时间：18:57:25" itemprop="dateCreated datePublished" datetime="2021-03-16T18:55:22+08:00">2021-03-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/%E4%B8%AD%E7%AD%89/" itemprop="url" rel="index"><span itemprop="name">中等</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/03/16/LeetCode-1791-%E6%89%BE%E5%87%BA%E6%98%9F%E5%9E%8B%E5%9B%BE%E7%9A%84%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/03/16/LeetCode-1791-%E6%89%BE%E5%87%BA%E6%98%9F%E5%9E%8B%E5%9B%BE%E7%9A%84%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="找出星型图的中心节点"><a href="#找出星型图的中心节点" class="headerlink" title="找出星型图的中心节点"></a>找出星型图的中心节点</h2><p>有一个无向的 <strong>星型</strong> 图，由 <code>n</code> 个编号从 <code>1</code> 到 <code>n</code> 的节点组成。星型图有一个 <strong>中心</strong> 节点，并且恰有 <code>n - 1</code> 条边将中心节点与其他每个节点连接起来。<br>给你一个二维整数数组 <code>edges</code> ，其中 <code>edges[i] = [ui, vi]</code> 表示在节点 <code>ui</code> 和 <code>vi</code> 之间存在一条边。请你找出并返回 <code>edges</code> 所表示星型图的中心节点。</p>
+<p>示例 1：<br><img src="https://img-blog.csdnimg.cn/img_convert/549e7505e2f39a598939d9812569d4ac.png"></p>
+<blockquote>
+<p>输入：edges = [[1,2],[2,3],[4,2]]<br>输出：2<br>解释：如上图所示，节点 2 与其他每个节点都相连，所以节点 2 是中心节点。</p>
+</blockquote>
+<blockquote>
+<p>示例 2：<br>输入：edges = [[1,2],[5,1],[1,3],[1,4]]<br>输出：1</p>
+</blockquote>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>3 &lt;= n &lt;= 105</code></li>
+<li><code>edges.length == n - 1</code></li>
+<li><code>edges[i].length == 2</code></li>
+<li><code>1 &lt;= ui, vi &lt;= n</code></li>
+<li><code>ui != vi</code></li>
+<li>题目数据给出的 edges 表示一个有效的星型图</li>
+</ul>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>因为题目给出了过多的限制条件，所以事实上只需要找出前两个边的公共节点即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findCenter</span><span class="params">(<span class="keyword">int</span>[][] edges)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> edges[<span class="number">0</span>][<span class="number">0</span>] == edges[<span class="number">1</span>][<span class="number">0</span>] || edges[<span class="number">0</span>][<span class="number">0</span>] == edges[<span class="number">1</span>][<span class="number">1</span>] ? edges[<span class="number">0</span>][<span class="number">0</span>] : edges[<span class="number">0</span>][<span class="number">1</span>]; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>笔者一开始的想法是使用哈希表保存每个数出现的次数，然后次数等于边数的那个数即为中心。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.shuocloud.top/2021/03/16/LeetCode-1790-%E4%BB%85%E6%89%A7%E8%A1%8C%E4%B8%80%E6%AC%A1%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BA%A4%E6%8D%A2%E8%83%BD%E5%90%A6%E4%BD%BF%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E7%AD%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/ChanSure/picgo/futaba.png">
+      <meta itemprop="name" content="ChenShuo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Roki">
+    </span>
+      <header class="post-header">
+		
+
+
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/16/LeetCode-1790-%E4%BB%85%E6%89%A7%E8%A1%8C%E4%B8%80%E6%AC%A1%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BA%A4%E6%8D%A2%E8%83%BD%E5%90%A6%E4%BD%BF%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E7%AD%89/" class="post-title-link" itemprop="url">LeetCode-1790.仅执行一次字符串交换能否使两个字符串相等</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-16 18:38:01 / 修改时间：18:53:54" itemprop="dateCreated datePublished" datetime="2021-03-16T18:38:01+08:00">2021-03-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/%E7%AE%80%E5%8D%95/" itemprop="url" rel="index"><span itemprop="name">简单</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/03/16/LeetCode-1790-%E4%BB%85%E6%89%A7%E8%A1%8C%E4%B8%80%E6%AC%A1%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BA%A4%E6%8D%A2%E8%83%BD%E5%90%A6%E4%BD%BF%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E7%AD%89/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/03/16/LeetCode-1790-%E4%BB%85%E6%89%A7%E8%A1%8C%E4%B8%80%E6%AC%A1%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BA%A4%E6%8D%A2%E8%83%BD%E5%90%A6%E4%BD%BF%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E7%AD%89/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1790-仅执行一次字符串交换能否使两个字符串相等"><a href="#1790-仅执行一次字符串交换能否使两个字符串相等" class="headerlink" title="1790. 仅执行一次字符串交换能否使两个字符串相等"></a>1790. 仅执行一次字符串交换能否使两个字符串相等</h2><p>给你长度相等的两个字符串 <code>s1</code> 和 <code>s2</code> 。一次 <strong>字符串交换</strong> 操作的步骤如下：选出某个字符串中的两个下标（不必不同），并交换这两个下标所对应的字符。<br>如果对 其中一个字符串执最多一次字符串交换就可以使两个字符串相等，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/16/LeetCode-1790-%E4%BB%85%E6%89%A7%E8%A1%8C%E4%B8%80%E6%AC%A1%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BA%A4%E6%8D%A2%E8%83%BD%E5%90%A6%E4%BD%BF%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E7%AD%89/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.shuocloud.top/2021/03/16/LeetCode%E7%AC%AC232%E5%9C%BA%E5%91%A8%E8%B5%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/ChanSure/picgo/futaba.png">
+      <meta itemprop="name" content="ChenShuo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Roki">
+    </span>
+      <header class="post-header">
+		
+
+
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/16/LeetCode%E7%AC%AC232%E5%9C%BA%E5%91%A8%E8%B5%9B/" class="post-title-link" itemprop="url">LeetCode第232场周赛</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-16 18:17:03 / 修改时间：18:58:39" itemprop="dateCreated datePublished" datetime="2021-03-16T18:17:03+08:00">2021-03-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/03/16/LeetCode%E7%AC%AC232%E5%9C%BA%E5%91%A8%E8%B5%9B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/03/16/LeetCode%E7%AC%AC232%E5%9C%BA%E5%91%A8%E8%B5%9B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="LeetCode第232场周赛"><a href="#LeetCode第232场周赛" class="headerlink" title="LeetCode第232场周赛"></a>LeetCode第232场周赛</h2><p>比赛链接：<a href="https://leetcode-cn.com/contest/weekly-contest-232/" target="_blank">传送门</a></p>
+<p><a onclick="window.open('../LeetCode-1790-仅执行一次字符串交换能否使两个字符串相等')">1790.仅执行一次字符串交换能否使两个字符串相等</a></p>
+<p><a onclick="window.open('../LeetCode-1791-找出星型图的中心节点')">1791.找出星型图的中心节点</a></p>
+<p>剩下两题的题解以后再说，也不难</p>
+
+      
+    </div>
+
+    
+    
+    
+
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -934,324 +1238,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.shuocloud.top/2021/02/02/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F%E6%8B%9C%E5%B9%B4%E7%BA%AA2021%E3%80%90%E7%9A%8E%E6%98%9F%E7%A4%BA%E5%B2%81%E3%80%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/ChanSure/picgo/futaba.png">
-      <meta itemprop="name" content="ChenShuo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Roki">
-    </span>
-      <header class="post-header">
-		
-
-
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/02/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F%E6%8B%9C%E5%B9%B4%E7%BA%AA2021%E3%80%90%E7%9A%8E%E6%98%9F%E7%A4%BA%E5%B2%81%E3%80%91/" class="post-title-link" itemprop="url">明日方舟拜年纪2021【皎星示岁】</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-02-02 20:56:28" itemprop="dateCreated datePublished" datetime="2021-02-02T20:56:28+08:00">2021-02-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-14 14:46:19" itemprop="dateModified" datetime="2021-03-14T14:46:19+08:00">2021-03-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%8A%A8%E6%80%81/" itemprop="url" rel="index"><span itemprop="name">个人动态</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%8A%A8%E6%80%81/%E6%B8%B8%E6%88%8F/" itemprop="url" rel="index"><span itemprop="name">游戏</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%8A%A8%E6%80%81/%E6%B8%B8%E6%88%8F/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F/" itemprop="url" rel="index"><span itemprop="name">明日方舟</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/02/02/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F%E6%8B%9C%E5%B9%B4%E7%BA%AA2021%E3%80%90%E7%9A%8E%E6%98%9F%E7%A4%BA%E5%B2%81%E3%80%91/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/02/02/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F%E6%8B%9C%E5%B9%B4%E7%BA%AA2021%E3%80%90%E7%9A%8E%E6%98%9F%E7%A4%BA%E5%B2%81%E3%80%91/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="明日方舟拜年纪2021【皎星示岁】"><a href="#明日方舟拜年纪2021【皎星示岁】" class="headerlink" title="明日方舟拜年纪2021【皎星示岁】"></a>明日方舟拜年纪2021【皎星示岁】</h2><p>看完方舟拜年纪的直播，有被震撼到。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/02/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F%E6%8B%9C%E5%B9%B4%E7%BA%AA2021%E3%80%90%E7%9A%8E%E6%98%9F%E7%A4%BA%E5%B2%81%E3%80%91/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-	<div>
-		
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.shuocloud.top/2021/02/01/LeetCode-888-Fair-Candy-Swap%EF%BC%88%E5%85%AC%E5%B9%B3%E7%9A%84%E7%B3%96%E6%9E%9C%E6%A3%92%E4%BA%A4%E6%8D%A2%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/ChanSure/picgo/futaba.png">
-      <meta itemprop="name" content="ChenShuo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Roki">
-    </span>
-      <header class="post-header">
-		
-
-
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/01/LeetCode-888-Fair-Candy-Swap%EF%BC%88%E5%85%AC%E5%B9%B3%E7%9A%84%E7%B3%96%E6%9E%9C%E6%A3%92%E4%BA%A4%E6%8D%A2%EF%BC%89/" class="post-title-link" itemprop="url">LeetCode-888.Fair Candy Swap（公平的糖果棒交换）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-02-01 13:11:54 / 修改时间：15:50:57" itemprop="dateCreated datePublished" datetime="2021-02-01T13:11:54+08:00">2021-02-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/%E7%AE%80%E5%8D%95/" itemprop="url" rel="index"><span itemprop="name">简单</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/02/01/LeetCode-888-Fair-Candy-Swap%EF%BC%88%E5%85%AC%E5%B9%B3%E7%9A%84%E7%B3%96%E6%9E%9C%E6%A3%92%E4%BA%A4%E6%8D%A2%EF%BC%89/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/02/01/LeetCode-888-Fair-Candy-Swap%EF%BC%88%E5%85%AC%E5%B9%B3%E7%9A%84%E7%B3%96%E6%9E%9C%E6%A3%92%E4%BA%A4%E6%8D%A2%EF%BC%89/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="公平的糖果棒交换"><a href="#公平的糖果棒交换" class="headerlink" title="公平的糖果棒交换"></a>公平的糖果棒交换</h2><p><strong>每日一题</strong></p>
-<p>爱丽丝和鲍勃有不同大小的糖果棒：<code>A[i]</code> 是爱丽丝拥有的第 <code>i</code> 根糖果棒的大小，<code>B[j]</code> 是鲍勃拥有的第 <code>j</code> 根糖果棒的大小。<br>因为他们是朋友，所以他们想交换一根糖果棒，这样交换后，他们都有相同的糖果总量。（一个人拥有的糖果总量是他们拥有的糖果棒大小的总和。）<br>返回一个整数数组 <code>ans</code>，其中 <code>ans[0]</code> 是爱丽丝必须交换的糖果棒的大小，<code>ans[1]</code> 是鲍勃必须交换的糖果棒的大小。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/01/LeetCode-888-Fair-Candy-Swap%EF%BC%88%E5%85%AC%E5%B9%B3%E7%9A%84%E7%B3%96%E6%9E%9C%E6%A3%92%E4%BA%A4%E6%8D%A2%EF%BC%89/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-	<div>
-		
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.shuocloud.top/2021/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/ChanSure/picgo/futaba.png">
-      <meta itemprop="name" content="ChenShuo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Roki">
-    </span>
-      <header class="post-header">
-		
-
-
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/" class="post-title-link" itemprop="url">LeetCode-839. Similar String Groups（相似字符串组）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-31 19:50:31" itemprop="dateCreated datePublished" datetime="2021-01-31T19:50:31+08:00">2021-01-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-02-01 12:50:34" itemprop="dateModified" datetime="2021-02-01T12:50:34+08:00">2021-02-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/%E5%9B%B0%E9%9A%BE/" itemprop="url" rel="index"><span itemprop="name">困难</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="相似字符串组"><a href="#相似字符串组" class="headerlink" title="相似字符串组"></a>相似字符串组</h2><p><strong>每日一题</strong></p>
-<p>如果交换字符串 <code>X</code> 中的两个不同位置的字母，使得它和字符串 <code>Y</code> 相等，那么称 <code>X</code> 和 <code>Y</code> 两个字符串相似。如果这两个字符串本身是相等的，那它们也是相似的。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/31/LeetCode-839-Similar-String-Groups%EF%BC%88%E7%9B%B8%E4%BC%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%EF%BC%89/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-	<div>
-		
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1324,20 +1310,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
