@@ -13,11 +13,32 @@ const ap = new APlayer({
 		lrc: 'https://cdn.jsdelivr.net/gh/ChanSure/picgo/%E8%8A%B1%E3%81%AF%E5%B9%BB%E6%83%B3%E3%81%AE%E6%9E%9C%E3%81%A6%E3%81%AB.lrc'
 	 },
 	 {
+		name: '色違いの翼',
+		artist: '井口裕香 / 阿澄佳奈',
+		url: 'http://music.163.com/song/media/outer/url?id=1296548028.mp3',
+		cover: 'http://p2.music.126.net/vo7Z7kthofImkuOCLGuPSA==/109951163427498179.jpg?param=130y130',
+		lrc: 'https://cdn.jsdelivr.net/gh/ChanSure/picgo/%E8%89%B2%E9%81%95%E3%81%84%E3%81%AE%E7%BF%BC.lrc'
+	 },
+	 {
+		name: 'ワルキューレがとまらない ～without Freyja～',
+		artist: 'ワルキューレ',
+		url: 'http://music.163.com/song/media/outer/url?id=536623413.mp3',
+		cover: 'http://p1.music.126.net/4h4hMDjnt9cBou5FYon2CA==/109951163145850182.jpg?param=130y130',
+		lrc: 'https://cdn.jsdelivr.net/gh/ChanSure/picgo/%E3%83%AF%E3%83%AB%E3%82%AD%E3%83%A5%E3%83%BC%E3%83%AC%E3%81%8C%E3%81%A8%E3%81%BE%E3%82%89%E3%81%AA%E3%81%84.lrc'
+	 },
+	 {
 		name: 'スタッカート・デイズ',
 		artist: '井口裕香 / 阿澄佳奈',
 		url: 'http://music.163.com/song/media/outer/url?id=26434532.mp3',
 		cover: 'http://p1.music.126.net/bEZZDej9XPPaLmv8WDQsVQ==/2393636813727775.jpg?param=130y130',
 		lrc: 'https://cdn.jsdelivr.net/gh/ChanSure/picgo/%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AB%E3%83%BC%E3%83%88%E3%83%BB%E3%83%87%E3%82%A4%E3%82%BA.lrc'
+	 },
+	 {
+		name: '僕の戦争',
+		artist: '神聖かまってちゃん',
+		url: 'http://music.163.com/song/media/outer/url?id=1822712510.mp3',
+		cover: 'http://p1.music.126.net/ZcQ97pr8vTB1qcvI4QLN4A==/109951165755885281.jpg?param=130y130',
+		lrc: 'https://cdn.jsdelivr.net/gh/ChanSure/picgo/%E5%83%95%E3%81%AE%E6%88%A6%E4%BA%89.lrc'
 	 },
 	 {
 		name: 'Happy Halloween',
